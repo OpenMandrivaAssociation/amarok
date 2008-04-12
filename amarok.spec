@@ -58,7 +58,7 @@ BuildRequires: libifp-devel
 BuildRequires: libmtp-devel
 BuildRequires: glib2-devel
 BuildRequires: libvisual-devel
-BuildRequires: kdelibs4-devel
+BuildRequires: kdelibs4-devel >= 4.0.61
 BuildRequires: kdemultimedia4-devel
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
@@ -66,6 +66,10 @@ Requires: %name-scripts
 
 Conflicts: %{libname}-devel < 1:2.0.0-1.svn743954.3
 Obsoletes: amarok2 <= 2:2.0.0-0.svn794807.1
+Obsoletes: amarok2-engine-phonon <= 2:2.0.0-0.svn794807.1
+Obsoletes: amarok2-engine-xine <= 2:2.0.0-0.svn794807.1
+Obsoletes: amarok2-engine-void <= 2:2.0.0-0.svn794807.1
+Conflicts: amarok2 <= 2:2.0.0-0.svn794807.1
 
 %description
 Feature Overview 
@@ -133,6 +137,7 @@ Requires: ruby
 Requires: python
 Requires: %{libname}-scripts = %epoch:%version-%release
 Obsoletes: amarok2-scripts <= 2:2.0.0-0.svn794807.1
+Conflicts: amarok2-scripts <= 2:2.0.0-0.svn794807.1
 
 %description scripts
 This package includes python scripts for amarok.
@@ -149,6 +154,7 @@ Summary: Library scripts for amarok
 Group: Graphical desktop/KDE
 Requires: %name = %epoch:%version-%release
 Obsoletes: %{libname2}-scripts <= 2:2.0.0-0.svn794807.1
+Conflicts: %{libname2}-scripts <= 2:2.0.0-0.svn794807.1
 Requires: ruby
 
 %description -n %{libname}-scripts
