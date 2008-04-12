@@ -1,0 +1,267 @@
+%define libname_orig lib%{name}
+%define libname %mklibname %{name} 0
+%define develname %mklibname -d %{name}
+
+%define rev 794807
+%define release %mkrel 1.svn%rev.%rel
+
+#Add MySQL support
+%define build_mysql 0
+%{?_with_mysql: %global build_mysql 1}
+
+#Add PostgreSQL support
+%define build_postgresql 0
+%{?_with_postgresql: %global build_postgresql 1}
+
+%define unstable 0
+%{?_with_unstable: %global unstable 1}
+
+%if %unstable
+%define dont_strip 1
+%endif
+
+Name: amarok2
+Summary: A powerful media player for Kde4
+Version: 2.0.0
+Release: %mkrel 0.svn%rev.1
+Epoch: 2
+License: GPL
+Url: http://amarok.kde.org/
+Group: Sound
+Source0: amarok-2.0.0.%rev.tar.bz2
+Patch0: amarok-2.0-fix-initial-preference.patch
+Patch1: amarok-2.0-fix-default-config.patch
+Patch2: amarok-2.0-fix-config.patch
+Patch3: amarok-2.0-add-multimedia-shortcut.patch
+#(nl): Disable for the moment as it had been reported that this patch is broken.
+Patch4: amarok-1.4.0-use-mandriva-directory.patch
+Patch6: amarok-add-radios.patch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+%if %build_mysql
+BuildRequires:  mysql-devel
+%endif
+%if %build_postgresql
+BuildRequires:  postgresql-devel
+%endif
+BuildRequires: libxine-devel
+Buildrequires: ruby-devel
+BuildRequires: taglib-devel
+BuildRequires: libxine-devel
+BuildRequires: cmake >= 2.4.5
+BuildRequires: libnjb-devel
+BuildRequires: libifp-devel
+BuildRequires: libmtp-devel
+BuildRequires: glib2-devel
+BuildRequires: libvisual-devel
+BuildRequires: kdelibs4-devel
+BuildRequires: kdemultimedia4-devel
+Requires(post): desktop-file-utils
+Requires(postun): desktop-file-utils
+Requires: %name-scripts
+
+Conflicts: %{libname}-devel < 1:2.0.0-1.svn743954.3
+
+%description
+Feature Overview 
+ 
+* Music Collection:
+You have a huge music library and want to locate tracks quickly? Let amaroK's
+powerful Collection take care of that! It's a database powered music store, 
+which keeps track of your complete music library, allowing you to find any 
+title in a matter of seconds. 
+ 
+* Intuitive User Interface:
+You will be amazed to see how easy amaroK is to use! Simply drag-and-drop files
+into the playlist. No hassle with complicated  buttons or tangled menus. 
+Listening to music has never been easier! 
+ 
+* Streaming Radio:
+Web streams take radio to the next level: Listen to thousands of great radio
+stations on the internet, for free! amaroK provides excellent streaming
+support, with advanced features, such as displaying titles of the currently
+playing songs. 
+ 
+* Context Browser:
+This tool provides useful information on the music you are currently listening
+to, and can make listening suggestions, based on your personal music taste. An
+innovate and unique feature. 
+ 
+* Visualizations:
+amaroK is compatible with XMMS visualization plugins. Allows you to use the
+great number of stunning visualizations available on the net. 3d visualizations
+with OpenGL are a great way to enhance your music experience. 
+
+%post
+%{update_desktop_database}
+%update_icon_cache hicolor
+
+%postun
+%{clean_desktop_database}
+%clean_icon_cache hicolor
+%files 
+%defattr(-,root,root)
+%{_kde_bindir}/amarok
+%{_kde_bindir}/amarokcollectionscanner
+%{_kde_datadir}/applications/kde4/amarok.desktop
+%{_kde_datadir}/config/amarokrc
+%{_kde_appsdir}/profiles/amarok.profile.xml
+%{_kde_datadir}/config.kcfg/amarok.kcfg
+%{_kde_appsdir}/desktoptheme/*
+%dir %{_kde_appsdir}/amarok
+%{_kde_appsdir}/amarok/*
+%{_kde_libdir}/kde4/*
+%{_kde_datadir}/kde4/services/*
+%{_kde_datadir}/kde4/servicetypes/*
+%{_datadir}/dbus-1/interfaces/*
+%{_kde_libdir}/strigi/strigita_audible.so
+%{_kde_libdir}/strigi/strigita_mp4.so
+%exclude %{_kde_appsdir}/amarok/scripts/
+
+#--------------------------------------------------------------------
+
+%package scripts
+Summary: Scripts for amarok
+Group: Graphical desktop/KDE
+Requires: %name = %epoch:%version-%release
+Requires: ruby
+Requires: python
+Requires: %{libname}-scripts = %epoch:%version-%release
+
+%description scripts
+This package includes python scripts for amarok.
+
+%files scripts
+%defattr(-,root,root)
+%dir %{_kde_appsdir}/amarok/scripts/
+%{_kde_appsdir}/amarok/scripts/*
+
+#--------------------------------------------------------------------
+
+%package -n %{libname}-scripts
+Summary: Library scripts for amarok
+Group: Graphical desktop/KDE
+Requires: %name = %epoch:%version-%release
+Requires: ruby
+
+%description -n %{libname}-scripts
+This package includes library scripts for amarok.
+
+%files -n %{libname}-scripts
+%defattr(-,root,root)
+
+#------------------------------------------------
+
+%define libamarok_taglib_major 1
+%define libamarok_taglib %mklibname amarok_taglib %libamarok_taglib_major
+
+%package -n %libamarok_taglib
+Summary: Amarok 2 core library
+Group: System/Libraries
+Conflicts:   %{libname} < 2.0.0-1.svn710748.1
+Obsoletes: %{libname}
+
+%description -n %libamarok_taglib
+Amarok 2 core library.
+
+%post -n %libamarok_taglib -p /sbin/ldconfig
+%postun -n %libamarok_taglib -p /sbin/ldconfig
+
+%files -n %libamarok_taglib
+%defattr(-,root,root)
+%_kde_libdir/libamarok_taglib.so.%libamarok_taglib_major
+%_kde_libdir/libamarok_taglib.so.%libamarok_taglib_major.0.0
+
+#------------------------------------------------
+
+%define libamaroklib_major 1
+%define libamaroklib %mklibname amaroklib %libamaroklib_major
+
+%package -n %libamaroklib
+Summary: Amarok 2 core library
+Group: System/Libraries
+Conflicts:   %{libname} < 2.0.0-1.svn710748.1
+Obsoletes: %{libname}
+
+%description -n %libamaroklib
+Amarok 2 core library.
+
+%post -n %libamaroklib -p /sbin/ldconfig
+%postun -n %libamaroklib -p /sbin/ldconfig
+
+%files -n %libamaroklib
+%defattr(-,root,root)
+%_kde_libdir/libamaroklib.so.%libamaroklib_major
+%_kde_libdir/libamaroklib.so.%libamaroklib_major.0.0
+
+#------------------------------------------------
+
+%define libamarokplasma_major 1
+%define libamarokplasma %mklibname amarokplasma %libamarokplasma_major
+
+%package -n %libamarokplasma
+Summary: Amarok 2 core library
+Group: System/Libraries
+Conflicts:   %{libname} < 2.0.0-1.svn710748.1
+Obsoletes: %{libname}
+
+%description -n %libamarokplasma
+Amarok 2 core library.
+
+%post -n %libamarokplasma -p /sbin/ldconfig
+%postun -n %libamarokplasma -p /sbin/ldconfig
+
+%files -n %libamarokplasma
+%defattr(-,root,root)
+%_kde_libdir/libamarokplasma.so.%libamarokplasma_major
+%_kde_libdir/libamarokplasma.so.%libamarokplasma_major.0.0
+
+#------------------------------------------------
+
+%define develname %mklibname -d %name
+
+%package -n %{develname}
+Summary:        Headers of %name for development
+Group:          Development/C
+Requires:       %libamarok_taglib = %epoch:%{version}-%{release}
+Requires:	%libamaroklib = %epoch:%{version}-%{release}
+Requires:	%libamarokplasma = %epoch:%{version}-%{release}
+Provides:       %{name}-devel = %epoch:%{version}-%{release}
+Provides:       %{libname_orig}-devel = %epoch:%{version}-%{release}
+Obsoletes:	%mklibname -d amarok2 0
+
+%description -n %{develname}
+Headers of %{name} for development.
+
+%files -n %{develname}
+%defattr(-,root,root)
+%{_kde_libdir}/libamaroklib.so
+%{_kde_libdir}/libamarokplasma.so
+%{_kde_libdir}/libamarok_taglib.so
+
+#--------------------------------------------------------------------
+
+%prep
+%setup -q -n amarok-2.0.0
+#%patch0 -p0 -b .fix_amarok_initial_preference
+%patch1 -p0 -b .fix_amarok_default_config_file
+#%patch2 -p0 -b .fix_default_config
+%patch3 -p0 -b .fix_add_multimedia_shortcut
+#%patch4 -p0 -b .use_mandriva_music_directory
+#%patch6 -p0 -b .add_some_radios
+
+%build
+
+%cmake_kde4 
+
+%make
+
+%install
+rm -rf %buildroot
+cd build
+%{makeinstall_std}
+cd -
+
+#%find_lang %{name} --with-html
+
+%clean
+rm -rf %buildroot
