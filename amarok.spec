@@ -2,6 +2,11 @@
 %define libname %mklibname %{name} 0
 %define develname %mklibname -d %{name}
 
+# Needed to obsolete old amarok2 packages
+%define libname_orig2 libamarok2
+%define libname2 %mklibname amarok2 0
+%define develname2 %mklibname -d amarok2
+
 %define rev 794807
 %define release %mkrel 1.svn%rev.%rel
 
@@ -20,10 +25,10 @@
 %define dont_strip 1
 %endif
 
-Name: amarok2
+Name: amarok
 Summary: A powerful media player for Kde4
 Version: 2.0.0
-Release: %mkrel 0.svn%rev.1
+Release: %mkrel 0.svn%rev.2
 Epoch: 2
 License: GPL
 Url: http://amarok.kde.org/
@@ -60,6 +65,7 @@ Requires(postun): desktop-file-utils
 Requires: %name-scripts
 
 Conflicts: %{libname}-devel < 1:2.0.0-1.svn743954.3
+Obsoletes: amarok2 <= 2:2.0.0-0.svn794807.1
 
 %description
 Feature Overview 
@@ -126,6 +132,7 @@ Requires: %name = %epoch:%version-%release
 Requires: ruby
 Requires: python
 Requires: %{libname}-scripts = %epoch:%version-%release
+Obsoletes: amarok2-scripts <= 2:2.0.0-0.svn794807.1
 
 %description scripts
 This package includes python scripts for amarok.
@@ -141,6 +148,7 @@ This package includes python scripts for amarok.
 Summary: Library scripts for amarok
 Group: Graphical desktop/KDE
 Requires: %name = %epoch:%version-%release
+Obsoletes: %{libname2}-scripts <= 2:2.0.0-0.svn794807.1
 Requires: ruby
 
 %description -n %{libname}-scripts
@@ -217,8 +225,6 @@ Amarok 2 core library.
 
 #------------------------------------------------
 
-%define develname %mklibname -d %name
-
 %package -n %{develname}
 Summary:        Headers of %name for development
 Group:          Development/C
@@ -228,6 +234,7 @@ Requires:	%libamarokplasma = %epoch:%{version}-%{release}
 Provides:       %{name}-devel = %epoch:%{version}-%{release}
 Provides:       %{libname_orig}-devel = %epoch:%{version}-%{release}
 Obsoletes:	%mklibname -d amarok2 0
+Obsoletes:      %{develname2} <= 2:2.0.0-0.svn794807.1
 
 %description -n %{develname}
 Headers of %{name} for development.
