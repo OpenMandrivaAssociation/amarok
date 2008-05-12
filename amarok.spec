@@ -28,7 +28,7 @@
 Name: amarok
 Summary: A powerful media player for Kde4
 Version: 2.0.0
-Release: %mkrel 0.svn%rev.2
+Release: %mkrel 0.svn%rev.3
 Epoch: 2
 License: GPL
 Url: http://amarok.kde.org/
@@ -64,12 +64,17 @@ Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 Requires: %name-scripts
 
-Conflicts: %{libname}-devel < 1:2.0.0-1.svn743954.3
+Conflicts: %{libname2}-devel < 1:2.0.0-1.svn743954.3
 Obsoletes: amarok2 <= 2:2.0.0-0.svn794807.1
 Obsoletes: amarok2-engine-phonon <= 2:2.0.0-0.svn794807.1
 Obsoletes: amarok2-engine-xine <= 2:2.0.0-0.svn794807.1
 Obsoletes: amarok2-engine-void <= 2:2.0.0-0.svn794807.1
-Conflicts: amarok2 <= 2:2.0.0-0.svn794807.1
+
+# (Anssi 05/2008) Old obsoletes:
+Obsoletes:      amarok-engine-arts                 <= 1.4-0.beta1_rc1.10mdk
+Obsoletes:      amarok-engine-gstreamer            <= 1.4-0.beta1_rc1.10mdk
+Obsoletes:      amarok-engine-akode                <= 1.4-0.beta2.3mdk
+Obsoletes:      amarok-engine-gstreamer0.10        <= 1.4-0.beta3.7mdk
 
 %description
 Feature Overview 
@@ -137,7 +142,6 @@ Requires: ruby
 Requires: python
 Requires: %{libname}-scripts = %epoch:%version-%release
 Obsoletes: amarok2-scripts <= 2:2.0.0-0.svn794807.1
-Conflicts: amarok2-scripts <= 2:2.0.0-0.svn794807.1
 
 %description scripts
 This package includes python scripts for amarok.
@@ -154,7 +158,6 @@ Summary: Library scripts for amarok
 Group: Graphical desktop/KDE
 Requires: %name = %epoch:%version-%release
 Obsoletes: %{libname2}-scripts <= 2:2.0.0-0.svn794807.1
-Conflicts: %{libname2}-scripts <= 2:2.0.0-0.svn794807.1
 Requires: ruby
 
 %description -n %{libname}-scripts
@@ -171,8 +174,7 @@ This package includes library scripts for amarok.
 %package -n %libamarok_taglib
 Summary: Amarok 2 core library
 Group: System/Libraries
-Conflicts:   %{libname} < 2.0.0-1.svn710748.1
-Obsoletes: %{libname}
+Conflicts:   %{libname2} < 2.0.0-1.svn710748.1
 
 %description -n %libamarok_taglib
 Amarok 2 core library.
@@ -193,8 +195,7 @@ Amarok 2 core library.
 %package -n %libamaroklib
 Summary: Amarok 2 core library
 Group: System/Libraries
-Conflicts:   %{libname} < 2.0.0-1.svn710748.1
-Obsoletes: %{libname}
+Obsoletes: %{libname2} < 2:2.0.0-0.svn794807.1
 
 %description -n %libamaroklib
 Amarok 2 core library.
@@ -215,8 +216,7 @@ Amarok 2 core library.
 %package -n %libamarokplasma
 Summary: Amarok 2 core library
 Group: System/Libraries
-Conflicts:   %{libname} < 2.0.0-1.svn710748.1
-Obsoletes: %{libname}
+Conflicts: %{libname2} < 2:2.0.0-0.svn794807.1
 
 %description -n %libamarokplasma
 Amarok 2 core library.
@@ -239,7 +239,7 @@ Requires:	%libamaroklib = %epoch:%{version}-%{release}
 Requires:	%libamarokplasma = %epoch:%{version}-%{release}
 Provides:       %{name}-devel = %epoch:%{version}-%{release}
 Provides:       %{libname_orig}-devel = %epoch:%{version}-%{release}
-Obsoletes:	%mklibname -d amarok2 0
+Obsoletes:	%{mklibname -d amarok2 0} < 2:2.0.0-0.svn794807.2
 Obsoletes:      %{develname2} <= 2:2.0.0-0.svn794807.1
 
 %description -n %{develname}
