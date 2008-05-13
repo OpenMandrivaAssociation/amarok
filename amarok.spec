@@ -28,7 +28,7 @@
 Name: amarok
 Summary: A powerful media player for Kde4
 Version: 2.0.0
-Release: %mkrel 0.svn%rev.3
+Release: %mkrel 0.svn%rev.4
 Epoch: 2
 License: GPL
 Url: http://amarok.kde.org/
@@ -140,8 +140,10 @@ Group: Graphical desktop/KDE
 Requires: %name = %epoch:%version-%release
 Requires: ruby
 Requires: python
-Requires: %{libname}-scripts = %epoch:%version-%release
 Obsoletes: amarok2-scripts <= 2:2.0.0-0.svn794807.1
+# (Anssi 05/2008) these were wrongly libified, no normal libs:
+Obsoletes: %{_lib}amarok0-scripts < 2:2.0.0-0.svn794807.4
+Obsoletes: %{_lib}amarok20-scripts < 2:2.0.0-0.svn794807.1
 
 %description scripts
 This package includes python scripts for amarok.
@@ -150,21 +152,6 @@ This package includes python scripts for amarok.
 %defattr(-,root,root)
 %dir %{_kde_appsdir}/amarok/scripts/
 %{_kde_appsdir}/amarok/scripts/*
-
-#--------------------------------------------------------------------
-
-%package -n %{libname}-scripts
-Summary: Library scripts for amarok
-Group: Graphical desktop/KDE
-Requires: %name = %epoch:%version-%release
-Obsoletes: %{libname2}-scripts <= 2:2.0.0-0.svn794807.1
-Requires: ruby
-
-%description -n %{libname}-scripts
-This package includes library scripts for amarok.
-
-%files -n %{libname}-scripts
-%defattr(-,root,root)
 
 #------------------------------------------------
 
