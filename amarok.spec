@@ -28,7 +28,7 @@
 Name: amarok
 Summary: A powerful media player for Kde4
 Version: 2.0.0
-Release: %mkrel 0.svn%rev.4
+Release: %mkrel 0.svn%rev.5
 Epoch: 2
 License: GPL
 Url: http://amarok.kde.org/
@@ -60,6 +60,7 @@ BuildRequires: glib2-devel
 BuildRequires: libvisual-devel
 BuildRequires: kdelibs4-devel >= 4.0.61
 BuildRequires: kdemultimedia4-devel
+BuildRequires: kdebase4-workspace-devel
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 Requires: %name-scripts
