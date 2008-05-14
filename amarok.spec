@@ -28,7 +28,7 @@
 Name: amarok
 Summary: A powerful media player for Kde4
 Version: 2.0.0
-Release: %mkrel 0.svn%rev.5
+Release: %mkrel 0.svn%rev.6
 Epoch: 2
 License: GPL
 Url: http://amarok.kde.org/
@@ -70,6 +70,13 @@ Obsoletes: amarok2 <= 2:2.0.0-0.svn794807.1
 Obsoletes: amarok2-engine-phonon <= 2:2.0.0-0.svn794807.1
 Obsoletes: amarok2-engine-xine <= 2:2.0.0-0.svn794807.1
 Obsoletes: amarok2-engine-void <= 2:2.0.0-0.svn794807.1
+
+# (Anssi 05/2008) This package replaces the KDE3 version, so we obsolete
+# its subpackages; note that the engines are still available as
+# kde3-amarok-engine*
+Obsoletes: amarok-engine-void < 1:1.4.9
+Obsoletes: amarok-engine-xine < 1:1.4.9
+Obsoletes: amarok-engine-yauap < 1:1.4.9
 
 # (Anssi 05/2008) Old obsoletes:
 Obsoletes:      amarok-engine-arts                 <= 1.4-0.beta1_rc1.10mdk
