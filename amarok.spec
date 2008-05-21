@@ -11,11 +11,11 @@
 %define release %mkrel 1.svn%rev.%rel
 
 #Add MySQL support
-%define build_mysql 0
+%define build_mysql 1
 %{?_with_mysql: %global build_mysql 1}
 
 #Add PostgreSQL support
-%define build_postgresql 0
+%define build_postgresql 1
 %{?_with_postgresql: %global build_postgresql 1}
 
 %define unstable 0
@@ -28,7 +28,7 @@
 Name: amarok
 Summary: A powerful media player for Kde4
 Version: 2.0.0
-Release: %mkrel 0.svn%rev.6
+Release: %mkrel 0.svn%rev.7
 Epoch: 2
 License: GPL
 Url: http://amarok.kde.org/
@@ -66,10 +66,10 @@ Requires(postun): desktop-file-utils
 Requires: %name-scripts
 
 Conflicts: %{libname2}-devel < 1:2.0.0-1.svn743954.3
-Obsoletes: amarok2 <= 2:2.0.0-0.svn794807.1
-Obsoletes: amarok2-engine-phonon <= 2:2.0.0-0.svn794807.1
-Obsoletes: amarok2-engine-xine <= 2:2.0.0-0.svn794807.1
-Obsoletes: amarok2-engine-void <= 2:2.0.0-0.svn794807.1
+Obsoletes: amarok2 < 2:2.0.0-0.svn794807.2
+Obsoletes: amarok2-engine-phonon < 2:2.0.0-0.svn794807.2
+Obsoletes: amarok2-engine-xine < 2:2.0.0-0.svn794807.2
+Obsoletes: amarok2-engine-void < 2:2.0.0-0.svn794807.2
 
 # (Anssi 05/2008) This package replaces the KDE3 version, so we obsolete
 # its subpackages; note that the engines are still available as
@@ -121,6 +121,7 @@ with OpenGL are a great way to enhance your music experience.
 %postun
 %{clean_desktop_database}
 %clean_icon_cache hicolor
+
 %files 
 %defattr(-,root,root)
 %{_kde_bindir}/amarok
