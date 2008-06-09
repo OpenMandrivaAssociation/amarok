@@ -175,8 +175,12 @@ Conflicts:   %{libname2} < 2.0.0-1.svn710748.1
 %description -n %libamarok_taglib
 Amarok 2 core library.
 
+%if %mdkversion < 200900
 %post -n %libamarok_taglib -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libamarok_taglib -p /sbin/ldconfig
+%endif
 
 %files -n %libamarok_taglib
 %defattr(-,root,root)
@@ -196,8 +200,12 @@ Obsoletes: %{libname2} < 2:2.0.0-0.svn794807.1
 %description -n %libamaroklib
 Amarok 2 core library.
 
+%if %mdkversion < 200900
 %post -n %libamaroklib -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libamaroklib -p /sbin/ldconfig
+%endif
 
 %files -n %libamaroklib
 %defattr(-,root,root)
@@ -217,8 +225,12 @@ Conflicts: %{libname2} < 2:2.0.0-0.svn794807.1
 %description -n %libamarokplasma
 Amarok 2 core library.
 
+%if %mdkversion < 200900
 %post -n %libamarokplasma -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libamarokplasma -p /sbin/ldconfig
+%endif
 
 %files -n %libamarokplasma
 %defattr(-,root,root)
