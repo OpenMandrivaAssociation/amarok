@@ -7,8 +7,7 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-%define rev 794807
-%define release %mkrel 1.svn%rev.%rel
+%define rev 819178
 
 #Add MySQL support
 %define build_mysql 1
@@ -28,19 +27,12 @@
 Name: amarok
 Summary: A powerful media player for Kde4
 Version: 2.0.0
-Release: %mkrel 0.svn%rev.7
+Release: %mkrel 0.svn%rev.1
 Epoch: 2
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
 Source0: amarok-2.0.0.%rev.tar.bz2
-Patch0: amarok-2.0-fix-initial-preference.patch
-Patch1: amarok-2.0-fix-default-config.patch
-Patch2: amarok-2.0-fix-config.patch
-Patch3: amarok-2.0-add-multimedia-shortcut.patch
-#(nl): Disable for the moment as it had been reported that this patch is broken.
-Patch4: amarok-1.4.0-use-mandriva-directory.patch
-Patch6: amarok-add-radios.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %if %build_mysql
 BuildRequires:  mysql-devel
@@ -59,8 +51,8 @@ BuildRequires: libmtp-devel
 BuildRequires: glib2-devel
 BuildRequires: libvisual-devel
 BuildRequires: kdelibs4-devel >= 4.0.61
-BuildRequires: kdemultimedia4-devel
 BuildRequires: kdebase4-workspace-devel
+BuildRequires: kdemultimedia4-devel
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 Requires: %name-scripts
@@ -127,8 +119,7 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_bindir}/amarok
 %{_kde_bindir}/amarokcollectionscanner
 %{_kde_datadir}/applications/kde4/amarok.desktop
-%{_kde_datadir}/config/amarokrc
-%{_kde_appsdir}/profiles/amarok.profile.xml
+%{_kde_datadir}/config/amarok.knsrc
 %{_kde_datadir}/config.kcfg/amarok.kcfg
 %{_kde_appsdir}/desktoptheme/*
 %dir %{_kde_appsdir}/amarok
@@ -139,6 +130,7 @@ with OpenGL are a great way to enhance your music experience.
 %{_datadir}/dbus-1/interfaces/*
 %{_kde_libdir}/strigi/strigita_audible.so
 %{_kde_libdir}/strigi/strigita_mp4.so
+%{_kde_iconsdir}/*/*/*/amarok.*
 %exclude %{_kde_appsdir}/amarok/scripts/
 
 #--------------------------------------------------------------------
@@ -263,15 +255,8 @@ Headers of %{name} for development.
 
 %prep
 %setup -q -n amarok-2.0.0
-#%patch0 -p0 -b .fix_amarok_initial_preference
-%patch1 -p0 -b .fix_amarok_default_config_file
-#%patch2 -p0 -b .fix_default_config
-%patch3 -p0 -b .fix_add_multimedia_shortcut
-#%patch4 -p0 -b .use_mandriva_music_directory
-#%patch6 -p0 -b .add_some_radios
 
 %build
-
 %cmake_kde4 
 
 %make
