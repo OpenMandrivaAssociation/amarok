@@ -127,7 +127,6 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_libdir}/kde4/*
 %{_kde_datadir}/kde4/services/*
 %{_kde_datadir}/kde4/servicetypes/*
-%{_datadir}/dbus-1/interfaces/*
 %{_kde_libdir}/strigi/strigita_audible.so
 %{_kde_libdir}/strigi/strigita_mp4.so
 %{_kde_iconsdir}/*/*/*/amarok.*
@@ -250,6 +249,7 @@ Headers of %{name} for development.
 %{_kde_libdir}/libamaroklib.so
 %{_kde_libdir}/libamarokplasma.so
 %{_kde_libdir}/libamarok_taglib.so
+%{_kde_datadir}/dbus-1/interfaces/*
 
 #--------------------------------------------------------------------
 
