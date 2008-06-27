@@ -256,24 +256,23 @@ Amarok 2 core library.
 #------------------------------------------------
 
 %package -n %{develname}
-Summary:        Headers of %name for development
-Group:          Development/C
-Requires:       %libamarok_taglib = %epoch:%{version}-%{release}
-Requires:	%libamaroklib = %epoch:%{version}-%{release}
-Requires:	%libamarokplasma = %epoch:%{version}-%{release}
-Provides:       %{name}-devel = %epoch:%{version}-%{release}
-Provides:       %{libname_orig}-devel = %epoch:%{version}-%{release}
-Obsoletes:	%{mklibname -d amarok2 0} < 2:2.0.0-0.svn794807.2
-Obsoletes:      %{develname2} <= 2:2.0.0-0.svn794807.1
+Summary: Headers of %name for development
+Group: Development/C
+Requires: %libamarok_taglib = %epoch:%{version}-%{release}
+Requires: %libamaroklib = %epoch:%{version}-%{release}
+Requires: %libamarokpud = %epoch:%{version}-%{release}
+Requires: %libamarokplasma = %epoch:%{version}-%{release}
+Provides: %{name}-devel = %epoch:%{version}-%{release}
+Provides: %{libname_orig}-devel = %epoch:%{version}-%{release}
+Obsoletes: %{mklibname -d amarok2 0} < 2:2.0.0-0.svn794807.2
+Obsoletes: %{develname2} <= 2:2.0.0-0.svn794807.1
 
 %description -n %{develname}
 Headers of %{name} for development.
 
 %files -n %{develname}
 %defattr(-,root,root)
-%{_kde_libdir}/libamaroklib.so
-%{_kde_libdir}/libamarokplasma.so
-%{_kde_libdir}/libamarok_taglib.so
+%{_kde_libdir}/*.so
 %{_kde_datadir}/dbus-1/interfaces/*
 
 #--------------------------------------------------------------------
@@ -282,7 +281,7 @@ Headers of %{name} for development.
 %setup -q -n amarok-2.0.0
 
 %build
-%cmake_kde4 
+%cmake_kde4
 
 %make
 
