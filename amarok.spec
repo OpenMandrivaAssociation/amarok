@@ -230,6 +230,31 @@ Amarok 2 core library.
 
 #------------------------------------------------
 
+%define libamarokpud_major 1
+%define libamarokpud %mklibname amarokpud %libamarokpud_major
+
+%package -n %libamarokpud
+Summary: Amarok 2 core library
+Group: System/Libraries
+Conflicts: %{libname2} < 2:2.0.0-0.svn794807.1
+
+%description -n %libamarokpud
+Amarok 2 core library.
+
+%if %mdkversion < 200900
+%post -n %libamarokpud -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %libamarokpud -p /sbin/ldconfig
+%endif
+
+%files -n %libamarokpud
+%defattr(-,root,root)
+%_kde_libdir/libamarokpud.so.%libamarokpud_major
+%_kde_libdir/libamarokpud.so.%libamarokpud_major.0.0
+
+#------------------------------------------------
+
 %package -n %{develname}
 Summary:        Headers of %name for development
 Group:          Development/C
