@@ -27,7 +27,7 @@
 Name: amarok
 Summary: A powerful media player for Kde4
 Version: 2.0.0
-Release: %mkrel 0.svn%rev.1
+Release: %mkrel 0.svn%rev.2
 Epoch: 2
 License: GPL
 Url: http://amarok.kde.org/
@@ -106,13 +106,17 @@ amaroK is compatible with XMMS visualization plugins. Allows you to use the
 great number of stunning visualizations available on the net. 3d visualizations
 with OpenGL are a great way to enhance your music experience. 
 
+%if %mdkversion < 200900
 %post
 %{update_desktop_database}
 %update_icon_cache hicolor
+%endif
 
+%if %mdkversion < 200900
 %postun
 %{clean_desktop_database}
 %clean_icon_cache hicolor
+%endif
 
 %files 
 %defattr(-,root,root)
