@@ -7,7 +7,7 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-%define rev 825117
+%define rev 829031
 
 #Add MySQL support
 %define build_mysql 1
