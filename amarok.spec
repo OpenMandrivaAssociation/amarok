@@ -7,72 +7,44 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-#Add MySQL support
-%define build_mysql 1
-%{?_with_mysql: %global build_mysql 1}
-
-#Add PostgreSQL support
-%define build_postgresql 1
-%{?_with_postgresql: %global build_postgresql 1}
-
-%define unstable 0
-%{?_with_unstable: %global unstable 1}
-
-%if %unstable
-%define dont_strip 1
-%endif
-
 Name: amarok
 Summary: A powerful media player for Kde4
 Version: 1.83
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
 Source0: amarok-1.83.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-%if %build_mysql
-BuildRequires:  mysql-devel
-%endif
-%if %build_postgresql
-BuildRequires:  postgresql-devel
-%endif
-BuildRequires: libxine-devel
-Buildrequires: ruby-devel
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel
 BuildRequires: libxine-devel
 BuildRequires: cmake >= 2.4.5
 BuildRequires: libnjb-devel
 BuildRequires: libifp-devel
 BuildRequires: libmtp-devel
+BuildRequires: loudmouth-devel
+BuildRequires: mysql-devel
 BuildRequires: glib2-devel
 BuildRequires: libvisual-devel
-BuildRequires: kdelibs4-devel >= 4.0.61
-BuildRequires: kdebase4-workspace-devel
-BuildRequires: kdemultimedia4-devel
+BuildRequires: kdelibs4-devel >= 4.0.85
+BuildRequires: kdebase4-workspace-devel >= 4.0.85
+BuildRequires: kdemultimedia4-devel >= 4.0.85
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 Requires: %name-scripts
-
 Conflicts: %{libname2}-devel < 1:2.0.0-1.svn743954.3
 Obsoletes: amarok2 < 2:2.0.0-0.svn794807.2
 Obsoletes: amarok2-engine-phonon < 2:2.0.0-0.svn794807.2
 Obsoletes: amarok2-engine-xine < 2:2.0.0-0.svn794807.2
 Obsoletes: amarok2-engine-void < 2:2.0.0-0.svn794807.2
-
-# (Anssi 05/2008) This package replaces the KDE3 version, so we obsolete
-# its subpackages; note that the engines are still available as
-# kde3-amarok-engine*
 Obsoletes: amarok-engine-void < 1:1.4.9
 Obsoletes: amarok-engine-xine < 1:1.4.9
 Obsoletes: amarok-engine-yauap < 1:1.4.9
-
-# (Anssi 05/2008) Old obsoletes:
-Obsoletes:      amarok-engine-arts                 <= 1.4-0.beta1_rc1.10mdk
-Obsoletes:      amarok-engine-gstreamer            <= 1.4-0.beta1_rc1.10mdk
-Obsoletes:      amarok-engine-akode                <= 1.4-0.beta2.3mdk
-Obsoletes:      amarok-engine-gstreamer0.10        <= 1.4-0.beta3.7mdk
+Obsoletes: amarok-engine-arts                 <= 1.4-0.beta1_rc1.10mdk
+Obsoletes: amarok-engine-gstreamer            <= 1.4-0.beta1_rc1.10mdk
+Obsoletes: amarok-engine-akode                <= 1.4-0.beta2.3mdk
+Obsoletes: amarok-engine-gstreamer0.10        <= 1.4-0.beta3.7mdk
 
 %description
 Feature Overview 
@@ -140,10 +112,7 @@ with OpenGL are a great way to enhance your music experience.
 Summary: Scripts for amarok
 Group: Graphical desktop/KDE
 Requires: %name = %epoch:%version-%release
-Requires: ruby
-Requires: python
 Obsoletes: amarok2-scripts <= 2:2.0.0-0.svn794807.1
-# (Anssi 05/2008) these were wrongly libified, no normal libs:
 Obsoletes: %{_lib}amarok0-scripts < 2:2.0.0-0.svn794807.4
 Obsoletes: %{_lib}amarok20-scripts < 2:2.0.0-0.svn794807.1
 
@@ -292,8 +261,6 @@ rm -rf %buildroot
 cd build
 %{makeinstall_std}
 cd -
-
-#%find_lang %{name} --with-html
 
 %clean
 rm -rf %buildroot
