@@ -7,8 +7,6 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-%define rev 829031
-
 #Add MySQL support
 %define build_mysql 1
 %{?_with_mysql: %global build_mysql 1}
@@ -26,13 +24,13 @@
 
 Name: amarok
 Summary: A powerful media player for Kde4
-Version: 2.0.0
-Release: %mkrel 0.svn%rev.2
-Epoch: 2
+Version: 1.83
+Release: %mkrel 1
+Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
-Source0: amarok-2.0.0.%rev.tar.bz2
+Source0: amarok-1.83.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %if %build_mysql
 BuildRequires:  mysql-devel
@@ -282,7 +280,7 @@ Headers of %{name} for development.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n amarok-2.0.0
+%setup -q 
 
 %build
 %cmake_kde4
