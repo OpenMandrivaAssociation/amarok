@@ -8,14 +8,14 @@
 %define develname2 %mklibname -d amarok2
 
 Name: amarok
-Summary: A powerful media player for Kde4
-Version: 1.83
-Release: %mkrel 2
+Summary: A powerful media player for KDE4
+Version: 1.86
+Release: %mkrel 1
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
-Source0: amarok-1.83.tar.bz2
+Source0: %{name}-%{version}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel
 BuildRequires: libxine-devel
@@ -92,6 +92,7 @@ with OpenGL are a great way to enhance your music experience.
 %defattr(-,root,root)
 %{_kde_bindir}/amarok
 %{_kde_bindir}/amarokcollectionscanner
+%{_kde_bindir}/amarokmp3tunesharmonydaemon
 %{_kde_datadir}/applications/kde4/amarok.desktop
 %{_kde_datadir}/config/amarok.knsrc
 %{_kde_datadir}/config.kcfg/amarok.kcfg
@@ -249,7 +250,7 @@ Headers of %{name} for development.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q 
+%setup -q
 
 %build
 %cmake_kde4
