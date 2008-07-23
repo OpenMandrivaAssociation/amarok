@@ -30,6 +30,9 @@ BuildRequires: libvisual-devel
 BuildRequires: kdelibs4-devel >= 4.0.85
 BuildRequires: kdebase4-workspace-devel >= 4.0.85
 BuildRequires: kdemultimedia4-devel >= 4.0.85
+BuildRequires: libgpod-devel
+BuildRequires: curl-devel
+BuildRequires: libmp4v2-devel
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 Requires: %name-scripts
