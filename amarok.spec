@@ -33,8 +33,6 @@ BuildRequires: kdemultimedia4-devel >= 4.0.85
 BuildRequires: libgpod-devel
 BuildRequires: curl-devel
 BuildRequires: libmp4v2-devel
-Requires(post): desktop-file-utils
-Requires(postun): desktop-file-utils
 Requires: %name-scripts
 Conflicts: %{libname2}-devel < 1:2.0.0-1.svn743954.3
 Obsoletes: amarok2 < 2:2.0.0-0.svn794807.2
