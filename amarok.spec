@@ -7,15 +7,17 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
+%define svn 838427
+
 Name: amarok
 Summary: A powerful media player for KDE4
-Version: 1.86
-Release: %mkrel 1
+Version: 1.87
+Release: %mkrel 0.%svn.1
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
-Source0: %{name}-%{version}.tar.bz2
+Source0: %{name}-%{version}.%svn.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel
 BuildRequires: libxine-devel
