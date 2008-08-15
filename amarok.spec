@@ -128,7 +128,7 @@ This package includes python scripts for amarok.
 %defattr(-,root,root)
 %dir %{_kde_appsdir}/amarok/scripts/
 %{_kde_appsdir}/amarok/scripts/*
-%prefix/lib/kde4/plugins/script/amarok/qtscript_debug/debug/__init__.js
+%_kde_prefix/lib/kde4/plugins/script/amarok/qtscript_debug/debug/__init__.js
 
 #------------------------------------------------
 
