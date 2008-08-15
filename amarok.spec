@@ -7,7 +7,7 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-%define svn 838427
+%define svn 815353
 
 Name: amarok
 Summary: A powerful media player for KDE4
@@ -94,6 +94,7 @@ with OpenGL are a great way to enhance your music experience.
 %files 
 %defattr(-,root,root)
 %{_kde_bindir}/amarok
+%{_kde_bindir}/amarok_afttagger
 %{_kde_bindir}/amarokcollectionscanner
 %{_kde_bindir}/amarokmp3tunesharmonydaemon
 %{_kde_datadir}/applications/kde4/amarok.desktop
