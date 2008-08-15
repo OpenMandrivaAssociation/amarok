@@ -7,7 +7,7 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-%define svn 815353
+%define svn 847430
 
 Name: amarok
 Summary: A powerful media player for KDE4
