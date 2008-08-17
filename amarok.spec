@@ -12,12 +12,13 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 1.87
-Release: %mkrel 0.%svn.1
+Release: %mkrel 0.%svn.2
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
 Source0: %{name}-%{version}.%svn.tar.bz2
+Patch0:    amarok-1.87-fix-ui.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel
 BuildRequires: libxine-devel
@@ -256,6 +257,7 @@ Headers of %{name} for development.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 %cmake_kde4
