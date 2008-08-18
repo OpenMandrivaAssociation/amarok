@@ -182,7 +182,7 @@ Amarok 2 core library.
 
 #------------------------------------------------
 
-%define libamarokplasma_major 1
+%define libamarokplasma_major 2
 %define libamarokplasma %mklibname amarokplasma %libamarokplasma_major
 
 %package -n %libamarokplasma
