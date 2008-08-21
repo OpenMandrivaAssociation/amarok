@@ -94,7 +94,7 @@ with OpenGL are a great way to enhance your music experience.
 %clean_icon_cache hicolor
 %endif
 
-%files 
+%files -f build/%name.lang 
 %defattr(-,root,root) -f build/%name.lang
 %{_kde_bindir}/amarok
 %{_kde_bindir}/amarok_afttagger
