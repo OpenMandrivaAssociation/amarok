@@ -95,7 +95,7 @@ with OpenGL are a great way to enhance your music experience.
 %endif
 
 %files -f build/%name.lang 
-%defattr(-,root,root) -f build/%name.lang
+%defattr(-,root,root) 
 %{_kde_bindir}/amarok
 %{_kde_bindir}/amarok_afttagger
 %{_kde_bindir}/amarokcollectionscanner
