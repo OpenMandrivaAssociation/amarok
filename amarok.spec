@@ -7,17 +7,20 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-%define svn 849644
+%define svn 850252
 
 Name: amarok
 Summary: A powerful media player for KDE4
-Version: 1.87
+Version: 1.90
 Release: %mkrel 0.%svn.1
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
 Source0: %{name}-%{version}.%svn.tar.bz2
+Source1: amarok-1.90-po-files.tar.bz2
+Patch0:  amarok-1.90-add-po-support.patch
+Patch1:  amarok-1.90-fix-lib-install.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel
 BuildRequires: libxine-devel
@@ -92,7 +95,7 @@ with OpenGL are a great way to enhance your music experience.
 %endif
 
 %files 
-%defattr(-,root,root)
+%defattr(-,root,root) -f build/%name.lang
 %{_kde_bindir}/amarok
 %{_kde_bindir}/amarok_afttagger
 %{_kde_bindir}/amarokcollectionscanner
@@ -128,8 +131,7 @@ This package includes python scripts for amarok.
 %defattr(-,root,root)
 %dir %{_kde_appsdir}/amarok/scripts/
 %{_kde_appsdir}/amarok/scripts/*
-%_kde_prefix/lib/kde4/plugins/script/amarok/qtscript_debug/debug/__init__.js
-%_kde_prefix/lib/kde4/plugins/script/*
+%{_kde_libdir}/kde4/plugins/script/*
 
 #------------------------------------------------
 
@@ -256,10 +258,12 @@ Headers of %{name} for development.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q
+%setup -q -a 1
+%patch0 -p0
+%patch1 -p0
 
 %build
-%cmake_kde4
+%cmake_kde4 -DLOCALE_INSTALL_DIR=%{_datadir}/locale -DLIB_INSTALL_DIR=%{_libdir}
 
 %make
 
@@ -267,7 +271,7 @@ Headers of %{name} for development.
 rm -rf %buildroot
 cd build
 %{makeinstall_std}
-cd -
+%find_lang %{name}
 
 %clean
 rm -rf %buildroot
