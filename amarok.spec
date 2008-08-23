@@ -27,7 +27,7 @@ BuildRequires: libxine-devel
 BuildRequires: cmake >= 2.4.5
 BuildRequires: libnjb-devel
 BuildRequires: libifp-devel
-BuildRequires: libmtp-devel
+BuildRequires: libmtp-devel >= 0.3.0
 BuildRequires: loudmouth-devel
 BuildRequires: mysql-devel
 BuildRequires: glib2-devel
