@@ -7,7 +7,7 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-%define svn 855493
+%define svn 855557
 
 Name: amarok
 Summary: A powerful media player for KDE4
@@ -20,7 +20,6 @@ Group: Sound
 Source0: %{name}-%{version}.%svn.tar.bz2
 Source1: amarok-1.90-po-files.tar.bz2
 Patch0:  amarok-1.90-add-po-support.patch
-Patch1:  amarok-1.90-fix-lib-install.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel
 BuildRequires: libxine-devel
@@ -260,7 +259,6 @@ Headers of %{name} for development.
 %prep
 %setup -q -a 1
 %patch0 -p0
-%patch1 -p0
 
 %build
 %cmake_kde4 -DLOCALE_INSTALL_DIR=%{_datadir}/locale -DLIB_INSTALL_DIR=%{_libdir}
