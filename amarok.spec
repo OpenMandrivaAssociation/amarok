@@ -12,7 +12,7 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 1.90
-Release: %mkrel 0.%svn.1
+Release: %mkrel 0.%svn.2
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -22,7 +22,6 @@ Source1: amarok-1.90-po-files.tar.bz2
 Patch0:  amarok-1.90-add-po-support.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel
-BuildRequires: libxine-devel
 BuildRequires: cmake >= 2.4.5
 BuildRequires: libnjb-devel
 BuildRequires: libifp-devel
