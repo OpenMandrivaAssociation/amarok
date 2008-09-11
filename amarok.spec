@@ -7,19 +7,21 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-%define svn 857904
+%define svn 860031
 
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 1.90
-Release: %mkrel 0.%svn.2
+Release: %mkrel 0.%svn.4
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
 Source0: %{name}-%{version}.%svn.tar.bz2
 Source1: amarok-1.90-po-files.tar.bz2
+Source2: amarok_service_gstreamer_codec.desktop
 Patch0:  amarok-1.90-add-po-support.patch
+Patch1: amarok-1.90-gstreamer-codec-install.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel
 BuildRequires: cmake >= 2.4.5
@@ -258,6 +260,7 @@ Headers of %{name} for development.
 %prep
 %setup -q -a 1
 %patch0 -p0
+%patch1 -p0
 
 %build
 %cmake_kde4 -DLOCALE_INSTALL_DIR=%{_datadir}/locale -DLIB_INSTALL_DIR=%{_libdir}
@@ -269,6 +272,8 @@ rm -rf %buildroot
 cd build
 %{makeinstall_std}
 %find_lang %{name}
+
+cp %{SOURCE2} %buildroot/%_kde_datadir/kde4/services/
 
 %clean
 rm -rf %buildroot
