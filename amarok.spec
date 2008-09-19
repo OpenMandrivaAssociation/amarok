@@ -98,7 +98,7 @@ with OpenGL are a great way to enhance your music experience.
 %files -f build/%name.lang 
 %defattr(-,root,root) 
 %{_kde_bindir}/amarok
-%defattr(0755,root,root) %{_kde_bindir}/amarok-codeina
+%attr(0755,root,root) %{_kde_bindir}/amarok-codeina
 %{_kde_bindir}/amarok_afttagger
 %{_kde_bindir}/amarokcollectionscanner
 %{_kde_bindir}/amarokmp3tunesharmonydaemon
