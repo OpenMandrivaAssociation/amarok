@@ -7,12 +7,12 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-%define svn 864324
+%define svn 866096
 
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 1.90
-Release: %mkrel 0.%svn.2
+Release: %mkrel 0.%svn.4
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -40,6 +40,7 @@ BuildRequires: libgpod-devel
 BuildRequires: curl-devel
 BuildRequires: libmp4v2-devel
 Requires: %name-scripts
+Requires: mysql-common
 Conflicts: %{libname2}-devel < 1:2.0.0-1.svn743954.3
 Obsoletes: amarok2 < 2:2.0.0-0.svn794807.2
 Obsoletes: amarok2-engine-phonon < 2:2.0.0-0.svn794807.2
