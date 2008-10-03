@@ -12,7 +12,7 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 1.90
-Release: %mkrel 0.%svn.5
+Release: %mkrel 0.%svn.6
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -20,7 +20,6 @@ Group: Sound
 Source0: %{name}-%{version}.%svn.tar.bz2
 Source1: amarok-1.90-po-files.tar.bz2
 Source2: amarok_service_gstreamer_codec.desktop
-Source3: amarok-codeina
 Patch0: amarok-1.90-add-po-support.patch
 Patch1: amarok-1.90-gstreamer-codec-install.patch
 Patch2: amarok-1.90-fix_rightclick_crash.patch
@@ -105,7 +104,6 @@ with OpenGL are a great way to enhance your music experience.
 %files -f build/%name.lang 
 %defattr(-,root,root) 
 %{_kde_bindir}/amarok
-%attr(0755,root,root) %{_kde_bindir}/amarok-codeina
 %{_kde_bindir}/amarok_afttagger
 %{_kde_bindir}/amarokcollectionscanner
 %{_kde_bindir}/amarokmp3tunesharmonydaemon
@@ -287,7 +285,6 @@ cd build
 %find_lang %{name}
 
 cp %{SOURCE2} %buildroot/%_kde_datadir/kde4/services/
-cp %{SOURCE3} %buildroot/%_kde_bindir
 
 %clean
 rm -rf %buildroot
