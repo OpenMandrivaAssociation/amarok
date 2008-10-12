@@ -7,12 +7,12 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-%define svn 866096
+%define svn 870288
 
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 1.90
-Release: %mkrel 0.%svn.6
+Release: %mkrel 0.%svn.1
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -22,12 +22,8 @@ Source1: amarok-1.90-po-files.tar.bz2
 Source2: amarok_service_gstreamer_codec.desktop
 Patch0: amarok-1.90-add-po-support.patch
 Patch1: amarok-1.90-gstreamer-codec-install.patch
-Patch2: amarok-1.90-fix_rightclick_crash.patch
 # patches in the form amarok-version-r<relnum> are referent to the KDE
 # commit numbered as <relnum>
-Patch3: amarok-1.90-r867005-fix_crash_when_nofork_and_path.patch
-Patch4: amarok-1.90-r866155-fix_podcast_crash.patch
-Patch5: amarok-1.90-r866607-dont_refresh_explicitelly_deleted_covers.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel
 BuildRequires: cmake >= 2.4.5
@@ -267,11 +263,7 @@ Headers of %{name} for development.
 %prep
 %setup -q -a 1
 %patch0 -p0
-%patch1 -p0
-%patch2 -p1 -b .rightclick
-%patch3 -p1 -b .nofork_and_path
-%patch4 -p1 -b .podcast_crash
-%patch5 -p1 -b .refresh_covers
+#%patch1 -p0
 
 %build
 %cmake_kde4 -DLOCALE_INSTALL_DIR=%{_datadir}/locale -DLIB_INSTALL_DIR=%{_libdir}
