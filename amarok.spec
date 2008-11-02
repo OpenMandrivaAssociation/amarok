@@ -11,7 +11,7 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 1.94
-Release: %mkrel 2
+Release: %mkrel 3
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -42,6 +42,7 @@ BuildRequires: libmp4v2-devel
 Requires: %name-scripts
 Requires: mysql-common
 Conflicts: %{libname2}-devel < 1:2.0.0-1.svn743954.3
+Conflicts: %{develname} < 3:1.94-3
 Obsoletes: amarok2 < 2:2.0.0-0.svn794807.2
 Obsoletes: amarok2-engine-phonon < 2:2.0.0-0.svn794807.2
 Obsoletes: amarok2-engine-xine < 2:2.0.0-0.svn794807.2
@@ -109,6 +110,7 @@ with OpenGL are a great way to enhance your music experience.
 %dir %{_kde_appsdir}/amarok
 %{_kde_appsdir}/amarok/*
 %{_kde_libdir}/kde4/*
+%{_kde_libdir}/libamarok_service_liblastfm.so
 %{_kde_datadir}/kde4/services/*
 %{_kde_datadir}/kde4/servicetypes/*
 %{_kde_libdir}/strigi/strigita_audible.so
@@ -254,7 +256,10 @@ Headers of %{name} for development.
 
 %files -n %{develname}
 %defattr(-,root,root)
-%{_kde_libdir}/*.so
+%{_kde_libdir}/libamarok_taglib.so
+%{_kde_libdir}/libamaroklib.so
+%{_kde_libdir}/libamarokplasma.so
+%{_kde_libdir}/libamarokpud.so
 %{_kde_datadir}/dbus-1/interfaces/*
 
 #--------------------------------------------------------------------
