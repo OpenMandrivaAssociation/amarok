@@ -17,9 +17,7 @@ License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
 Source0: %{name}-%{version}.tar.bz2
-Source1: amarok-1.90-po-files.tar.bz2
 Source2: amarok_service_gstreamer_codec.desktop
-Patch0: amarok-1.90-add-po-support.patch
 Patch1: amarok-1.90-gstreamer-codec-install.patch
 # Those patches are provided by Amarok TEAM
 Patch100: amarok-2.00-Fix-Regression1.patch
@@ -269,8 +267,6 @@ Headers of %{name} for development.
 
 %prep
 %setup -q 
-#-a 1
-%patch0 -p0
 %patch1 -p0
 
 %patch100 -p1
