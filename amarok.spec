@@ -272,6 +272,7 @@ Headers of %{name} for development.
 %patch3 -p0
 
 %build
+%define _disable_ld_no_undefined 1
 %cmake_kde4 -DLOCALE_INSTALL_DIR=%{_datadir}/locale -DLIB_INSTALL_DIR=%{_libdir}
 
 %make
