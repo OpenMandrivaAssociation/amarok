@@ -20,6 +20,7 @@ Source0: %{name}-%{version}.tar.bz2
 Source2: amarok_service_gstreamer_codec.desktop
 Patch1: amarok-1.90-gstreamer-codec-install.patch
 Patch2: amarok-2.0.1.1-fix-string-error.patch
+Patch3: amarok-2.0.1.1-fixlibmp4v2.patch
 # Those patches are provided by Amarok TEAM
 # patches in the form amarok-version-r<relnum> are referent to the KDE
 # commit numbered as <relnum>
@@ -268,6 +269,7 @@ Headers of %{name} for development.
 %setup -q 
 %patch1 -p0
 %patch2 -p1
+%patch3 -p0
 
 %build
 %cmake_kde4 -DLOCALE_INSTALL_DIR=%{_datadir}/locale -DLIB_INSTALL_DIR=%{_libdir}
