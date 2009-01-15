@@ -275,7 +275,7 @@ Headers of %{name} for development.
 %define _disable_ld_no_undefined 1
 %cmake_kde4 -DLOCALE_INSTALL_DIR=%{_datadir}/locale -DLIB_INSTALL_DIR=%{_libdir}
 
-%make
+%make VERBOSE=4
 
 %install
 rm -rf %buildroot
