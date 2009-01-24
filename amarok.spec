@@ -11,7 +11,7 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 2.0.1.1
-Release: %mkrel 4
+Release: %mkrel 5
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -22,6 +22,7 @@ Patch1: amarok-1.90-gstreamer-codec-install.patch
 Patch2: amarok-2.0.1.1-fix-string-error.patch
 Patch3: amarok-2.0.1.1-fixlibmp4v2.patch
 Patch4: amarok-2.0.1.1-fix-mysql-link.patch
+Patch5: amarok-2.0.1.1-fixlibgpod.patch
 # Those patches are provided by Amarok TEAM
 # patches in the form amarok-version-r<relnum> are referent to the KDE
 # commit numbered as <relnum>
@@ -272,7 +273,7 @@ Headers of %{name} for development.
 %patch2 -p1
 %patch3 -p0
 %patch4 -p0
-
+%patch5 -p1
 %build
 %cmake_kde4 -DLOCALE_INSTALL_DIR=%{_datadir}/locale -DLIB_INSTALL_DIR=%{_libdir}
 
