@@ -10,18 +10,15 @@
 
 Name: amarok
 Summary: A powerful media player for KDE4
-Version: 2.0.2
-Release: %mkrel 2
+Version: 2.0.90
+Release: %mkrel 1
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
 Source0: %{name}-%{version}.tar.bz2
-Patch0: amarok-2.1-backport-rev949421-lastfm-scrobbler.patch
-Patch1: amarok-2.0.1.1-fix-string-error.patch
-Patch2: amarok-2.0.1.1-fixlibmp4v2.patch
-Patch3: amarok-2.0.1.1-fixlibgpod.patch
-Patch4: amarok-2.0.1.1-fix-mysql-link.patch
+Patch0: amarok-2.0.1.1-fix-mysql-link.patch
+Patch1: amarok-2.0.90-find-qtscriptgenerator.patch
 # Those patches are provided by Amarok TEAM
 # patches in the form amarok-version-r<relnum> are referent to the KDE
 # commit numbered as <relnum>
@@ -41,7 +38,10 @@ BuildRequires: kdemultimedia4-devel >= 4.0.85
 BuildRequires: libgpod-devel >= 0.7.0
 BuildRequires: curl-devel
 BuildRequires: libmp4v2-devel
+BuildRequires: taglib-extras-devel
+BuildRequires: qtscriptgenerator
 Requires: %name-scripts
+Requires: %name-utils
 Requires: mysql-common
 Conflicts: %{libname2}-devel < 1:2.0.0-1.svn743954.3
 Conflicts: %{develname} < 3:1.94-3
@@ -87,27 +87,14 @@ amaroK is compatible with XMMS visualization plugins. Allows you to use the
 great number of stunning visualizations available on the net. 3d visualizations
 with OpenGL are a great way to enhance your music experience. 
 
-%if %mdkversion < 200900
-%post
-%{update_desktop_database}
-%update_icon_cache hicolor
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_desktop_database}
-%clean_icon_cache hicolor
-%endif
-
 %files -f build/%name.lang 
 %defattr(-,root,root) 
 %{_kde_bindir}/amarok
 %{_kde_bindir}/amarok_afttagger
-%{_kde_bindir}/amarokcollectionscanner
 %{_kde_bindir}/amarokmp3tunesharmonydaemon
 %{_kde_datadir}/applications/kde4/amarok.desktop
 %{_kde_datadir}/config/amarok.knsrc
-%{_kde_datadir}/config.kcfg/amarok.kcfg
+%{_kde_datadir}/config.kcfg/amarokconfig.kcfg
 %{_kde_appsdir}/desktoptheme/*
 %dir %{_kde_appsdir}/amarok
 %{_kde_appsdir}/amarok/*
@@ -119,6 +106,21 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_libdir}/strigi/strigita_mp4.so
 %{_kde_iconsdir}/*/*/*/amarok.*
 %exclude %{_kde_appsdir}/amarok/scripts/
+
+#--------------------------------------------------------------------
+
+%package utils
+Summary: Utilities for amarok
+Group: Graphical desktop/KDE
+Conflicts: %name < %epoch:2.0.90-1
+
+%description utils
+Utilities for amarok
+
+
+%files utils
+%defattr(-,root,root)
+%{_kde_bindir}/amarokcollectionscanner
 
 #--------------------------------------------------------------------
 
@@ -137,32 +139,7 @@ This package includes python scripts for amarok.
 %defattr(-,root,root)
 %dir %{_kde_appsdir}/amarok/scripts/
 %{_kde_appsdir}/amarok/scripts/*
-%{_kde_libdir}/kde4/plugins/script/*
-
-#------------------------------------------------
-
-%define libamarok_taglib_major 1
-%define libamarok_taglib %mklibname amarok_taglib %libamarok_taglib_major
-
-%package -n %libamarok_taglib
-Summary: Amarok 2 core library
-Group: System/Libraries
-Conflicts:   %{libname2} < 2.0.0-1.svn710748.1
-
-%description -n %libamarok_taglib
-Amarok 2 core library.
-
-%if %mdkversion < 200900
-%post -n %libamarok_taglib -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libamarok_taglib -p /sbin/ldconfig
-%endif
-
-%files -n %libamarok_taglib
-%defattr(-,root,root)
-%_kde_libdir/libamarok_taglib.so.%libamarok_taglib_major
-%_kde_libdir/libamarok_taglib.so.%libamarok_taglib_major.0.0
+#%{_kde_libdir}/kde4/plugins/script/*
 
 #------------------------------------------------
 
@@ -177,42 +154,10 @@ Obsoletes: %{libname2} < 2:2.0.0-0.svn794807.1
 %description -n %libamaroklib
 Amarok 2 core library.
 
-%if %mdkversion < 200900
-%post -n %libamaroklib -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libamaroklib -p /sbin/ldconfig
-%endif
-
 %files -n %libamaroklib
 %defattr(-,root,root)
 %_kde_libdir/libamaroklib.so.%libamaroklib_major
 %_kde_libdir/libamaroklib.so.%libamaroklib_major.0.0
-
-#------------------------------------------------
-
-%define libamarokplasma_major 2
-%define libamarokplasma %mklibname amarokplasma %libamarokplasma_major
-
-%package -n %libamarokplasma
-Summary: Amarok 2 core library
-Group: System/Libraries
-Conflicts: %{libname2} < 2:2.0.0-0.svn794807.1
-
-%description -n %libamarokplasma
-Amarok 2 core library.
-
-%if %mdkversion < 200900
-%post -n %libamarokplasma -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libamarokplasma -p /sbin/ldconfig
-%endif
-
-%files -n %libamarokplasma
-%defattr(-,root,root)
-%_kde_libdir/libamarokplasma.so.%libamarokplasma_major
-%_kde_libdir/libamarokplasma.so.%libamarokplasma_major.0.0
 
 #------------------------------------------------
 
@@ -227,13 +172,6 @@ Conflicts: %{libname2} < 2:2.0.0-0.svn794807.1
 %description -n %libamarokpud
 Amarok 2 core library.
 
-%if %mdkversion < 200900
-%post -n %libamarokpud -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libamarokpud -p /sbin/ldconfig
-%endif
-
 %files -n %libamarokpud
 %defattr(-,root,root)
 %_kde_libdir/libamarokpud.so.%libamarokpud_major
@@ -241,13 +179,28 @@ Amarok 2 core library.
 
 #------------------------------------------------
 
+%define libmediadevicelib_major 1
+%define libmediadevicelib %mklibname mediadevicelib %libmediadevicelib_major
+
+%package -n %libmediadevicelib
+Summary: Amarok 2 core library
+Group: System/Libraries
+Conflicts: %{libname2} < 2:2.0.0-0.svn794807.1
+
+%description -n %libmediadevicelib
+Amarok 2 core library.
+
+%files -n %libmediadevicelib
+%defattr(-,root,root)
+%_kde_libdir/libmediadevicelib.so.%libmediadevicelib_major
+%_kde_libdir/libmediadevicelib.so.%libmediadevicelib_major.0.0
+
+#------------------------------------------------
+
 %package -n %{develname}
 Summary: Headers of %name for development
 Group: Development/C
-Requires: %libamarok_taglib = %epoch:%{version}-%{release}
-Requires: %libamaroklib = %epoch:%{version}-%{release}
 Requires: %libamarokpud = %epoch:%{version}-%{release}
-Requires: %libamarokplasma = %epoch:%{version}-%{release}
 Provides: %{name}-devel = %epoch:%{version}-%{release}
 Provides: %{libname_orig}-devel = %epoch:%{version}-%{release}
 Obsoletes: %{mklibname -d amarok2 0} < 2:2.0.0-0.svn794807.2
@@ -258,10 +211,9 @@ Headers of %{name} for development.
 
 %files -n %{develname}
 %defattr(-,root,root)
-%{_kde_libdir}/libamarok_taglib.so
 %{_kde_libdir}/libamaroklib.so
-%{_kde_libdir}/libamarokplasma.so
 %{_kde_libdir}/libamarokpud.so
+%{_kde_libdir}/libmediadevicelib.so
 %{_kde_datadir}/dbus-1/interfaces/*
 
 #--------------------------------------------------------------------
@@ -270,9 +222,6 @@ Headers of %{name} for development.
 %setup -q 
 %patch0 -p0
 %patch1 -p1
-%patch2 -p0
-%patch3 -p1
-%patch4 -p0
 
 %build
 %cmake_kde4 -DLOCALE_INSTALL_DIR=%{_datadir}/locale -DLIB_INSTALL_DIR=%{_libdir}
@@ -283,7 +232,7 @@ Headers of %{name} for development.
 rm -rf %buildroot
 cd build
 %{makeinstall_std}
-%find_lang %{name}
+%find_lang %{name} amarokcollectionscanner_qt
 
 %clean
 rm -rf %buildroot
