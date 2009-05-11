@@ -10,15 +10,13 @@
 
 Name: amarok
 Summary: A powerful media player for KDE4
-Version: 2.0.90
+Version: 2.0.96
 Release: %mkrel 1
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
 Source0: %{name}-%{version}.tar.bz2
-Patch0: amarok-2.0.1.1-fix-mysql-link.patch
-Patch1: amarok-2.0.90-find-qtscriptgenerator.patch
 # Those patches are provided by Amarok TEAM
 # patches in the form amarok-version-r<relnum> are referent to the KDE
 # commit numbered as <relnum>
@@ -94,6 +92,7 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_bindir}/amarokmp3tunesharmonydaemon
 %{_kde_datadir}/applications/kde4/amarok.desktop
 %{_kde_datadir}/config/amarok.knsrc
+%{_kde_datadir}/config/amarok_homerc
 %{_kde_datadir}/config.kcfg/amarokconfig.kcfg
 %{_kde_appsdir}/desktoptheme/*
 %dir %{_kde_appsdir}/amarok
@@ -220,8 +219,6 @@ Headers of %{name} for development.
 
 %prep
 %setup -q 
-%patch0 -p0
-%patch1 -p1
 
 %build
 %cmake_kde4 -DLOCALE_INSTALL_DIR=%{_datadir}/locale -DLIB_INSTALL_DIR=%{_libdir}
