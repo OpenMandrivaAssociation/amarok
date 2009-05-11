@@ -11,7 +11,7 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 2.0.96
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -41,6 +41,7 @@ BuildRequires: qtscriptgenerator
 Requires: %name-scripts
 Requires: %name-utils
 Requires: mysql-common
+Requires: qtscriptbindings
 Conflicts: %{libname2}-devel < 1:2.0.0-1.svn743954.3
 Conflicts: %{develname} < 3:1.94-3
 Obsoletes: amarok2 < 2:2.0.0-0.svn794807.2
