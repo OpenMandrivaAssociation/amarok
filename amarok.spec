@@ -39,6 +39,7 @@ BuildRequires: curl-devel
 BuildRequires: libmp4v2-devel
 BuildRequires: taglib-extras-devel
 BuildRequires: qtscriptgenerator
+BuildRequires: liblastfm-devel
 Requires: %name-scripts
 Requires: %name-utils
 Requires: mysql-common
@@ -92,6 +93,7 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_bindir}/amarok
 %{_kde_bindir}/amarok_afttagger
 %{_kde_bindir}/amarokmp3tunesharmonydaemon
+%{_kde_bindir}/amarokpkg
 %{_kde_datadir}/applications/kde4/amarok.desktop
 %{_kde_datadir}/config/amarok.knsrc
 %{_kde_datadir}/config/amarok_homerc
@@ -100,7 +102,9 @@ with OpenGL are a great way to enhance your music experience.
 %dir %{_kde_appsdir}/amarok
 %{_kde_appsdir}/amarok/*
 %{_kde_libdir}/kde4/*
-%{_kde_libdir}/libamarok_service_liblastfm.so
+#%{_kde_libdir}/libamarok_service_liblastfm.so
+%{_kde_appsdir}/solid/actions/amarok-play-audiocd.desktop
+%{_kde_datadir}/config/amarokapplets.knsrc
 %{_kde_datadir}/kde4/services/*
 %{_kde_datadir}/kde4/servicetypes/*
 %{_kde_libdir}/strigi/strigita_audible.so
@@ -180,21 +184,21 @@ Amarok 2 core library.
 
 #------------------------------------------------
 
-%define libmediadevicelib_major 1
-%define libmediadevicelib %mklibname mediadevicelib %libmediadevicelib_major
+%define libamarokocsclient_major 4
+%define libamarokocsclient %mklibname amarokocsclient %libamarokocsclient_major
 
-%package -n %libmediadevicelib
+%package -n %libamarokocsclient
 Summary: Amarok 2 core library
 Group: System/Libraries
 Conflicts: %{libname2} < 2:2.0.0-0.svn794807.1
 
-%description -n %libmediadevicelib
+%description -n %libamarokocsclient
 Amarok 2 core library.
 
-%files -n %libmediadevicelib
+%files -n %libamarokocsclient
 %defattr(-,root,root)
-%_kde_libdir/libmediadevicelib.so.%libmediadevicelib_major
-%_kde_libdir/libmediadevicelib.so.%libmediadevicelib_major.0.0
+%_kde_libdir/libamarokocsclient.so.%libamarokocsclient_major
+%_kde_libdir/libamarokocsclient.so.%libamarokocsclient_major.3.0
 
 #------------------------------------------------
 
@@ -214,7 +218,7 @@ Headers of %{name} for development.
 %defattr(-,root,root)
 %{_kde_libdir}/libamaroklib.so
 %{_kde_libdir}/libamarokpud.so
-%{_kde_libdir}/libmediadevicelib.so
+%{_kde_libdir}/libamarokocsclient.so
 %{_kde_datadir}/dbus-1/interfaces/*
 
 #--------------------------------------------------------------------
@@ -232,7 +236,7 @@ Headers of %{name} for development.
 rm -rf %buildroot
 cd build
 %{makeinstall_std}
-%find_lang %{name} amarokcollectionscanner_qt
+%find_lang %{name} amarokcollectionscanner_qt amarok_scriptengine_qscript amarokpkg
 
 %clean
 rm -rf %buildroot
