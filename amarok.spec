@@ -18,11 +18,12 @@ Url: http://amarok.kde.org/
 Group: Sound
 Source0: %{name}-%{version}.tar.bz2
 Patch0:  amarok-2.0.96-fix-initial-preference.patch
+Patch1:  amarok-2.1.85-taglib-fix-build.patch
 # Those patches are provided by Amarok TEAM
 # patches in the form amarok-version-r<relnum> are referent to the KDE
 # commit numbered as <relnum>
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: taglib-devel
+BuildRequires: taglib-devel >= 1.6-3
 BuildRequires: cmake >= 2.4.5
 BuildRequires: libnjb-devel
 BuildRequires: libifp-devel
@@ -37,7 +38,7 @@ BuildRequires: kdemultimedia4-devel >= 4.0.85
 BuildRequires: libgpod-devel >= 0.7.0
 BuildRequires: curl-devel
 BuildRequires: libmp4v2-devel
-BuildRequires: taglib-extras-devel
+BuildRequires: taglib-extras-devel >= 1.0.0-1
 BuildRequires: qtscriptgenerator
 BuildRequires: liblastfm-devel
 Requires: %name-scripts
@@ -225,6 +226,7 @@ Headers of %{name} for development.
 %prep
 %setup -q 
 %patch0 -p0
+%patch1 -p1
 
 %build
 %cmake_kde4 -DLOCALE_INSTALL_DIR=%{_datadir}/locale -DLIB_INSTALL_DIR=%{_libdir}
