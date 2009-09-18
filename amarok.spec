@@ -11,7 +11,7 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 2.1.85
-Release: %mkrel  3
+Release: %mkrel  4
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -117,7 +117,6 @@ with OpenGL are a great way to enhance your music experience.
 %package utils
 Summary: Utilities for amarok
 Group: Graphical desktop/KDE
-Conflicts: %name < %epoch:2.0.90-1
 
 %description utils
 Utilities for amarok
