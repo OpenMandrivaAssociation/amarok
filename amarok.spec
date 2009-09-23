@@ -17,7 +17,7 @@ License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
 Source0: %{name}-%{version}.tar.bz2
-Patch0:  amarok-2.0.96-fix-initial-preference.patch
+Patch0:  amarok-2.1.90-fix-initial-preference.patch
 # Those patches are provided by Amarok TEAM
 # patches in the form amarok-version-r<relnum> are referent to the KDE
 # commit numbered as <relnum>
