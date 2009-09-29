@@ -32,7 +32,7 @@ BuildRequires: loudmouth-devel
 BuildRequires: mysql-static-devel
 BuildRequires: glib2-devel
 BuildRequires: libvisual-devel
-BuildRequires: kdelibs4-devel >= i2:4.2.0
+BuildRequires: kdelibs4-devel >= 2:4.2.0
 BuildRequires: kdebase4-workspace-devel >= 4.2.0
 BuildRequires: kdemultimedia4-devel >= 4.2.0
 BuildRequires: libgpod-devel >= 0.7.0
