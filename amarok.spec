@@ -50,7 +50,7 @@ Requires: mysql-common
 %endif
 Requires: qtscriptbindings
 Conflicts: %{libname2}-devel < 1:2.0.0-1.svn743954.3
-Conflicts: %{develname} < 3:1.94-3
+Conflicts: %{develname} < 3:2.2.0-1
 Obsoletes: amarok2 < 2:2.0.0-0.svn794807.2
 Obsoletes: amarok2-engine-phonon < 2:2.0.0-0.svn794807.2
 Obsoletes: amarok2-engine-xine < 2:2.0.0-0.svn794807.2
@@ -115,6 +115,7 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_libdir}/strigi/strigita_audible.so
 %{_kde_libdir}/strigi/strigita_mp4.so
 %{_kde_iconsdir}/*/*/*/amarok.*
+%{_kde_datadir}/dbus-1/interfaces/*
 %exclude %{_kde_appsdir}/amarok/scripts/
 
 #--------------------------------------------------------------------
@@ -223,7 +224,6 @@ Headers of %{name} for development.
 %{_kde_libdir}/libamaroklib.so
 %{_kde_libdir}/libamarokpud.so
 %{_kde_libdir}/libamarokocsclient.so
-%{_kde_datadir}/dbus-1/interfaces/*
 
 #--------------------------------------------------------------------
 
