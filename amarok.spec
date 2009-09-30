@@ -49,6 +49,7 @@ Requires: mysql-common-core
 Requires: mysql-common
 %endif
 Requires: qtscriptbindings
+Requires: kde4-audiocd
 Conflicts: %{libname2}-devel < 1:2.0.0-1.svn743954.3
 Conflicts: %{develname} < 3:2.2.0-1
 Obsoletes: amarok2 < 2:2.0.0-0.svn794807.2
