@@ -11,13 +11,14 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 2.2.0
-Release: %mkrel  1
+Release: %mkrel  2
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
 Source0: %{name}-%{version}.tar.bz2
 Patch0:  amarok-2.1.90-fix-initial-preference.patch
+Patch1:  amarok-2.2.0-remove-appendAndPlay-service.patch
 # Those patches are provided by Amarok TEAM
 # patches in the form amarok-version-r<relnum> are referent to the KDE
 # commit numbered as <relnum>
@@ -230,6 +231,7 @@ Headers of %{name} for development.
 %prep
 %setup -q 
 %patch0 -p0
+%patch1 -p0
 
 %build
 %cmake_kde4 -DLOCALE_INSTALL_DIR=%{_datadir}/locale -DLIB_INSTALL_DIR=%{_libdir}
