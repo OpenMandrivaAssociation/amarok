@@ -110,7 +110,7 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_appsdir}/amarok/*
 %{_kde_libdir}/kde4/*
 #%{_kde_libdir}/libamarok_service_liblastfm.so
-%{_kde_appsdir}/solid/actions/amarok-play-audiocd.desktop
+#%{_kde_appsdir}/solid/actions/amarok-play-audiocd.desktop
 %{_kde_datadir}/config/amarokapplets.knsrc
 %{_kde_datadir}/kde4/services/*
 %{_kde_datadir}/kde4/servicetypes/*
