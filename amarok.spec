@@ -19,6 +19,7 @@ Group: Sound
 Source0: %{name}-%{version}.tar.bz2
 Patch0:  amarok-2.1.90-fix-initial-preference.patch
 Patch1:  amarok-2.2.0-remove-appendAndPlay-service.patch
+#https://bugs.kde.org/show_bug.cgi?id=209204
 Patch2:  amarok-2.2.0-remove-solid-action.patch
 # Those patches are provided by Amarok TEAM
 # patches in the form amarok-version-r<relnum> are referent to the KDE
