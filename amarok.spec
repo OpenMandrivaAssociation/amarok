@@ -11,7 +11,7 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 2.2.0
-Release: %mkrel  5
+Release: %mkrel  6
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -237,7 +237,7 @@ Headers of %{name} for development.
 %patch0 -p0
 %patch1 -p0
 %patch2 -p0
-#%patch3 -p1
+%patch3 -p0
 %patch4 -p1
 
 %build
