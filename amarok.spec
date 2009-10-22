@@ -11,7 +11,7 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 2.2.0
-Release: %mkrel  8
+Release: %mkrel  9
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -70,6 +70,10 @@ Obsoletes: amarok-engine-arts                 <= 1.4-0.beta1_rc1.10mdk
 Obsoletes: amarok-engine-gstreamer            <= 1.4-0.beta1_rc1.10mdk
 Obsoletes: amarok-engine-akode                <= 1.4-0.beta2.3mdk
 Obsoletes: amarok-engine-gstreamer0.10        <= 1.4-0.beta3.7mdk
+Obsoletes: kde3-amarok <= 1:1.4.10-2
+Obsoletes: kde3-amarok-engine-xine <= 1:1.4.10-2
+Obsoletes: kde3-amarok-engine-yauap <= 1:1.4.10-2
+Obsoletes: kde3-amarok-engine-void <= 1:1.4.10-2
 
 %description
 Feature Overview 
