@@ -71,7 +71,7 @@ Obsoletes: amarok-engine-gstreamer            <= 1.4-0.beta1_rc1.10mdk
 Obsoletes: amarok-engine-akode                <= 1.4-0.beta2.3mdk
 Obsoletes: amarok-engine-gstreamer0.10        <= 1.4-0.beta3.7mdk
 %if %mdkversion >= 201000
-Obsoletes: kde3-amarok <= 1:1.4.10-2
+Obsoletes: kde3-amarok < 1:1.4.10-3
 Obsoletes: kde3-amarok-engine-xine < 1:1.4.10-3
 Obsoletes: kde3-amarok-engine-yauap < 1:1.4.10-3
 Obsoletes: kde3-amarok-engine-void < 1:1.4.10-3
@@ -156,6 +156,9 @@ Requires: %name = %epoch:%version-%release
 Obsoletes: amarok2-scripts <= 2:2.0.0-0.svn794807.1
 Obsoletes: %{_lib}amarok0-scripts < 2:2.0.0-0.svn794807.4
 Obsoletes: %{_lib}amarok20-scripts < 2:2.0.0-0.svn794807.1
+%if %mdkversion >= 201000
+Obsoletes: kde3-amarok-scripts < 1:1.4.10-3
+%endif
 
 %description scripts
 This package includes python scripts for amarok.
