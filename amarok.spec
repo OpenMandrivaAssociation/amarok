@@ -10,8 +10,8 @@
 
 Name: amarok
 Summary: A powerful media player for KDE4
-Version: 2.2.0
-Release: %mkrel  10
+Version: 2.2.1
+Release: %mkrel  1
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -21,14 +21,11 @@ Patch0:  amarok-2.1.90-fix-initial-preference.patch
 Patch1:  amarok-2.2.0-remove-appendAndPlay-service.patch
 #https://bugs.kde.org/show_bug.cgi?id=209204
 Patch2:  amarok-2.2.0-remove-solid-action.patch
-Patch3:  amarok-2.2.0-fix-lyrics.patch
 Patch4:  amarok-2.2.0-fix-CD-titleChanged.patch
 Patch5:  amarok-2.2.0-donot-enable-lastfm-by-default.patch
 # Those patches are provided by Amarok TEAM
 # patches in the form amarok-version-r<relnum> are referent to the KDE
 # commit numbered as <relnum>
-# (nl) http://gitorious.org/amarok/amarok/commit/99ebf391215fd19607b8b84afb171fa93dc3fdc4
-Patch100: amarok-2.2.0-fix-splash-screen-and-lastfm.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel >= 1.6-3
 BuildRequires: cmake >= 2.4.5
@@ -250,10 +247,8 @@ Headers of %{name} for development.
 %patch0 -p0
 %patch1 -p0
 %patch2 -p0
-%patch3 -p0
 %patch4 -p1
-#%patch5 -p0
-%patch100 -p0
+%patch5 -p0
 
 %build
 %cmake_kde4 -DLOCALE_INSTALL_DIR=%{_datadir}/locale -DLIB_INSTALL_DIR=%{_libdir}
