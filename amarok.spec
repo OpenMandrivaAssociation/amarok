@@ -26,6 +26,7 @@ Patch5:  amarok-2.2.0-donot-enable-lastfm-by-default.patch
 # Those patches are provided by Amarok TEAM
 # patches in the form amarok-version-r<relnum> are referent to the KDE
 # commit numbered as <relnum>
+Patch101: http://gitorious.org/amarok/amarok/commit/322b64dfb8592cb6503da46a3ff845dcf3a1cf4a.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel >= 1.6-3
 BuildRequires: cmake >= 2.4.5
@@ -105,7 +106,7 @@ amaroK is compatible with XMMS visualization plugins. Allows you to use the
 great number of stunning visualizations available on the net. 3d visualizations
 with OpenGL are a great way to enhance your music experience. 
 
-%files -f build/%name.lang 
+%files -f %name.lang 
 %defattr(-,root,root) 
 %{_kde_bindir}/amarok
 %{_kde_bindir}/amarok_afttagger
@@ -182,7 +183,7 @@ Amarok 2 core library.
 %files -n %libamaroklib
 %defattr(-,root,root)
 %_kde_libdir/libamaroklib.so.%libamaroklib_major
-%_kde_libdir/libamaroklib.so.%libamaroklib_major.0.0
+%_kde_libdir/libamaroklib.so.%libamaroklib_major.*
 
 #------------------------------------------------
 
@@ -200,7 +201,7 @@ Amarok 2 core library.
 %files -n %libamarokpud
 %defattr(-,root,root)
 %_kde_libdir/libamarokpud.so.%libamarokpud_major
-%_kde_libdir/libamarokpud.so.%libamarokpud_major.0.0
+%_kde_libdir/libamarokpud.so.%libamarokpud_major.*
 
 #------------------------------------------------
 
@@ -218,7 +219,7 @@ Amarok 2 core library.
 %files -n %libamarokocsclient
 %defattr(-,root,root)
 %_kde_libdir/libamarokocsclient.so.%libamarokocsclient_major
-%_kde_libdir/libamarokocsclient.so.%libamarokocsclient_major.3.0
+%_kde_libdir/libamarokocsclient.so.%libamarokocsclient_major.*
 
 #------------------------------------------------
 
@@ -249,16 +250,15 @@ Headers of %{name} for development.
 %patch2 -p0
 %patch4 -p1
 %patch5 -p0
+%patch101 -p1
 
 %build
-%cmake_kde4 -DLOCALE_INSTALL_DIR=%{_datadir}/locale -DLIB_INSTALL_DIR=%{_libdir}
-
+%cmake_kde4
 %make
 
 %install
 rm -rf %buildroot
-cd build
-%{makeinstall_std}
+%{makeinstall_std} -C build
 %find_lang %{name} amarokcollectionscanner_qt amarok_scriptengine_qscript amarokpkg
 
 %clean
