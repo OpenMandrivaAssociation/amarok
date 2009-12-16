@@ -10,7 +10,7 @@
 
 Name: amarok
 Summary: A powerful media player for KDE4
-Version: 2.2.1
+Version: 2.2.1.90
 Release: %mkrel  1
 Epoch: 3
 License: GPL
@@ -27,7 +27,6 @@ Patch5:  amarok-2.2.0-donot-enable-lastfm-by-default.patch
 # patches in the form amarok-version-r<relnum> are referent to the KDE
 # commit numbered as <relnum>
 # http://gitorious.org/amarok/amarok/commit/322b64dfb8592cb6503da46a3ff845dcf3a1cf4a.patch
-Patch101: amarok-2.2.1-fix-QtScriptBindingsTest-build.patch 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel >= 1.6-3
 BuildRequires: cmake >= 2.4.5
@@ -251,7 +250,6 @@ Headers of %{name} for development.
 %patch2 -p0
 %patch4 -p1
 %patch5 -p0
-%patch101 -p1
 
 %build
 %cmake_kde4
