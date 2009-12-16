@@ -120,8 +120,6 @@ with OpenGL are a great way to enhance your music experience.
 %dir %{_kde_appsdir}/amarok
 %{_kde_appsdir}/amarok/*
 %{_kde_libdir}/kde4/*
-#%{_kde_libdir}/libamarok_service_liblastfm.so
-#%{_kde_appsdir}/solid/actions/amarok-play-audiocd.desktop
 %{_kde_datadir}/config/amarokapplets.knsrc
 %{_kde_datadir}/kde4/services/*
 %{_kde_datadir}/kde4/servicetypes/*
@@ -165,7 +163,6 @@ This package includes python scripts for amarok.
 %defattr(-,root,root)
 %dir %{_kde_appsdir}/amarok/scripts/
 %{_kde_appsdir}/amarok/scripts/*
-#%{_kde_libdir}/kde4/plugins/script/*
 
 #------------------------------------------------
 
@@ -182,8 +179,7 @@ Amarok 2 core library.
 
 %files -n %libamaroklib
 %defattr(-,root,root)
-%_kde_libdir/libamaroklib.so.%libamaroklib_major
-%_kde_libdir/libamaroklib.so.%libamaroklib_major.*
+%_kde_libdir/libamaroklib.so.%{libamaroklib_major}*
 
 #------------------------------------------------
 
@@ -200,8 +196,7 @@ Amarok 2 core library.
 
 %files -n %libamarokpud
 %defattr(-,root,root)
-%_kde_libdir/libamarokpud.so.%libamarokpud_major
-%_kde_libdir/libamarokpud.so.%libamarokpud_major.*
+%_kde_libdir/libamarokpud.so.{%libamarokpud_major}*
 
 #------------------------------------------------
 
@@ -218,8 +213,7 @@ Amarok 2 core library.
 
 %files -n %libamarokocsclient
 %defattr(-,root,root)
-%_kde_libdir/libamarokocsclient.so.%libamarokocsclient_major
-%_kde_libdir/libamarokocsclient.so.%libamarokocsclient_major.*
+%_kde_libdir/libamarokocsclient.so.%{libamarokocsclient_major}*
 
 #------------------------------------------------
 
