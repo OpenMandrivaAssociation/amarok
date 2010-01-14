@@ -11,17 +11,17 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 2.2.2
-Release: %mkrel  1
+Release: %mkrel 1
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
-Source0: %{name}-%{version}.tar.bz2
+Source0: http://fr2.rpmfind.net/linux/KDE/stable/%{name}/%{version}/src/%{name}-%{version}-patched.tar.bz2
 Patch0:  amarok-2.1.90-fix-initial-preference.patch
 Patch1:  amarok-2.2.0-remove-appendAndPlay-service.patch
 #https://bugs.kde.org/show_bug.cgi?id=209204
 Patch2:  amarok-2.2.0-remove-solid-action.patch
-Patch4:  amarok-2.2.0-fix-CD-titleChanged.patch
+Patch4:  amarok-2.2.2-fix-CD-titleChanged.patch
 Patch5:  amarok-2.2.0-donot-enable-lastfm-by-default.patch
 # Those patches are provided by Amarok TEAM
 # patches in the form amarok-version-r<relnum> are referent to the KDE
@@ -196,7 +196,7 @@ Amarok 2 core library.
 
 %files -n %libamarokpud
 %defattr(-,root,root)
-%_kde_libdir/libamarokpud.so.{%libamarokpud_major}*
+%_kde_libdir/libamarokpud.so.%{libamarokpud_major}*
 
 #------------------------------------------------
 
