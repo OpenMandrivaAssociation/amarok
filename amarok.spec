@@ -11,7 +11,7 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 2.2.2
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -220,7 +220,9 @@ Amarok 2 core library.
 %package -n %{develname}
 Summary: Headers of %name for development
 Group: Development/C
+Requires: %libamaroklib = %epoch:%{version}-%{release}
 Requires: %libamarokpud = %epoch:%{version}-%{release}
+Requires: %libamarokocsclient = %epoch:%{version}-%{release}
 Provides: %{name}-devel = %epoch:%{version}-%{release}
 Provides: %{libname_orig}-devel = %epoch:%{version}-%{release}
 Obsoletes: %{mklibname -d amarok2 0} < 2:2.0.0-0.svn794807.2
