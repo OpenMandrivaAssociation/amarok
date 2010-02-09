@@ -7,11 +7,10 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 2.2.2
-Release: %mkrel 2
+Release: %mkrel 3
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -19,14 +18,13 @@ Group: Sound
 Source0: http://fr2.rpmfind.net/linux/KDE/stable/%{name}/%{version}/src/%{name}-%{version}-patched.tar.bz2
 Patch0:  amarok-2.1.90-fix-initial-preference.patch
 Patch1:  amarok-2.2.0-remove-appendAndPlay-service.patch
-#https://bugs.kde.org/show_bug.cgi?id=209204
-Patch2:  amarok-2.2.0-remove-solid-action.patch
 Patch4:  amarok-2.2.2-fix-CD-titleChanged.patch
 Patch5:  amarok-2.2.0-donot-enable-lastfm-by-default.patch
 # Those patches are provided by Amarok TEAM
 # patches in the form amarok-version-r<relnum> are referent to the KDE
 # commit numbered as <relnum>
-# http://gitorious.org/amarok/amarok/commit/322b64dfb8592cb6503da46a3ff845dcf3a1cf4a.patch
+Patch100:      amarok-2.2.2-git4372e8b2-initial-audiocd-support.patch
+Patch101:      amarok-2.2.2-git9dc353b3-fix-audiocd-read.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel >= 1.6-3
 BuildRequires: cmake >= 2.4.5
@@ -46,6 +44,7 @@ BuildRequires: libmp4v2-devel
 BuildRequires: taglib-extras-devel >= 1.0.0-1
 BuildRequires: qtscriptgenerator
 BuildRequires: liblastfm-devel
+BuildRequires: qca2-devel
 Requires: %name-scripts
 Requires: %name-utils
 %if %{mdkversion} >= 201000
@@ -117,6 +116,7 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_datadir}/config/amarok_homerc
 %{_kde_datadir}/config.kcfg/amarokconfig.kcfg
 %{_kde_appsdir}/desktoptheme/*
+%{_kde_appsdir}/solid/actions/amarok-play-audiocd.desktop
 %dir %{_kde_appsdir}/amarok
 %{_kde_appsdir}/amarok/*
 %{_kde_libdir}/kde4/*
@@ -243,9 +243,10 @@ Headers of %{name} for development.
 %setup -q 
 %patch0 -p0
 %patch1 -p0
-%patch2 -p0
 %patch4 -p1
 %patch5 -p0
+%patch100 -p0
+%patch101 -p1
 
 %build
 %cmake_kde4
