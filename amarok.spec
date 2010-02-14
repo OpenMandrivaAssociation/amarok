@@ -9,22 +9,20 @@
 
 Name: amarok
 Summary: A powerful media player for KDE4
-Version: 2.2.2
-Release: %mkrel 3
+Version: 2.2.2.90
+Release: %mkrel 1
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
-Source0: http://fr2.rpmfind.net/linux/KDE/stable/%{name}/%{version}/src/%{name}-%{version}-patched.tar.bz2
+Source0: http://fr2.rpmfind.net/linux/KDE/unstable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
 Patch0:  amarok-2.1.90-fix-initial-preference.patch
-Patch1:  amarok-2.2.0-remove-appendAndPlay-service.patch
-Patch4:  amarok-2.2.2-fix-CD-titleChanged.patch
+Patch1:  amarok-2.2.2.90-remove-appendAndPlay-service.patch
+Patch4:  amarok-2.2.2.90-fix-CD-titleChanged.patch
 Patch5:  amarok-2.2.0-donot-enable-lastfm-by-default.patch
 # Those patches are provided by Amarok TEAM
 # patches in the form amarok-version-r<relnum> are referent to the KDE
 # commit numbered as <relnum>
-Patch100:      amarok-2.2.2-git4372e8b2-initial-audiocd-support.patch
-Patch101:      amarok-2.2.2-git9dc353b3-fix-audiocd-read.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel >= 1.6-3
 BuildRequires: cmake >= 2.4.5
@@ -217,12 +215,29 @@ Amarok 2 core library.
 
 #------------------------------------------------
 
+%define libamaroksqlcollection_major 1
+%define libamaroksqlcollection %mklibname amarok-sqlcollection %libamaroksqlcollection_major
+
+%package -n %libamaroksqlcollection
+Summary: Amarok 2 core library
+Group: System/Libraries
+
+%description -n %libamaroksqlcollection
+Amarok 2 core library.
+
+%files -n %libamaroksqlcollection
+%defattr(-,root,root)
+%_kde_libdir/libamarok-sqlcollection.so.%{libamaroksqlcollection_major}*
+
+#------------------------------------------------
+
 %package -n %{develname}
 Summary: Headers of %name for development
 Group: Development/C
 Requires: %libamaroklib = %epoch:%{version}-%{release}
 Requires: %libamarokpud = %epoch:%{version}-%{release}
 Requires: %libamarokocsclient = %epoch:%{version}-%{release}
+Requires: %libamaroksqlcollection = %epoch:%{version}-%{release}
 Provides: %{name}-devel = %epoch:%{version}-%{release}
 Provides: %{libname_orig}-devel = %epoch:%{version}-%{release}
 Obsoletes: %{mklibname -d amarok2 0} < 2:2.0.0-0.svn794807.2
@@ -236,6 +251,7 @@ Headers of %{name} for development.
 %{_kde_libdir}/libamaroklib.so
 %{_kde_libdir}/libamarokpud.so
 %{_kde_libdir}/libamarokocsclient.so
+%{_kde_libdir}/libamarok-sqlcollection.so
 
 #--------------------------------------------------------------------
 
@@ -245,8 +261,6 @@ Headers of %{name} for development.
 %patch1 -p0
 %patch4 -p1
 %patch5 -p0
-%patch100 -p0
-%patch101 -p1
 
 %build
 %cmake_kde4
