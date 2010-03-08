@@ -7,6 +7,8 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
+%define git gitf7519a8 
+
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 2.2.2.90
@@ -15,7 +17,7 @@ Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
-Source0: http://fr2.rpmfind.net/linux/KDE/unstable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
+Source0: http://fr2.rpmfind.net/linux/KDE/unstable/%{name}/%{version}/src/%{name}-%{version}.%{git}.tar.bz2
 Patch0:  amarok-2.1.90-fix-initial-preference.patch
 Patch1:  amarok-2.2.2.90-remove-appendAndPlay-service.patch
 Patch4:  amarok-2.2.2.90-fix-CD-titleChanged.patch
@@ -256,10 +258,10 @@ Headers of %{name} for development.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q 
+%setup -q -n %name
 %patch0 -p0
 %patch1 -p0
-%patch4 -p1
+%patch4 -p0
 %patch5 -p0
 
 %build
