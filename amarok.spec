@@ -12,7 +12,7 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 2.2.2.90
-Release: %mkrel 5
+Release: %mkrel 6
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -22,6 +22,7 @@ Patch0:  amarok-2.1.90-fix-initial-preference.patch
 Patch1:  amarok-2.2.2.90-remove-appendAndPlay-service.patch
 Patch4:  amarok-2.2.2.90-fix-CD-titleChanged.patch
 Patch5:  amarok-2.2.0-donot-enable-lastfm-by-default.patch
+Patch6:  amarok-2.2.2.90-fix-crash.patch
 # Those patches are provided by Amarok TEAM
 # patches in the form amarok-version-r<relnum> are referent to the KDE
 # commit numbered as <relnum>
@@ -263,6 +264,7 @@ Headers of %{name} for development.
 %patch1 -p0
 %patch4 -p0
 %patch5 -p0
+%patch6 -p1
 
 %build
 %cmake_kde4
