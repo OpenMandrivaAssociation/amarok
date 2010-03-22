@@ -10,7 +10,7 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 2.3.0
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -43,8 +43,8 @@ BuildRequires: taglib-extras-devel >= 1.0.0-1
 BuildRequires: qtscriptgenerator
 BuildRequires: liblastfm-devel
 BuildRequires: qca2-devel
-Requires: %name-scripts
-Requires: %name-utils
+Requires: %name-scripts = %epoch:%version-%release
+Requires: %name-utils = %epoch:%version-%release
 %if %{mdkversion} >= 201000
 Requires: mysql-common-core
 %else
@@ -135,7 +135,6 @@ Group: Graphical desktop/KDE
 
 %description utils
 Utilities for amarok
-
 
 %files utils
 %defattr(-,root,root)
