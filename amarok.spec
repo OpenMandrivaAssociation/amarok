@@ -10,19 +10,22 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 2.3.0
-Release: %mkrel 2
+Release: %mkrel 3
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
 Source0: http://fr2.rpmfind.net/linux/KDE/unstable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
-Patch0:  amarok-2.1.90-fix-initial-preference.patch
-Patch1:  amarok-2.2.2.90-remove-appendAndPlay-service.patch
-Patch4:  amarok-2.2.2.90-fix-CD-titleChanged.patch
-Patch5:  amarok-2.2.0-donot-enable-lastfm-by-default.patch
-# Those patches are provided by Amarok TEAM
-# patches in the form amarok-version-r<relnum> are referent to the KDE
-# commit numbered as <relnum>
+Patch0001: 0001-Fix-initial-preference-in-.desktop-from-2.1.90.patch
+Patch0002: 0002-Remove-appendAndPlay-service-from-2.2.2.90.patch
+Patch0003: 0003-Fix-CD-titleChanged-from-2.2.2.90.patch
+Patch0004: 0004-Do-not-enable-Last.fm-by-default-from-2.2.0.patch
+Patch0005: 0005-ipod-Do-not-set-file-permissions-when-copying-tracks.patch
+Patch0006: 0006-Remove-old-hack-for-fixing-the-volume.patch
+Patch0007: 0007-volume-Listen-for-signals-from-Phonon-regarding-volu.patch
+Patch0008: 0008-volume-Fix-feedback-loop-for-volume-setting-notifica.patch
+Patch0009: 0009-volume-Do-not-set-the-volume-to-0-when-muted.patch
+Patch0010: 0010-osd-Load-up-the-initial-volume-at-init.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel >= 1.6-3
 BuildRequires: cmake >= 2.4.5
@@ -256,10 +259,7 @@ Headers of %{name} for development.
 
 %prep
 %setup -q -n %name-%version
-%patch0 -p0
-%patch1 -p0
-%patch4 -p0
-%patch5 -p0
+%apply_patches
 
 %build
 %cmake_kde4
