@@ -9,8 +9,8 @@
 
 Name: amarok
 Summary: A powerful media player for KDE4
-Version: 2.3.0.90
-Release: %mkrel 3
+Version: 2.3.1
+Release: %mkrel 1
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -177,6 +177,22 @@ Amarok 2 core library.
 
 #------------------------------------------------
 
+%define libamarokcore_major 1
+%define libamarokcore %mklibname amarokcore %libamarokcore_major
+
+%package -n %libamarokcore
+Summary: Amarok 2 core library
+Group: System/Libraries
+
+%description -n %libamarokcore
+Amarok 2 core library.
+
+%files -n %libamarokcore
+%defattr(-,root,root)
+%_kde_libdir/libamarokcore.so.%{libamarokcore_major}*
+
+#------------------------------------------------
+
 %define libamarokpud_major 1
 %define libamarokpud %mklibname amarokpud %libamarokpud_major
 
@@ -231,6 +247,7 @@ Amarok 2 core library.
 Summary: Headers of %name for development
 Group: Development/C
 Requires: %libamaroklib = %epoch:%{version}-%{release}
+Requires: %libamarokcore = %epoch:%{version}-%{release}
 Requires: %libamarokpud = %epoch:%{version}-%{release}
 Requires: %libamarokocsclient = %epoch:%{version}-%{release}
 Requires: %libamaroksqlcollection = %epoch:%{version}-%{release}
@@ -245,6 +262,7 @@ Headers of %{name} for development.
 %files -n %{develname}
 %defattr(-,root,root)
 %{_kde_libdir}/libamaroklib.so
+%{_kde_libdir}/libamarokcore.so
 %{_kde_libdir}/libamarokpud.so
 %{_kde_libdir}/libamarokocsclient.so
 %{_kde_libdir}/libamarok-sqlcollection.so
