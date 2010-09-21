@@ -9,13 +9,13 @@
 
 Name: amarok
 Summary: A powerful media player for KDE4
-Version: 2.3.1.90
+Version: 2.3.2
 Release: %mkrel 1
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
 Group: Sound
-Source0: http://fr2.rpmfind.net/linux/KDE/unstable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
+Source0: http://fr2.rpmfind.net/linux/KDE/stable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
 Patch0001: 0001-Fix-initial-preference-in-.desktop-from-2.1.90.patch
 Patch0002: 0002-Remove-appendAndPlay-service-from-2.2.2.90.patch
 Patch0003: 0003-Fix-CD-titleChanged-from-2.2.2.90.patch
@@ -123,7 +123,6 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_libdir}/strigi/strigita_mp4.so
 %{_kde_iconsdir}/*/*/*/amarok.*
 %{_kde_datadir}/dbus-1/interfaces/*
-%doc %_kde_docdir/HTML/amarok
 %exclude %{_kde_appsdir}/amarok/scripts/
 
 #--------------------------------------------------------------------
@@ -285,7 +284,7 @@ Headers of %{name} for development.
 %install
 rm -rf %buildroot
 %{makeinstall_std} -C build
-%find_lang %{name} amarokcollectionscanner_qt amarok_scriptengine_qscript amarokpkg
+%find_lang %{name} amarokcollectionscanner_qt amarok_scriptengine_qscript amarokpkg --with-html
 
 %clean
 rm -rf %buildroot
