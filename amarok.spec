@@ -9,7 +9,7 @@
 
 Name: amarok
 Summary: A powerful media player for KDE4
-Version: 2.3.2
+Version: 2.3.90
 Release: %mkrel 1
 Epoch: 3
 License: GPL
@@ -40,6 +40,8 @@ BuildRequires: taglib-extras-devel >= 1.0.0-1
 BuildRequires: qtscriptgenerator
 BuildRequires: liblastfm-devel
 BuildRequires: qca2-devel
+BuildRequires: libofa-devel
+BuildRequires: ffmpeg-devel
 Requires: %name-scripts = %epoch:%version-%release
 Requires: %name-utils = %epoch:%version-%release
 %if %{mdkversion} >= 201000
@@ -116,11 +118,10 @@ with OpenGL are a great way to enhance your music experience.
 %dir %{_kde_appsdir}/amarok
 %{_kde_appsdir}/amarok/*
 %{_kde_libdir}/kde4/*
+%{_kde_libdir}/libampache_account_login.so
 %{_kde_datadir}/config/amarokapplets.knsrc
 %{_kde_datadir}/kde4/services/*
 %{_kde_datadir}/kde4/servicetypes/*
-%{_kde_libdir}/strigi/strigita_audible.so
-%{_kde_libdir}/strigi/strigita_mp4.so
 %{_kde_iconsdir}/*/*/*/amarok.*
 %{_kde_datadir}/dbus-1/interfaces/*
 %exclude %{_kde_appsdir}/amarok/scripts/
@@ -211,6 +212,22 @@ Amarok 2 core library.
 
 #------------------------------------------------
 
+%define libamarokqtjson_major 1
+%define libamarokqtjson %mklibname amarokqtjson %libamarokqtjson_major
+
+%package -n %libamarokqtjson
+Summary: Amarok 2 core library
+Group: System/Libraries
+
+%description -n %libamarokqtjson
+Amarok 2 core library.
+
+%files -n %libamarokqtjson
+%defattr(-,root,root)
+%_kde_libdir/libamarokqtjson.so.%{libamarokqtjson_major}*
+
+#------------------------------------------------
+
 %define libamarokocsclient_major 4
 %define libamarokocsclient %mklibname amarokocsclient %libamarokocsclient_major
 
@@ -244,14 +261,32 @@ Amarok 2 core library.
 
 #------------------------------------------------
 
+%define libamaroktranscoding_major 1
+%define libamaroktranscoding %mklibname amarok-transcoding %libamaroktranscoding_major
+
+%package -n %libamaroktranscoding
+Summary: Amarok 2 core library
+Group: System/Libraries
+
+%description -n %libamaroktranscoding
+Amarok 2 core library.
+
+%files -n %libamaroktranscoding
+%defattr(-,root,root)
+%_kde_libdir/libamarok-transcoding.so.%{libamaroktranscoding_major}*
+
+#------------------------------------------------
+
 %package -n %{develname}
 Summary: Headers of %name for development
 Group: Development/C
 Requires: %libamaroklib = %epoch:%{version}-%{release}
 Requires: %libamarokcore = %epoch:%{version}-%{release}
+Requires: %libamarokqtjson = %epoch:%{version}-%{release}
 Requires: %libamarokpud = %epoch:%{version}-%{release}
 Requires: %libamarokocsclient = %epoch:%{version}-%{release}
 Requires: %libamaroksqlcollection = %epoch:%{version}-%{release}
+Requires: %libamaroktranscoding = %epoch:%{version}-%{release}
 Provides: %{name}-devel = %epoch:%{version}-%{release}
 Provides: %{libname_orig}-devel = %epoch:%{version}-%{release}
 Obsoletes: %{mklibname -d amarok2 0} < 2:2.0.0-0.svn794807.2
@@ -265,8 +300,10 @@ Headers of %{name} for development.
 %{_kde_libdir}/libamaroklib.so
 %{_kde_libdir}/libamarokcore.so
 %{_kde_libdir}/libamarokpud.so
+%{_kde_libdir}/libamarokqtjson.so
 %{_kde_libdir}/libamarokocsclient.so
 %{_kde_libdir}/libamarok-sqlcollection.so
+%{_kde_libdir}/libamarok-transcoding.so
 
 #--------------------------------------------------------------------
 
@@ -274,7 +311,6 @@ Headers of %{name} for development.
 %setup -q -n %name-%version
 %patch0001 -p0 
 %patch0002 -p0
-%patch0003 -p0
 %patch0004 -p0
 
 %build
