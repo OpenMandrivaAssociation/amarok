@@ -42,6 +42,7 @@ BuildRequires: liblastfm-devel
 BuildRequires: qca2-devel
 BuildRequires: libofa-devel
 BuildRequires: ffmpeg-devel
+BuildRequires: libaio-devel
 Requires: %name-scripts = %epoch:%version-%release
 Requires: %name-utils = %epoch:%version-%release
 %if %{mdkversion} >= 201000
