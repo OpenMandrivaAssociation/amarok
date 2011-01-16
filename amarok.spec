@@ -9,8 +9,8 @@
 
 Name: amarok
 Summary: A powerful media player for KDE4
-Version: 2.3.90
-Release: %mkrel 3
+Version: 2.4.0
+Release: %mkrel 1
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -20,6 +20,7 @@ Patch0001: 0001-Fix-initial-preference-in-.desktop-from-2.1.90.patch
 Patch0002: 0002-Remove-appendAndPlay-service-from-2.2.2.90.patch
 Patch0003: 0003-Fix-CD-titleChanged-from-2.2.2.90.patch
 Patch0004: 0004-Do-not-enable-Last.fm-by-default-from-2.2.0.patch
+Patch0005: amarok-2.4.0-link-mysql.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel >= 1.6-3
 BuildRequires: cmake >= 2.4.5
@@ -313,6 +314,7 @@ Headers of %{name} for development.
 %patch0001 -p0 
 %patch0002 -p0
 %patch0004 -p0
+%patch0005 -p0
 
 %build
 %cmake_kde4
