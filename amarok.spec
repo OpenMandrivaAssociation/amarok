@@ -9,8 +9,8 @@
 
 Name: amarok
 Summary: A powerful media player for KDE4
-Version: 2.4.0
-Release: %mkrel 2
+Version: 2.4.0.90
+Release: %mkrel 1
 Epoch: 3
 License: GPL
 Url: http://amarok.kde.org/
@@ -44,6 +44,7 @@ BuildRequires: qca2-devel
 BuildRequires: libofa-devel
 BuildRequires: ffmpeg-devel
 BuildRequires: libaio-devel
+BuildRequires: libmygpo-qt-devel
 Requires: %name-scripts = %epoch:%version-%release
 Requires: %name-utils = %epoch:%version-%release
 %if %{mdkversion} >= 201000
