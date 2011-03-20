@@ -67,6 +67,7 @@ Obsoletes: amarok-engine-arts                 <= 1.4-0.beta1_rc1.10mdk
 Obsoletes: amarok-engine-gstreamer            <= 1.4-0.beta1_rc1.10mdk
 Obsoletes: amarok-engine-akode                <= 1.4-0.beta2.3mdk
 Obsoletes: amarok-engine-gstreamer0.10        <= 1.4-0.beta3.7mdk
+Obsoletes: %{_lib}amarokqtjson1 < %{epoch}:%{version}
 %if %mdkversion >= 201000
 Obsoletes: kde3-amarok < 1:1.4.10-3
 Obsoletes: kde3-amarok-engine-xine < 1:1.4.10-3
@@ -118,8 +119,9 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_datadir}/config.kcfg/amarokconfig.kcfg
 %{_kde_appsdir}/desktoptheme/*
 %{_kde_appsdir}/solid/actions/amarok-play-audiocd.desktop
-%dir %{_kde_appsdir}/amarok
-%{_kde_appsdir}/amarok/*
+%{_kde_appsdir}/amarok
+%{_kde_appsdir}/kconf_update/*
+%{_kde_appsdir}/kconf_update/amarok.upd
 %{_kde_libdir}/kde4/*
 %{_kde_libdir}/libampache_account_login.so
 %{_kde_datadir}/config/amarokapplets.knsrc
@@ -215,22 +217,6 @@ Amarok 2 core library.
 
 #------------------------------------------------
 
-%define libamarokqtjson_major 1
-%define libamarokqtjson %mklibname amarokqtjson %libamarokqtjson_major
-
-%package -n %libamarokqtjson
-Summary: Amarok 2 core library
-Group: System/Libraries
-
-%description -n %libamarokqtjson
-Amarok 2 core library.
-
-%files -n %libamarokqtjson
-%defattr(-,root,root)
-%_kde_libdir/libamarokqtjson.so.%{libamarokqtjson_major}*
-
-#------------------------------------------------
-
 %define libamarokocsclient_major 4
 %define libamarokocsclient %mklibname amarokocsclient %libamarokocsclient_major
 
@@ -285,7 +271,6 @@ Summary: Headers of %name for development
 Group: Development/C
 Requires: %libamaroklib = %epoch:%{version}-%{release}
 Requires: %libamarokcore = %epoch:%{version}-%{release}
-Requires: %libamarokqtjson = %epoch:%{version}-%{release}
 Requires: %libamarokpud = %epoch:%{version}-%{release}
 Requires: %libamarokocsclient = %epoch:%{version}-%{release}
 Requires: %libamaroksqlcollection = %epoch:%{version}-%{release}
@@ -303,7 +288,6 @@ Headers of %{name} for development.
 %{_kde_libdir}/libamaroklib.so
 %{_kde_libdir}/libamarokcore.so
 %{_kde_libdir}/libamarokpud.so
-%{_kde_libdir}/libamarokqtjson.so
 %{_kde_libdir}/libamarokocsclient.so
 %{_kde_libdir}/libamarok-sqlcollection.so
 %{_kde_libdir}/libamarok-transcoding.so
