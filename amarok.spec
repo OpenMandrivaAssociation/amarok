@@ -310,5 +310,3 @@ rm -rf %buildroot
 %{makeinstall_std} -C build
 %find_lang %{name} amarokcollectionscanner_qt amarok_scriptengine_qscript amarokpkg --with-html
 
-%clean
-rm -rf %buildroot
