@@ -12,7 +12,7 @@ Summary: A powerful media player for KDE4
 Version: 2.4.1
 Release: 1
 Epoch: 3
-License: GPL
+License: GPLv2+
 Url: http://amarok.kde.org/
 Group: Sound
 Source0: http://fr2.rpmfind.net/linux/KDE/stable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
