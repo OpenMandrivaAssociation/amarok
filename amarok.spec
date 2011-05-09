@@ -45,7 +45,6 @@ BuildRequires: ffmpeg-devel
 BuildRequires: libaio-devel
 BuildRequires: libmygpo-qt-devel
 Suggests:	%{name}-scripts = %{EVRD}
-Requires: %name-utils = %epoch:%version-%release
 %if %{mdkversion} >= 201000
 Requires: mysql-common-core
 %else
@@ -74,6 +73,7 @@ Obsoletes: kde3-amarok-engine-yauap < 1:1.4.10-3
 Obsoletes: kde3-amarok-engine-void < 1:1.4.10-3
 Obsoletes: kde3-amarok-engine < 1:1.4.10-3
 %endif
+%rename		amarok-utils
 
 %description
 Feature Overview 
@@ -108,6 +108,7 @@ with OpenGL are a great way to enhance your music experience.
 %files -f %name.lang 
 %defattr(-,root,root) 
 %{_kde_bindir}/amarok
+%{_kde_bindir}/amarokcollectionscanner
 %{_kde_bindir}/amarok_afttagger
 %{_kde_bindir}/amarokmp3tunesharmonydaemon
 %{_kde_bindir}/amarokpkg
@@ -129,19 +130,6 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_iconsdir}/*/*/*/amarok.*
 %{_kde_datadir}/dbus-1/interfaces/*
 %exclude %{_kde_appsdir}/amarok/scripts/
-
-#--------------------------------------------------------------------
-
-%package utils
-Summary: Utilities for amarok
-Group: Graphical desktop/KDE
-
-%description utils
-Utilities for amarok
-
-%files utils
-%defattr(-,root,root)
-%{_kde_bindir}/amarokcollectionscanner
 
 #--------------------------------------------------------------------
 
