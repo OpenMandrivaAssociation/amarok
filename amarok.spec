@@ -136,7 +136,7 @@ with OpenGL are a great way to enhance your music experience.
 %package scripts
 Summary: Scripts for amarok
 Group: Graphical desktop/KDE
-Requires: %name = %epoch:%version-%release
+Requires: %{name} = %{EVRD}
 Obsoletes: amarok2-scripts <= 2:2.0.0-0.svn794807.1
 Obsoletes: %{_lib}amarok0-scripts < 2:2.0.0-0.svn794807.4
 Obsoletes: %{_lib}amarok20-scripts < 2:2.0.0-0.svn794807.1
