@@ -143,6 +143,7 @@ Obsoletes: %{_lib}amarok20-scripts < 2:2.0.0-0.svn794807.1
 %if %mdkversion >= 201000
 Obsoletes: kde3-amarok-scripts < 1:1.4.10-3
 %endif
+BuildArch:	noarch
 
 %description scripts
 This package includes python scripts for amarok.
