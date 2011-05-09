@@ -44,7 +44,7 @@ BuildRequires: libofa-devel
 BuildRequires: ffmpeg-devel
 BuildRequires: libaio-devel
 BuildRequires: libmygpo-qt-devel
-Requires: %name-scripts = %epoch:%version-%release
+Suggests:	%{name}-scripts = %{EVRD}
 Requires: %name-utils = %epoch:%version-%release
 %if %{mdkversion} >= 201000
 Requires: mysql-common-core
