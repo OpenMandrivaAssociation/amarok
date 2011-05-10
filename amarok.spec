@@ -10,7 +10,7 @@
 Name: amarok
 Summary: A powerful media player for KDE4
 Version: 2.4.1
-Release: 1
+Release: 2
 Epoch: 3
 License: GPLv2+
 Url: http://amarok.kde.org/
@@ -20,7 +20,6 @@ Patch0001: 0001-Fix-initial-preference-in-.desktop-from-2.1.90.patch
 Patch0002: 0002-Remove-appendAndPlay-service-from-2.2.2.90.patch
 Patch0003: 0003-Fix-CD-titleChanged-from-2.2.2.90.patch
 Patch0004: 0004-Do-not-enable-Last.fm-by-default-from-2.2.0.patch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: taglib-devel >= 1.6-3
 BuildRequires: cmake >= 2.4.5
 BuildRequires: libnjb-devel
@@ -106,7 +105,6 @@ great number of stunning visualizations available on the net. 3d visualizations
 with OpenGL are a great way to enhance your music experience. 
 
 %files -f %name.lang 
-%defattr(-,root,root) 
 %{_kde_bindir}/amarok
 %{_kde_bindir}/amarokcollectionscanner
 %{_kde_bindir}/amarok_afttagger
@@ -149,7 +147,6 @@ BuildArch:	noarch
 This package includes python scripts for amarok.
 
 %files scripts
-%defattr(-,root,root)
 %dir %{_kde_appsdir}/amarok/scripts/
 %{_kde_appsdir}/amarok/scripts/*
 
@@ -167,7 +164,6 @@ Obsoletes: %{libname2} < 2:2.0.0-0.svn794807.1
 Amarok 2 core library.
 
 %files -n %libamaroklib
-%defattr(-,root,root)
 %_kde_libdir/libamaroklib.so.%{libamaroklib_major}*
 
 #------------------------------------------------
@@ -183,7 +179,6 @@ Group: System/Libraries
 Amarok 2 core library.
 
 %files -n %libamarokcore
-%defattr(-,root,root)
 %_kde_libdir/libamarokcore.so.%{libamarokcore_major}*
 
 #------------------------------------------------
@@ -200,7 +195,6 @@ Conflicts: %{libname2} < 2:2.0.0-0.svn794807.1
 Amarok 2 core library.
 
 %files -n %libamarokpud
-%defattr(-,root,root)
 %_kde_libdir/libamarokpud.so.%{libamarokpud_major}*
 
 #------------------------------------------------
@@ -217,7 +211,6 @@ Conflicts: %{libname2} < 2:2.0.0-0.svn794807.1
 Amarok 2 core library.
 
 %files -n %libamarokocsclient
-%defattr(-,root,root)
 %_kde_libdir/libamarokocsclient.so.%{libamarokocsclient_major}*
 
 #------------------------------------------------
@@ -233,7 +226,6 @@ Group: System/Libraries
 Amarok 2 core library.
 
 %files -n %libamaroksqlcollection
-%defattr(-,root,root)
 %_kde_libdir/libamarok-sqlcollection.so.%{libamaroksqlcollection_major}*
 
 #------------------------------------------------
@@ -249,7 +241,6 @@ Group: System/Libraries
 Amarok 2 core library.
 
 %files -n %libamaroktranscoding
-%defattr(-,root,root)
 %_kde_libdir/libamarok-transcoding.so.%{libamaroktranscoding_major}*
 
 #------------------------------------------------
@@ -257,14 +248,14 @@ Amarok 2 core library.
 %package -n %{develname}
 Summary: Headers of %name for development
 Group: Development/C
-Requires: %libamaroklib = %epoch:%{version}-%{release}
-Requires: %libamarokcore = %epoch:%{version}-%{release}
-Requires: %libamarokpud = %epoch:%{version}-%{release}
-Requires: %libamarokocsclient = %epoch:%{version}-%{release}
-Requires: %libamaroksqlcollection = %epoch:%{version}-%{release}
-Requires: %libamaroktranscoding = %epoch:%{version}-%{release}
-Provides: %{name}-devel = %epoch:%{version}-%{release}
-Provides: %{libname_orig}-devel = %epoch:%{version}-%{release}
+Requires: %libamaroklib = %{EVRD}
+Requires: %libamarokcore = %{EVRD}
+Requires: %libamarokpud = %{EVRD}
+Requires: %libamarokocsclient = %{EVRD}
+Requires: %libamaroksqlcollection = %{EVRD}
+Requires: %libamaroktranscoding = %{EVRD}
+Provides: %{name}-devel = %{EVRD}
+Provides: %{libname_orig}-devel = %{EVRD}
 Obsoletes: %{mklibname -d amarok2 0} < 2:2.0.0-0.svn794807.2
 Obsoletes: %{develname2} <= 2:2.0.0-0.svn794807.1
 
@@ -272,7 +263,6 @@ Obsoletes: %{develname2} <= 2:2.0.0-0.svn794807.1
 Headers of %{name} for development.
 
 %files -n %{develname}
-%defattr(-,root,root)
 %{_kde_libdir}/libamaroklib.so
 %{_kde_libdir}/libamarokcore.so
 %{_kde_libdir}/libamarokpud.so
@@ -283,7 +273,7 @@ Headers of %{name} for development.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %name-%version
+%setup -q
 %patch0001 -p0 
 %patch0002 -p0
 %patch0004 -p0
@@ -293,7 +283,5 @@ Headers of %{name} for development.
 %make
 
 %install
-rm -rf %buildroot
 %{makeinstall_std} -C build
 %find_lang %{name} amarokcollectionscanner_qt amarok_scriptengine_qscript amarokpkg --with-html
-
