@@ -7,19 +7,19 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-Name: amarok
-Summary: A powerful media player for KDE4
-Version: 2.4.1
-Release: 3
-Epoch: 3
-License: GPLv2+
-Url: http://amarok.kde.org/
-Group: Sound
-Source0: http://fr2.rpmfind.net/linux/KDE/stable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
-Patch0001: 0001-Fix-initial-preference-in-.desktop-from-2.1.90.patch
-Patch0002: 0002-Remove-appendAndPlay-service-from-2.2.2.90.patch
-Patch0003: 0003-Fix-CD-titleChanged-from-2.2.2.90.patch
-Patch0004: 0004-Do-not-enable-Last.fm-by-default-from-2.2.0.patch
+Name:          amarok
+Summary:       A powerful media player for KDE4
+Version:       2.4.1
+Release:       3
+Epoch:         3
+License:       GPLv2+
+Url:           http://amarok.kde.org/
+Group:         Sound
+Source0:       http://fr2.rpmfind.net/linux/KDE/stable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
+Patch0001:     0001-Fix-initial-preference-in-.desktop-from-2.1.90.patch
+Patch0002:     0002-Remove-appendAndPlay-service-from-2.2.2.90.patch
+Patch0003:     0003-Fix-CD-titleChanged-from-2.2.2.90.patch
+Patch0004:     0004-Do-not-enable-Last.fm-by-default-from-2.2.0.patch
 BuildRequires: taglib-devel >= 1.6-3
 BuildRequires: cmake >= 2.4.5
 BuildRequires: libnjb-devel
@@ -43,36 +43,36 @@ BuildRequires: libofa-devel
 BuildRequires: ffmpeg-devel
 BuildRequires: libaio-devel
 BuildRequires: libmygpo-qt-devel
-Suggests:	%{name}-scripts = %{EVRD}
+Suggests:      %{name}-scripts = %{EVRD}
 %if %{mdkversion} >= 201000
-Requires: mysql-common-core
+Requires:      mysql-common-core
 %else
-Requires: mysql-common
+Requires:      mysql-common
 %endif
-Requires: qtscriptbindings
-Requires: kde4-audiocd
-Conflicts: %{libname2}-devel < 1:2.0.0-1.svn743954.3
-Conflicts: %{develname} < 3:2.2.0-1
-Obsoletes: amarok2 < 2:2.0.0-0.svn794807.2
-Obsoletes: amarok2-engine-phonon < 2:2.0.0-0.svn794807.2
-Obsoletes: amarok2-engine-xine < 2:2.0.0-0.svn794807.2
-Obsoletes: amarok2-engine-void < 2:2.0.0-0.svn794807.2
-Obsoletes: amarok-engine-void < 2:2.0.0
-Obsoletes: amarok-engine-xine < 2:2.0.0
-Obsoletes: amarok-engine-yauap < 2:2.0.0
-Obsoletes: amarok-engine-arts                 <= 1.4-0.beta1_rc1.10mdk
-Obsoletes: amarok-engine-gstreamer            <= 1.4-0.beta1_rc1.10mdk
-Obsoletes: amarok-engine-akode                <= 1.4-0.beta2.3mdk
-Obsoletes: amarok-engine-gstreamer0.10        <= 1.4-0.beta3.7mdk
-Obsoletes: %{_lib}amarokqtjson1 < %{epoch}:%{version}
+Requires:      qtscriptbindings
+Requires:      kde4-audiocd
+Conflicts:     %{libname2}-devel < 1:2.0.0-1.svn743954.3
+Conflicts:     %{develname} < 3:2.2.0-1
+Obsoletes:     amarok2 < 2:2.0.0-0.svn794807.2
+Obsoletes:     amarok2-engine-phonon < 2:2.0.0-0.svn794807.2
+Obsoletes:     amarok2-engine-xine < 2:2.0.0-0.svn794807.2
+Obsoletes:     amarok2-engine-void < 2:2.0.0-0.svn794807.2
+Obsoletes:     amarok-engine-void < 2:2.0.0
+Obsoletes:     amarok-engine-xine < 2:2.0.0
+Obsoletes:     amarok-engine-yauap < 2:2.0.0
+Obsoletes:     amarok-engine-arts                 <= 1.4-0.beta1_rc1.10mdk
+Obsoletes:     amarok-engine-gstreamer            <= 1.4-0.beta1_rc1.10mdk
+Obsoletes:     amarok-engine-akode                <= 1.4-0.beta2.3mdk
+Obsoletes:     amarok-engine-gstreamer0.10        <= 1.4-0.beta3.7mdk
+Obsoletes:     %{_lib}amarokqtjson1 < %{epoch}:%{version}
 %if %mdkversion >= 201000
-Obsoletes: kde3-amarok < 1:1.4.10-3
-Obsoletes: kde3-amarok-engine-xine < 1:1.4.10-3
-Obsoletes: kde3-amarok-engine-yauap < 1:1.4.10-3
-Obsoletes: kde3-amarok-engine-void < 1:1.4.10-3
-Obsoletes: kde3-amarok-engine < 1:1.4.10-3
+Obsoletes:     kde3-amarok < 1:1.4.10-3
+Obsoletes:     kde3-amarok-engine-xine < 1:1.4.10-3
+Obsoletes:     kde3-amarok-engine-yauap < 1:1.4.10-3
+Obsoletes:     kde3-amarok-engine-void < 1:1.4.10-3
+Obsoletes:     kde3-amarok-engine < 1:1.4.10-3
 %endif
-%rename		amarok-utils
+%rename	       amarok-utils
 
 %description
 Feature Overview 
