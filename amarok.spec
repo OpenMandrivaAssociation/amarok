@@ -284,4 +284,4 @@ Headers of %{name} for development.
 
 %install
 %{makeinstall_std} -C build
-%find_lang %{name} amarokcollectionscanner_qt amarok_scriptengine_qscript amarokpkg --with-html
+%find_lang %{name} amarokcollectionscanner_qt amarok_scriptengine_qscript amarokpkg 
