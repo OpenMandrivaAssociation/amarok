@@ -119,7 +119,6 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_appsdir}/solid/actions/amarok-play-audiocd.desktop
 %{_kde_appsdir}/amarok
 %{_kde_appsdir}/kconf_update/*
-%{_kde_appsdir}/kconf_update/amarok.upd
 %{_kde_libdir}/kde4/*
 %{_kde_libdir}/libampache_account_login.so
 %{_kde_datadir}/config/amarokapplets.knsrc
@@ -284,4 +283,4 @@ Headers of %{name} for development.
 
 %install
 %{makeinstall_std} -C build
-%find_lang %{name} amarokcollectionscanner_qt amarok_scriptengine_qscript amarokpkg 
+%find_lang %{name} amarokcollectionscanner_qt amarok_scriptengine_qscript amarokpkg --with-kde
