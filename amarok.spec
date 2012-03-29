@@ -7,91 +7,75 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-Name:          amarok
-Summary:       A powerful media player for KDE4
-Version:       2.5.0
-Release:       1
-Epoch:         3
-License:       GPLv2+
-Url:           http://amarok.kde.org/
-Group:         Sound
-Source0:       http://fr2.rpmfind.net/linux/KDE/stable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
-BuildRequires: taglib-devel >= 1.6-3
-BuildRequires: cmake >= 2.4.5
-BuildRequires: libnjb-devel
-BuildRequires: libifp-devel
-BuildRequires: libmtp-devel >= 0.3.0
-BuildRequires: loudmouth-devel
-BuildRequires: mysql-static-devel
-BuildRequires: glib2-devel
-BuildRequires: libvisual-devel
-BuildRequires: kdelibs4-devel >= 2:4.2.0
-BuildRequires: kdebase4-workspace-devel >= 4.2.0
-BuildRequires: kdemultimedia4-devel >= 4.2.0
-BuildRequires: libgpod-devel >= 0.7.0
-BuildRequires: curl-devel
-BuildRequires: libmp4v2-devel
-BuildRequires: taglib-extras-devel >= 1.0.0-1
-BuildRequires: qtscriptgenerator
-BuildRequires: liblastfm-devel
-BuildRequires: qca2-devel
-BuildRequires: libofa-devel
-BuildRequires: ffmpeg-devel
-BuildRequires: libaio-devel
-BuildRequires: libmygpo-qt-devel
-Suggests:      %{name}-scripts = %{EVRD}
-%if %{mdkversion} >= 201000
-Requires:      mysql-common-core
-%else
-Requires:      mysql-common
-%endif
-Requires:      qtscriptbindings
-Requires:      kde4-audiocd
-Conflicts:     %{libname2}-devel < 1:2.0.0-1.svn743954.3
-Conflicts:     %{develname} < 3:2.2.0-1
-Obsoletes:     amarok2 < 2:2.0.0-0.svn794807.2
-Obsoletes:     amarok2-engine-phonon < 2:2.0.0-0.svn794807.2
-Obsoletes:     amarok2-engine-xine < 2:2.0.0-0.svn794807.2
-Obsoletes:     amarok2-engine-void < 2:2.0.0-0.svn794807.2
-Obsoletes:     amarok-engine-void < 2:2.0.0
-Obsoletes:     amarok-engine-xine < 2:2.0.0
-Obsoletes:     amarok-engine-yauap < 2:2.0.0
-Obsoletes:     amarok-engine-arts                 <= 1.4-0.beta1_rc1.10mdk
-Obsoletes:     amarok-engine-gstreamer            <= 1.4-0.beta1_rc1.10mdk
-Obsoletes:     amarok-engine-akode                <= 1.4-0.beta2.3mdk
-Obsoletes:     amarok-engine-gstreamer0.10        <= 1.4-0.beta3.7mdk
-Obsoletes:     %{_lib}amarokqtjson1 < %{epoch}:%{version}
-%rename	       amarok-utils
+Name:		amarok
+Summary:	A powerful media player for KDE4
+Version:	2.5.0
+Release:	2
+Epoch:		3
+License:	GPLv2+
+Url:		http://amarok.kde.org/
+Group:		Sound
+Source0:	http://fr2.rpmfind.net/linux/KDE/stable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
+Patch0:		0005-Fix-contextview-kde-290123.patch
+BuildRequires:	taglib-devel >= 1.6-3
+BuildRequires:	cmake >= 2.4.5
+BuildRequires:	libnjb-devel
+BuildRequires:	libifp-devel
+BuildRequires:	libmtp-devel >= 0.3.0
+BuildRequires:	loudmouth-devel
+BuildRequires:	mysql-static-devel
+BuildRequires:	glib2-devel
+BuildRequires:	libvisual-devel
+BuildRequires:	kdelibs4-devel >= 2:4.2.0
+BuildRequires:	kdebase4-workspace-devel >= 4.2.0
+BuildRequires:	kdemultimedia4-devel >= 4.2.0
+BuildRequires:	libgpod-devel >= 0.7.0
+BuildRequires:	curl-devel
+BuildRequires:	libmp4v2-devel
+BuildRequires:	taglib-extras-devel >= 1.0.0-1
+BuildRequires:	qtscriptgenerator
+BuildRequires:	liblastfm-devel
+BuildRequires:	qca2-devel
+BuildRequires:	libofa-devel
+BuildRequires:	ffmpeg-devel
+BuildRequires:	libaio-devel
+BuildRequires:	libmygpo-qt-devel
+Suggests:	%{name}-scripts = %{EVRD}
+Requires:	mysql-common-core
+Requires:	qtscriptbindings
+Requires:	kde4-audiocd
+Obsoletes:	%{_lib}amarokqtjson1 < %{epoch}:%{version}
+%rename		amarok-utils
 
 %description
-Feature Overview 
- 
+Feature Overview
+
 * Music Collection:
 You have a huge music library and want to locate tracks quickly? Let amaroK's
-powerful Collection take care of that! It's a database powered music store, 
-which keeps track of your complete music library, allowing you to find any 
-title in a matter of seconds. 
- 
+powerful Collection take care of that! It's a database powered music store,
+which keeps track of your complete music library, allowing you to find any
+title in a matter of seconds.
+
 * Intuitive User Interface:
 You will be amazed to see how easy amaroK is to use! Simply drag-and-drop files
-into the playlist. No hassle with complicated  buttons or tangled menus. 
-Listening to music has never been easier! 
- 
+into the playlist. No hassle with complicated  buttons or tangled menus.
+Listening to music has never been easier!
+
 * Streaming Radio:
 Web streams take radio to the next level: Listen to thousands of great radio
 stations on the internet, for free! amaroK provides excellent streaming
 support, with advanced features, such as displaying titles of the currently
-playing songs. 
- 
+playing songs.
+
 * Context Browser:
 This tool provides useful information on the music you are currently listening
 to, and can make listening suggestions, based on your personal music taste. An
-innovate and unique feature. 
- 
+innovate and unique feature.
+
 * Visualizations:
 amaroK is compatible with XMMS visualization plugins. Allows you to use the
 great number of stunning visualizations available on the net. 3d visualizations
-with OpenGL are a great way to enhance your music experience. 
+with OpenGL are a great way to enhance your music experience.
 
 %files -f %{name}.lang
 %{_kde_bindir}/amarok
@@ -120,9 +104,9 @@ with OpenGL are a great way to enhance your music experience.
 #--------------------------------------------------------------------
 
 %package scripts
-Summary: Scripts for amarok
-Group: Graphical desktop/KDE
-Requires: %{name} = %{EVRD}
+Summary:	Scripts for amarok
+Group:		Graphical desktop/KDE
+Requires:	%{name} = %{EVRD}
 BuildArch:	noarch
 
 %description scripts
@@ -135,106 +119,106 @@ This package includes python scripts for amarok.
 #------------------------------------------------
 
 %define libamaroklib_major 1
-%define libamaroklib %mklibname amaroklib %libamaroklib_major
+%define libamaroklib %mklibname amaroklib %{libamaroklib_major}
 
-%package -n %libamaroklib
-Summary: Amarok 2 core library
-Group: System/Libraries
+%package -n %{libamaroklib}
+Summary:	Amarok 2 core library
+Group:		System/Libraries
 
-%description -n %libamaroklib
+%description -n %{libamaroklib}
 Amarok 2 core library.
 
-%files -n %libamaroklib
-%_kde_libdir/libamaroklib.so.%{libamaroklib_major}*
+%files -n %{libamaroklib}
+%{_kde_libdir}/libamaroklib.so.%{libamaroklib_major}*
 
 #------------------------------------------------
 
 %define libamarokcore_major 1
-%define libamarokcore %mklibname amarokcore %libamarokcore_major
+%define libamarokcore %mklibname amarokcore %{libamarokcore_major}
 
-%package -n %libamarokcore
-Summary: Amarok 2 core library
-Group: System/Libraries
+%package -n %{libamarokcore}
+Summary:	Amarok 2 core library
+Group:		System/Libraries
 
-%description -n %libamarokcore
+%description -n %{libamarokcore}
 Amarok 2 core library.
 
-%files -n %libamarokcore
-%_kde_libdir/libamarokcore.so.%{libamarokcore_major}*
+%files -n %{libamarokcore}
+%{_kde_libdir}/libamarokcore.so.%{libamarokcore_major}*
 
 #------------------------------------------------
 
 %define libamarokpud_major 1
-%define libamarokpud %mklibname amarokpud %libamarokpud_major
+%define libamarokpud %mklibname amarokpud %{libamarokpud_major}
 
-%package -n %libamarokpud
-Summary: Amarok 2 core library
-Group: System/Libraries
+%package -n %{libamarokpud}
+Summary:	Amarok 2 core library
+Group:		System/Libraries
 
-%description -n %libamarokpud
+%description -n %{libamarokpud}
 Amarok 2 core library.
 
-%files -n %libamarokpud
-%_kde_libdir/libamarokpud.so.%{libamarokpud_major}*
+%files -n %{libamarokpud}
+%{_kde_libdir}/libamarokpud.so.%{libamarokpud_major}*
 
 #------------------------------------------------
 
 %define libamarokocsclient_major 4
-%define libamarokocsclient %mklibname amarokocsclient %libamarokocsclient_major
+%define libamarokocsclient %mklibname amarokocsclient %{libamarokocsclient_major}
 
-%package -n %libamarokocsclient
-Summary: Amarok 2 core library
-Group: System/Libraries
+%package -n %{libamarokocsclient}
+Summary:	Amarok 2 core library
+Group:		System/Libraries
 
-%description -n %libamarokocsclient
+%description -n %{libamarokocsclient}
 Amarok 2 core library.
 
-%files -n %libamarokocsclient
-%_kde_libdir/libamarokocsclient.so.%{libamarokocsclient_major}*
+%files -n %{libamarokocsclient}
+%{_kde_libdir}/libamarokocsclient.so.%{libamarokocsclient_major}*
 
 #------------------------------------------------
 
 %define libamaroksqlcollection_major 1
-%define libamaroksqlcollection %mklibname amarok-sqlcollection %libamaroksqlcollection_major
+%define libamaroksqlcollection %mklibname amarok-sqlcollection %{libamaroksqlcollection_major}
 
-%package -n %libamaroksqlcollection
-Summary: Amarok 2 core library
-Group: System/Libraries
+%package -n %{libamaroksqlcollection}
+Summary:	Amarok 2 core library
+Group:		System/Libraries
 
-%description -n %libamaroksqlcollection
+%description -n %{libamaroksqlcollection}
 Amarok 2 core library.
 
-%files -n %libamaroksqlcollection
-%_kde_libdir/libamarok-sqlcollection.so.%{libamaroksqlcollection_major}*
+%files -n %{libamaroksqlcollection}
+%{_kde_libdir}/libamarok-sqlcollection.so.%{libamaroksqlcollection_major}*
 
 #------------------------------------------------
 
 %define libamaroktranscoding_major 1
-%define libamaroktranscoding %mklibname amarok-transcoding %libamaroktranscoding_major
+%define libamaroktranscoding %mklibname amarok-transcoding %{libamaroktranscoding_major}
 
-%package -n %libamaroktranscoding
-Summary: Amarok 2 core library
-Group: System/Libraries
+%package -n %{libamaroktranscoding}
+Summary:	Amarok 2 core library
+Group:		System/Libraries
 
-%description -n %libamaroktranscoding
+%description -n %{libamaroktranscoding}
 Amarok 2 core library.
 
-%files -n %libamaroktranscoding
-%_kde_libdir/libamarok-transcoding.so.%{libamaroktranscoding_major}*
+%files -n %{libamaroktranscoding}
+%{_kde_libdir}/libamarok-transcoding.so.%{libamaroktranscoding_major}*
 
 #------------------------------------------------
 
 %package -n %{develname}
-Summary: Headers of %name for development
-Group: Development/C
-Requires: %libamaroklib = %{EVRD}
-Requires: %libamarokcore = %{EVRD}
-Requires: %libamarokpud = %{EVRD}
-Requires: %libamarokocsclient = %{EVRD}
-Requires: %libamaroksqlcollection = %{EVRD}
-Requires: %libamaroktranscoding = %{EVRD}
-Provides: %{name}-devel = %{EVRD}
-Provides: %{libname_orig}-devel = %{EVRD}
+Summary:	Headers of %{name} for development
+Group:		Development/C
+Requires:	%{libamaroklib} = %{EVRD}
+Requires:	%{libamarokcore} = %{EVRD}
+Requires:	%{libamarokpud} = %{EVRD}
+Requires:	%{libamarokocsclient} = %{EVRD}
+Requires:	%{libamaroksqlcollection} = %{EVRD}
+Requires:	%{libamaroktranscoding} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
+Provides:	%{libname_orig}-devel = %{EVRD}
 
 %description -n %{develname}
 Headers of %{name} for development.
@@ -251,11 +235,14 @@ Headers of %{name} for development.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake_kde4
 %make
 
 %install
-%{makeinstall_std} -C build
+%makeinstall_std -C build
+
 %find_lang %{name} --with-kde --all-name
+
