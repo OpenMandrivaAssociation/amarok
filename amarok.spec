@@ -9,14 +9,14 @@
 
 Name:		amarok
 Summary:	A powerful media player for KDE4
-Version:	2.5.0
-Release:	2
+Version:	2.5.90
+Release:	1
 Epoch:		3
 License:	GPLv2+
 Url:		http://amarok.kde.org/
 Group:		Sound
-Source0:	http://fr2.rpmfind.net/linux/KDE/stable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
-Patch0:		0005-Fix-contextview-kde-290123.patch
+Source0:	http://fr2.rpmfind.net/linux/KDE/unstable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
+Source1000:	amarok.rpmlintrc
 BuildRequires:	taglib-devel >= 1.6-3
 BuildRequires:	cmake >= 2.4.5
 BuildRequires:	libnjb-devel
@@ -235,7 +235,6 @@ Headers of %{name} for development.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake_kde4
