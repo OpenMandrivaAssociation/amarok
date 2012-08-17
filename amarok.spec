@@ -17,6 +17,7 @@ Url:		http://amarok.kde.org/
 Group:		Sound
 Source0:	http://fr2.rpmfind.net/linux/KDE/unstable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
 Source1000:	amarok.rpmlintrc
+Patch0:		amarok-2.6.0-lastfm1.patch
 BuildRequires:	taglib-devel >= 1.6-3
 BuildRequires:	cmake >= 2.4.5
 BuildRequires:	libnjb-devel
@@ -234,6 +235,7 @@ Headers of %{name} for development.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
 %cmake_kde4
