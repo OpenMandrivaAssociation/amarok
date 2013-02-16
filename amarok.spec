@@ -7,8 +7,6 @@
 %define libname2 %mklibname amarok2 0
 %define develname2 %mklibname -d amarok2
 
-%define _disable_ld_no_undefined 1
-
 Name:		amarok
 Summary:	A powerful media player for KDE4
 Version:	2.7.0
@@ -244,7 +242,7 @@ Headers of %{name} for development.
 %setup -q
 
 %build
-%cmake_kde4
+%cmake_kde4 -DKDE4_BUILD_TESTS=OFF
 
 %make
 
