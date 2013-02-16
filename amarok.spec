@@ -41,6 +41,8 @@ BuildRequires:	pkgconfig(libofa)
 BuildRequires:	ffmpeg-devel
 BuildRequires:	libaio-devel
 BuildRequires:	pkgconfig(libmygpo-qt) >= 1.0.6
+BuildRequires:	clamz
+BuildRequires:	gmock-devel	
 Suggests:	%{name}-scripts = %{EVRD}
 Requires:	mysql-common-core
 Requires:	qtscriptbindings
