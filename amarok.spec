@@ -2,47 +2,42 @@
 %define libname %mklibname %{name} 0
 %define develname %mklibname -d %{name}
 
-# Needed to obsolete old amarok2 packages
-%define libname_orig2 libamarok2
-%define libname2 %mklibname amarok2 0
-%define develname2 %mklibname -d amarok2
-
-Name:		amarok
 Summary:	A powerful media player for KDE4
-Version:	2.7.0
-Release:	2
+Name:		amarok
 Epoch:		3
+Version:	2.7.1
+Release:	1
+Group:		Sound
 License:	GPLv2+
 Url:		http://amarok.kde.org/
-Group:		Sound
 Source0:	http://fr2.rpmfind.net/linux/KDE/unstable/%{name}/%{version}/src/%{name}-%{version}.tar.bz2
 Source1000:	amarok.rpmlintrc
 Patch0:		amarok-2.6.0-lastfm1.patch
-BuildRequires:	pkgconfig(taglib)
+BuildRequires:	clamz
 BuildRequires:	cmake
-BuildRequires:	pkgconfig(libnjb)
-BuildRequires:	libifp-devel
-BuildRequires:	pkgconfig(libmtp)
-BuildRequires:	pkgconfig(loudmouth-1.0)
-BuildRequires:	mysql-static-devel
-BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(libvisual-0.4)
+BuildRequires:	qtscriptgenerator
+BuildRequires:	ffmpeg-devel
+BuildRequires:	gmock-devel
 BuildRequires:	kdelibs4-devel
 BuildRequires:	kdebase4-workspace-devel
-BuildRequires:	nepomuk-core-devel
-BuildRequires:	pkgconfig(libgpod-1.0)
-BuildRequires:	pkgconfig(libcurl)
-BuildRequires:	libmp4v2-devel
-BuildRequires:	pkgconfig(taglib-extras)
-BuildRequires:	qtscriptgenerator
-BuildRequires:	liblastfm-devel
-BuildRequires:	pkgconfig(qca2)
-BuildRequires:	pkgconfig(libofa)
-BuildRequires:	ffmpeg-devel
 BuildRequires:	libaio-devel
+BuildRequires:	libifp-devel
+BuildRequires:	liblastfm-devel
+BuildRequires:	libmp4v2-devel
+BuildRequires:	mysql-static-devel
+BuildRequires:	nepomuk-core-devel
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(libcurl)
+BuildRequires:	pkgconfig(libgpod-1.0)
+BuildRequires:	pkgconfig(libmtp)
 BuildRequires:	pkgconfig(libmygpo-qt) >= 1.0.6
-BuildRequires:	clamz
-BuildRequires:	gmock-devel	
+BuildRequires:	pkgconfig(libnjb)
+BuildRequires:	pkgconfig(libofa)
+BuildRequires:	pkgconfig(libvisual-0.4)
+BuildRequires:	pkgconfig(loudmouth-1.0)
+BuildRequires:	pkgconfig(qca2)
+BuildRequires:	pkgconfig(taglib)
+BuildRequires:	pkgconfig(taglib-extras)
 Suggests:	%{name}-scripts = %{EVRD}
 Requires:	mysql-common-core
 Requires:	qtscriptbindings
@@ -251,5 +246,4 @@ Headers of %{name} for development.
 %makeinstall_std -C build
 
 %find_lang %{name} --with-kde --all-name
-
 
