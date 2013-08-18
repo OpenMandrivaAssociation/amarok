@@ -85,6 +85,7 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_bindir}/amzdownloader
 %{_kde_datadir}/applications/kde4/amarok.desktop
 %{_kde_datadir}/applications/kde4/amarok_containers.desktop
+%{_kde_datadir}/applications/kde4/amzdownloader.desktop
 %{_kde_datadir}/config/amarok.knsrc
 %{_kde_datadir}/config/amarok_homerc
 %{_kde_datadir}/config.kcfg/amarokconfig.kcfg
@@ -100,6 +101,7 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_datadir}/kde4/servicetypes/*
 %{_kde_iconsdir}/*/*/*/amarok.*
 %{_kde_datadir}/dbus-1/interfaces/*
+%{_kde_datadir}/mime/packages/amzdownloader.xml
 %exclude %{_kde_appsdir}/amarok/scripts/
 
 #--------------------------------------------------------------------
@@ -179,6 +181,22 @@ Amarok 2 core library.
 
 #------------------------------------------------
 
+%define libamarokshared_major 1
+%define libamarokshared %mklibname amarokshared %{libamarokshared_major}
+
+%package -n %{libamarokshared}
+Summary:        Amarok 2 shared library
+Group:          System/Libraries
+
+%description -n %{libamarokshared}
+Amarok 2 shared library.
+
+%files -n %{libamarokshared}
+%{_kde_libdir}/libamarokshared.so.%{libamarokshared_major}*
+
+
+#------------------------------------------------
+
 %define libamaroksqlcollection_major 1
 %define libamaroksqlcollection %mklibname amarok-sqlcollection %{libamaroksqlcollection_major}
 
@@ -231,6 +249,7 @@ Headers of %{name} for development.
 %{_kde_libdir}/libamarokocsclient.so
 %{_kde_libdir}/libamarok-sqlcollection.so
 %{_kde_libdir}/libamarok-transcoding.so
+%{_kde_libdir}/libamarokshared.so
 
 #--------------------------------------------------------------------
 
