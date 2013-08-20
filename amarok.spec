@@ -6,7 +6,7 @@ Summary:	A powerful media player for KDE4
 Name:		amarok
 Epoch:		3
 Version:	2.8.0
-Release:	1
+Release:	2
 Group:		Sound
 License:	GPLv2+
 Url:		http://amarok.kde.org/
@@ -43,6 +43,7 @@ Requires:	mysql-common-core
 Requires:	qtscriptbindings
 Requires:	kde4-audiocd
 Requires:	gstreamer0.10-tools
+Requires:	clamz
 Obsoletes:	%{_lib}amarokqtjson1 < 3:2.7.0
 %rename		amarok-utils
 
