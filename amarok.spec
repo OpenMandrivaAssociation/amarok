@@ -38,6 +38,7 @@ BuildRequires:	pkgconfig(loudmouth-1.0)
 BuildRequires:	pkgconfig(qca2)
 BuildRequires:	pkgconfig(taglib)
 BuildRequires:	pkgconfig(taglib-extras)
+BuildRequires:	wrap-devel
 Suggests:	%{name}-scripts = %{EVRD}
 Requires:	mysql-common-core
 Requires:	qtscriptbindings
