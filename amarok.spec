@@ -40,7 +40,11 @@ BuildRequires:	pkgconfig(taglib)
 BuildRequires:	pkgconfig(taglib-extras)
 BuildRequires:	wrap-devel
 Suggests:	%{name}-scripts = %{EVRD}
+%if %mdvver >= 201400
+Requires:	mysql-common
+%else
 Requires:	mysql-common-core
+%endif
 Requires:	qtscriptbindings
 Requires:	kde4-audiocd
 Requires:	gstreamer0.10-tools
