@@ -41,6 +41,7 @@ BuildRequires:	pkgconfig(taglib-extras)
 BuildRequires:	wrap-devel
 Suggests:	%{name}-scripts = %{EVRD}
 %if %mdvver >= 201400
+BuildRequires:	mariadb-server
 Requires:	mariadb-common
 %else
 Requires:	mysql-common-core
