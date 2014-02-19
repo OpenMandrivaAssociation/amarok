@@ -6,7 +6,7 @@ Summary:	A powerful media player for KDE4
 Name:		amarok
 Epoch:		3
 Version:	2.8.0
-Release:	5
+Release:	9
 Group:		Sound
 License:	GPLv2+
 Url:		http://amarok.kde.org/
@@ -41,7 +41,7 @@ BuildRequires:	pkgconfig(taglib-extras)
 BuildRequires:	wrap-devel
 Suggests:	%{name}-scripts = %{EVRD}
 %if %mdvver >= 201400
-Requires:	mysql-common
+Requires:	mariadb-common
 %else
 Requires:	mysql-common-core
 %endif
