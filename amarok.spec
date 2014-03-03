@@ -1,6 +1,4 @@
-%define libname_orig lib%{name}
-%define libname %mklibname %{name} 0
-%define develname %mklibname -d %{name}
+%define	devname	%mklibname -d %{name}
 
 Summary:	A powerful media player for KDE4
 Name:		amarok
@@ -234,7 +232,7 @@ Amarok 2 core library.
 
 #------------------------------------------------
 
-%package -n %{develname}
+%package -n %{devname}
 Summary:	Headers of %{name} for development
 Group:		Development/C
 Requires:	%{libamaroklib} = %{EVRD}
@@ -244,12 +242,11 @@ Requires:	%{libamarokocsclient} = %{EVRD}
 Requires:	%{libamaroksqlcollection} = %{EVRD}
 Requires:	%{libamaroktranscoding} = %{EVRD}
 Provides:	%{name}-devel = %{EVRD}
-Provides:	%{libname_orig}-devel = %{EVRD}
 
-%description -n %{develname}
+%description -n %{devname}
 Headers of %{name} for development.
 
-%files -n %{develname}
+%files -n %{devname}
 %{_kde_libdir}/libamaroklib.so
 %{_kde_libdir}/libamarokcore.so
 %{_kde_libdir}/libamarokpud.so
