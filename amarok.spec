@@ -24,6 +24,7 @@ BuildRequires:	liblastfm-devel
 BuildRequires:	libmp4v2-devel
 BuildRequires:	nepomuk-core-devel
 BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(libavcodec)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	pkgconfig(libmtp)
