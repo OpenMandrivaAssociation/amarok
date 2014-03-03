@@ -14,7 +14,6 @@ Patch0:		amarok-2.6.0-lastfm1.patch
 BuildRequires:	clamz
 BuildRequires:	cmake
 BuildRequires:	qtscriptgenerator
-BuildRequires:	ffmpeg-devel
 BuildRequires:	gmock-devel
 BuildRequires:	kdelibs4-devel
 BuildRequires:	kdebase4-workspace-devel
@@ -52,6 +51,9 @@ Requires:	gstreamer0.10-tools
 Requires:	clamz
 Obsoletes:	%{_lib}amarokqtjson1 < 3:2.7.0
 %rename		amarok-utils
+
+# Allow transcoding
+Suggests:	ffmpeg
 
 %description
 Feature Overview
