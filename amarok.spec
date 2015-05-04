@@ -16,7 +16,7 @@ Patch0:		amarok-2.6.0-lastfm1.patch
 BuildRequires:	clamz
 BuildRequires:	cmake
 BuildRequires:	qtscriptgenerator
-BuildRequires:	ffmpeg-devel
+BuildRequires:	ffmpeg-devel >= 2.5.4
 BuildRequires:	gmock-devel
 BuildRequires:	kdelibs4-devel
 BuildRequires:	kdebase4-workspace-devel
