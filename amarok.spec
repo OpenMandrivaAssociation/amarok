@@ -4,7 +4,7 @@ Summary:	A powerful media player for KDE4
 Name:		amarok
 Epoch:		3
 Version:	2.8.0
-Release:	12
+Release:	13
 Group:		Sound
 License:	GPLv2+
 Url:		http://amarok.kde.org/
@@ -15,8 +15,8 @@ BuildRequires:	clamz
 BuildRequires:	cmake
 BuildRequires:	qtscriptgenerator
 BuildRequires:	gmock-devel
-BuildRequires:	kdelibs4-devel
-BuildRequires:	kdebase4-workspace-devel
+BuildRequires:	kdelibs-devel
+BuildRequires:	kde-workspace-devel
 BuildRequires:	libaio-devel
 BuildRequires:	libifp-devel
 BuildRequires:	liblastfm-devel
@@ -46,7 +46,7 @@ BuildRequires:	mysql-static-devel
 Requires:	mysql-common-core
 %endif
 Requires:	qtscriptbindings
-Requires:	kde4-audiocd
+Requires:	audiocd-kio
 Requires:	clamz
 Suggests:	ifuse
 Obsoletes:	%{_lib}amarokqtjson1 < 3:2.7.0
