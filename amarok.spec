@@ -111,6 +111,8 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_iconsdir}/*/*/*/amarok.*
 %{_kde_datadir}/dbus-1/interfaces/*
 %{_kde_datadir}/mime/packages/amzdownloader.xml
+%{_datadir}/appdata/amarok.appdata.xml
+
 %exclude %{_kde_appsdir}/amarok/scripts/
 
 #--------------------------------------------------------------------
