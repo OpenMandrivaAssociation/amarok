@@ -3,15 +3,14 @@
 Summary:	A powerful media player for KDE4
 Name:		amarok
 Epoch:		3
-Version:	2.8.90
-Release:	3
+Version:	2.9.0
+Release:	1
 Group:		Sound
 License:	GPLv2+
 Url:		http://amarok.kde.org/
-Source0:	http://fr2.rpmfind.net/linux/KDE/unstable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 Source1000:	amarok.rpmlintrc
 #Patch0:		amarok-2.6.0-lastfm1.patch
-Patch1:		amarok-ffmpeg3.patch
 BuildRequires:	clamz
 BuildRequires:	cmake
 BuildRequires:	qtscriptgenerator
