@@ -92,8 +92,8 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_bindir}/amarokmp3tunesharmonydaemon
 %{_kde_bindir}/amarokpkg
 %{_kde_bindir}/amzdownloader
-%{_kde_datadir}/applications/kde4/amarok.desktop
-%{_kde_datadir}/applications/kde4/amarok_containers.desktop
+%{_kde_datadir}/applications/kde4/org.kde.amarok.desktop
+%{_kde_datadir}/applications/kde4/org.kde.amarok_containers.desktop
 %{_kde_datadir}/applications/kde4/amzdownloader.desktop
 %{_kde_datadir}/config/amarok.knsrc
 %{_kde_datadir}/config/amarok_homerc
@@ -111,7 +111,7 @@ with OpenGL are a great way to enhance your music experience.
 %{_kde_iconsdir}/*/*/*/amarok.*
 %{_kde_datadir}/dbus-1/interfaces/*
 %{_kde_datadir}/mime/packages/amzdownloader.xml
-%{_datadir}/appdata/amarok.appdata.xml
+%{_datadir}/metainfo/org.kde.amarok.appdata.xml
 
 %exclude %{_kde_appsdir}/amarok/scripts/
 
