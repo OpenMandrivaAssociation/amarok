@@ -1,5 +1,2 @@
-removed_sources:
-  amarok-2.8.0.tar.bz2: e76ccd53c05d57f9457d74cd08c2c41383c00937
-  amarok-2.8.90.tar.xz: b9ca733e36eb7d2c1fec6cbcf82f40bb573aea44
 sources:
-  amarok-2.9.0.tar.xz: 85082c415db467c12a22dd555dfc8b4e770a8fed
+  amarok-2.9.20180618.tar.xz: b48f88a69b5ef761a1653a363559085a6654f56f

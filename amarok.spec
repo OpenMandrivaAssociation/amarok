@@ -1,9 +1,7 @@
-%define	devname	%mklibname -d %{name}
-
-Summary:	A powerful media player for KDE4
+Summary:	A powerful media player for KDE
 Name:		amarok
 Epoch:		3
-Version:	2.9.0
+Version:	2.9.20180618
 Release:	1
 Group:		Sound
 License:	GPLv2+
@@ -11,45 +9,77 @@ Url:		http://amarok.kde.org/
 Source0:	http://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 Source1000:	amarok.rpmlintrc
 #Patch0:		amarok-2.6.0-lastfm1.patch
-BuildRequires:	clamz
-BuildRequires:	cmake
-BuildRequires:	qtscriptgenerator
-BuildRequires:	gmock-devel
-BuildRequires:	kdelibs-devel
-BuildRequires:	kde-workspace-devel
-BuildRequires:	libaio-devel
-BuildRequires:	libifp-devel
-BuildRequires:	liblastfm-devel
-BuildRequires:	libmp4v2-devel
-BuildRequires:	nepomuk-core-devel
-BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(libavcodec)
-BuildRequires:	pkgconfig(libcurl)
-BuildRequires:	pkgconfig(libgpod-1.0)
-BuildRequires:	pkgconfig(libmtp)
-BuildRequires:	pkgconfig(libmygpo-qt) >= 1.0.6
-BuildRequires:	pkgconfig(libnjb)
-BuildRequires:	pkgconfig(libofa)
-BuildRequires:	pkgconfig(libvisual-0.4)
-BuildRequires:	pkgconfig(loudmouth-1.0)
-BuildRequires:	pkgconfig(qca2)
+BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(KF5Archive)
+BuildRequires:	cmake(KF5Attica)
+BuildRequires:	cmake(KF5Codecs)
+BuildRequires:	cmake(KF5CoreAddons)
+BuildRequires:	cmake(KF5DBusAddons)
+BuildRequires:	cmake(KF5Declarative)
+BuildRequires:	cmake(KF5DNSSD)
+BuildRequires:	cmake(KF5GlobalAccel)
+BuildRequires:	cmake(KF5GuiAddons)
+BuildRequires:	cmake(KF5I18n)
+BuildRequires:	cmake(KF5IconThemes)
+BuildRequires:	cmake(KF5KCMUtils)
+BuildRequires:	cmake(KF5KIO)
+BuildRequires:	cmake(KF5NewStuff)
+BuildRequires:	cmake(KF5Notifications)
+BuildRequires:	cmake(KF5NotifyConfig)
+BuildRequires:	cmake(KF5Package)
+BuildRequires:	cmake(KF5Solid)
+BuildRequires:	cmake(KF5TextEditor)
+BuildRequires:	cmake(KF5ThreadWeaver)
+BuildRequires:	cmake(KF5WindowSystem)
+BuildRequires:	cmake(KF5Kirigami2)
 BuildRequires:	pkgconfig(taglib)
-BuildRequires:	pkgconfig(taglib-extras)
-BuildRequires:	wrap-devel
-Suggests:	%{name}-scripts = %{EVRD}
-%if "%{distepoch}" >= "2014.0"
+BuildRequires:	pkgconfig(opus)
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(xext)
+BuildRequires:	pkgconfig(ice)
+BuildRequires:	pkgconfig(libavcodec)
+BuildRequires:	pkgconfig(libavformat)
+BuildRequires:	pkgconfig(libavdevice)
+BuildRequires:	pkgconfig(libavutil)
+BuildRequires:	pkgconfig(libswscale)
+BuildRequires:	pkgconfig(libpostproc)
+BuildRequires:	pkgconfig(libofa)
+BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:	pkgconfig(libmtp)
+BuildRequires:	pkgconfig(libcurl)
+BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(libcrypto)
+BuildRequires:	pkgconfig(libgcrypt)
+BuildRequires:	pkgconfig(gobject-2.0)
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(python3)
+BuildRequires:	pkgconfig(fftw3)
+BuildRequires:	pkgconfig(loudmouth-1.0)
+# If you want ipod support
+#BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	mariadb-static-devel
 BuildRequires:	mariadb-server
+BuildRequires:	gtest-devel
 Requires:	mariadb-common
-%else
-BuildRequires:	mysql-static-devel
-Requires:	mysql-common-core
-%endif
-Requires:	qtscriptbindings
-Requires:	audiocd-kio
-Requires:	clamz
-Suggests:	ifuse
+
 Obsoletes:	%{_lib}amarokqtjson1 < 3:2.7.0
+%define	devname	%mklibname -d %{name}
+Obsoletes:	%{devname} < 3:%{version}
+Obsoletes:	%{name}-scripts < 3:%{version}
+%define libamaroklib %mklibname amaroklib 1
+Obsoletes:	%{libamaroklib} < 3:%{version}
+%define libamarokcore %mklibname amarokcore 1
+Obsoletes:	%{libamarokcore} < 3:%{version}
+%define libamarokpud %mklibname amarokpud 1
+Obsoletes:	%{libamarokpud} < 3:%{version}
+%define libamarokocsclient %mklibname amarokocsclient 4
+Obsoletes:	%{libamarokocsclient} < 3:%{version}
+%define libamarokshared %mklibname amarokshared 1
+Obsoletes:	%{libamarokshared} < 3:%{version}
+%define libamaroksqlcollection %mklibname amarok-sqlcollection 1
+Obsoletes:	%{libamaroksqlcollection} < 3:%{version}
+%define libamaroktranscoding %mklibname amarok-transcoding 1
+Obsoletes:	%{libamaroktranscoding} < 3:%{version}
 %rename		amarok-utils
 
 # Allow transcoding
@@ -85,194 +115,48 @@ amaroK is compatible with XMMS visualization plugins. Allows you to use the
 great number of stunning visualizations available on the net. 3d visualizations
 with OpenGL are a great way to enhance your music experience.
 
-%files -f %{name}.lang
-%{_kde_bindir}/amarok
-%{_kde_bindir}/amarokcollectionscanner
-%{_kde_bindir}/amarok_afttagger
-%{_kde_bindir}/amarokmp3tunesharmonydaemon
-%{_kde_bindir}/amarokpkg
-%{_kde_bindir}/amzdownloader
-%{_kde_datadir}/applications/kde4/org.kde.amarok.desktop
-%{_kde_datadir}/applications/kde4/org.kde.amarok_containers.desktop
-%{_kde_datadir}/applications/kde4/amzdownloader.desktop
-%{_kde_datadir}/config/amarok.knsrc
-%{_kde_datadir}/config/amarok_homerc
-%{_kde_datadir}/config.kcfg/amarokconfig.kcfg
-%{_kde_appsdir}/desktoptheme/*
-%{_kde_appsdir}/solid/actions/amarok-play-audiocd.desktop
-%{_kde_appsdir}/amarok
-%{_kde_appsdir}/kconf_update/*
-%{_kde_libdir}/kde4/*
-%{_kde_libdir}/libampache_account_login.so
-%{_kde_libdir}/libamarok_service_lastfm_shared.so
-%{_kde_datadir}/config/amarokapplets.knsrc
-%{_kde_datadir}/kde4/services/*
-%{_kde_datadir}/kde4/servicetypes/*
-%{_kde_iconsdir}/*/*/*/amarok.*
-%{_kde_datadir}/dbus-1/interfaces/*
-%{_kde_datadir}/mime/packages/amzdownloader.xml
-%{_datadir}/metainfo/org.kde.amarok.appdata.xml
-
-%exclude %{_kde_appsdir}/amarok/scripts/
-
-#--------------------------------------------------------------------
-
-%package scripts
-Summary:	Scripts for amarok
-Group:		Graphical desktop/KDE
-Requires:	%{name} = %{EVRD}
-BuildArch:	noarch
-
-%description scripts
-This package includes python scripts for amarok.
-
-%files scripts
-%dir %{_kde_appsdir}/amarok/scripts/
-%{_kde_appsdir}/amarok/scripts/*
-
-#------------------------------------------------
-
-%define libamaroklib_major 1
-%define libamaroklib %mklibname amaroklib %{libamaroklib_major}
-
-%package -n %{libamaroklib}
-Summary:	Amarok 2 core library
-Group:		System/Libraries
-
-%description -n %{libamaroklib}
-Amarok 2 core library.
-
-%files -n %{libamaroklib}
-%{_kde_libdir}/libamaroklib.so.%{libamaroklib_major}*
-
-#------------------------------------------------
-
-%define libamarokcore_major 1
-%define libamarokcore %mklibname amarokcore %{libamarokcore_major}
-
-%package -n %{libamarokcore}
-Summary:	Amarok 2 core library
-Group:		System/Libraries
-
-%description -n %{libamarokcore}
-Amarok 2 core library.
-
-%files -n %{libamarokcore}
-%{_kde_libdir}/libamarokcore.so.%{libamarokcore_major}*
-
-#------------------------------------------------
-
-%define libamarokpud_major 1
-%define libamarokpud %mklibname amarokpud %{libamarokpud_major}
-
-%package -n %{libamarokpud}
-Summary:	Amarok 2 core library
-Group:		System/Libraries
-
-%description -n %{libamarokpud}
-Amarok 2 core library.
-
-%files -n %{libamarokpud}
-%{_kde_libdir}/libamarokpud.so.%{libamarokpud_major}*
-
-#------------------------------------------------
-
-%define libamarokocsclient_major 4
-%define libamarokocsclient %mklibname amarokocsclient %{libamarokocsclient_major}
-
-%package -n %{libamarokocsclient}
-Summary:	Amarok 2 core library
-Group:		System/Libraries
-
-%description -n %{libamarokocsclient}
-Amarok 2 core library.
-
-%files -n %{libamarokocsclient}
-%{_kde_libdir}/libamarokocsclient.so.%{libamarokocsclient_major}*
-
-#------------------------------------------------
-
-%define libamarokshared_major 1
-%define libamarokshared %mklibname amarokshared %{libamarokshared_major}
-
-%package -n %{libamarokshared}
-Summary:        Amarok 2 shared library
-Group:          System/Libraries
-
-%description -n %{libamarokshared}
-Amarok 2 shared library.
-
-%files -n %{libamarokshared}
-%{_kde_libdir}/libamarokshared.so.%{libamarokshared_major}*
-
-
-#------------------------------------------------
-
-%define libamaroksqlcollection_major 1
-%define libamaroksqlcollection %mklibname amarok-sqlcollection %{libamaroksqlcollection_major}
-
-%package -n %{libamaroksqlcollection}
-Summary:	Amarok 2 core library
-Group:		System/Libraries
-
-%description -n %{libamaroksqlcollection}
-Amarok 2 core library.
-
-%files -n %{libamaroksqlcollection}
-%{_kde_libdir}/libamarok-sqlcollection.so.%{libamaroksqlcollection_major}*
-
-#------------------------------------------------
-
-%define libamaroktranscoding_major 1
-%define libamaroktranscoding %mklibname amarok-transcoding %{libamaroktranscoding_major}
-
-%package -n %{libamaroktranscoding}
-Summary:	Amarok 2 core library
-Group:		System/Libraries
-
-%description -n %{libamaroktranscoding}
-Amarok 2 core library.
-
-%files -n %{libamaroktranscoding}
-%{_kde_libdir}/libamarok-transcoding.so.%{libamaroktranscoding_major}*
-
-#------------------------------------------------
-
-%package -n %{devname}
-Summary:	Headers of %{name} for development
-Group:		Development/C
-Requires:	%{libamaroklib} = %{EVRD}
-Requires:	%{libamarokcore} = %{EVRD}
-Requires:	%{libamarokpud} = %{EVRD}
-Requires:	%{libamarokocsclient} = %{EVRD}
-Requires:	%{libamaroksqlcollection} = %{EVRD}
-Requires:	%{libamaroktranscoding} = %{EVRD}
-Provides:	%{name}-devel = %{EVRD}
-
-%description -n %{devname}
-Headers of %{name} for development.
-
-%files -n %{devname}
-%{_kde_libdir}/libamaroklib.so
-%{_kde_libdir}/libamarokcore.so
-%{_kde_libdir}/libamarokpud.so
-%{_kde_libdir}/libamarokocsclient.so
-%{_kde_libdir}/libamarok-sqlcollection.so
-%{_kde_libdir}/libamarok-transcoding.so
-%{_kde_libdir}/libamarokshared.so
-
-#--------------------------------------------------------------------
+%files
+%{_bindir}/amarok
+%{_bindir}/amarokpkg
+%{_bindir}/amarokcollectionscanner
+%{_bindir}/amarok_afttagger
+# No separate libpackages necessary, those are more like modules
+# than like libraries even if they're packaged in shared library
+# format
+%{_libdir}/libamarok-transcoding.so*
+%{_libdir}/libampache_account_login.so
+%{_libdir}/libamarokpud.so
+%{_libdir}/libamarok-sqlcollection.so*
+%{_libdir}/libamarokcore.so*
+%{_libdir}/libamaroklib.so*
+%{_libdir}/libamarokshared.so*
+%{_libdir}/qt5/qml/org/kde/amarok
+%{_libdir}/qt5/plugins/amarok_*.so
+%{_libdir}/qt5/plugins/kcm_amarok_*.so
+%{_datadir}/kconf_update/*
+%{_datadir}/kpackage/amarok
+%{_datadir}/kpackage/genericqml/org.kde.amarok*
+%{_datadir}/dbus-1/interfaces/org.kde.amarok*
+%{_datadir}/dbus-1/interfaces/org.freedesktop.MediaPlayer*
+%{_datadir}/config.kcfg/*
+%{_datadir}/solid/actions/amarok*.desktop
+%{_datadir}/kservices5/amarok*
+%{_datadir}/kservices5/ServiceMenus/*.desktop
+%{_datadir}/kservicetypes5/amarok*.desktop
+%{_datadir}/metainfo/org.kde.amarok.*
+%{_datadir}/applications/org.kde.amarok*
+%{_datadir}/icons/*/*/*/amarok.*
+%{_datadir}/amarok
+%{_datadir}/knotifications5/amarok.*
+%{_sysconfdir}/xdg/amarok*
 
 %prep
-%setup -q
-%apply_patches
-%build
-%cmake_kde4 -DKDE4_BUILD_TESTS=OFF
+%autosetup -p1
 
-%make
+%build
+%cmake_kde5
+
+%ninja_build
 
 %install
-%makeinstall_std -C build
-
-%find_lang %{name} --with-kde --all-name
-
+%ninja_install -C build
