@@ -55,6 +55,10 @@ BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(fftw3)
 BuildRequires:	pkgconfig(loudmouth-1.0)
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5QuickControls2)
+BuildRequires:	pkgconfig(Qt5WebEngine)
+BuildRequires:	pkgconfig(Qt5QuickWidgets)
 # If you want ipod support
 #BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	mariadb-static-devel
