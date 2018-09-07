@@ -64,6 +64,7 @@ BuildRequires:	pkgconfig(Qt5ScriptTools)
 BuildRequires:	pkgconfig(Qt5Svg)
 BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	cmake(KF5Parts)
+BuildRequires:	cmake(Phonon4Qt5)
 BuildRequires:	%{_lib}aio-devel
 # If you want ipod support
 #BuildRequires:	pkgconfig(libgpod-1.0)
