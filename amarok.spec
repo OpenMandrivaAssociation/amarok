@@ -61,6 +61,7 @@ BuildRequires:	pkgconfig(Qt5QuickControls2)
 BuildRequires:	pkgconfig(Qt5WebEngine)
 BuildRequires:	pkgconfig(Qt5QuickWidgets)
 BuildRequires:	pkgconfig(Qt5ScriptTools)
+BuildRequires:	pkgconfig(Qt5Svg)
 BuildRequires:	%{_lib}aio-devel
 # If you want ipod support
 #BuildRequires:	pkgconfig(libgpod-1.0)
