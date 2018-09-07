@@ -1,8 +1,7 @@
 Summary:	A powerful media player for KDE
 Name:		amarok
-Epoch:		3
-Version:	2.9.20180618
-Release:	2
+Version:	2.9.20180907
+Release:	1
 Group:		Sound
 License:	GPLv2+
 Url:		http://amarok.kde.org/
@@ -55,11 +54,13 @@ BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(fftw3)
 BuildRequires:	pkgconfig(loudmouth-1.0)
+BuildRequires:	pkgconfig(liblz4)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Script)
 BuildRequires:	pkgconfig(Qt5QuickControls2)
 BuildRequires:	pkgconfig(Qt5WebEngine)
 BuildRequires:	pkgconfig(Qt5QuickWidgets)
+BuildRequires:	%{_lib}aio-devel
 # If you want ipod support
 #BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	mariadb-static-devel
