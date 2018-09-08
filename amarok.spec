@@ -66,6 +66,9 @@ BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	cmake(KF5Parts)
 BuildRequires:	cmake(Phonon4Qt5)
 BuildRequires:	%{_lib}aio-devel
+BuildRequires:	pkgconfig(lzo2)
+BuildRequires:	pkgconfig(systemd)
+BuildRequires:	systemd-macros
 # If you want ipod support
 #BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	mariadb-static-devel
