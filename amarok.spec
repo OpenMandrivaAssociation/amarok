@@ -1,6 +1,6 @@
 Summary:	A powerful media player for KDE
 Name:		amarok
-Version:	2.9.20200314
+Version:	2.9.2020.03.14
 Release:	1
 Group:		Sound
 License:	GPLv2+
