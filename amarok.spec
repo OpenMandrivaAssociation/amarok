@@ -8,6 +8,7 @@ Url:		http://amarok.kde.org/
 Source0:	http://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 Source1000:	amarok.rpmlintrc
 #Patch0:		amarok-2.6.0-lastfm1.patch
+Patch1:   amarok_mariadb.patch
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5Archive)
 BuildRequires:	cmake(KF5Attica)
