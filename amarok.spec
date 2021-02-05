@@ -1,11 +1,11 @@
 Summary:	A powerful media player for KDE
 Name:		amarok
-Version:	2.9.20200212
+Version:	2.9.20210205
 Release:	1
 Group:		Sound
 License:	GPLv2+
 Url:		http://amarok.kde.org/
-Source0:	http://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.zst
+Source0:	https://invent.kde.org/multimedia/amarok/-/archive/master/amarok-%{version}.tar.bz2
 Source1000:	amarok.rpmlintrc
 #Patch0:		amarok-2.6.0-lastfm1.patch
 BuildRequires:	cmake(ECM)
@@ -152,7 +152,6 @@ with OpenGL are a great way to enhance your music experience.
 %{_datadir}/kpackage/amarok
 %{_datadir}/kpackage/genericqml/org.kde.amarok*
 %{_datadir}/dbus-1/interfaces/org.kde.amarok*
-%{_datadir}/dbus-1/interfaces/org.freedesktop.MediaPlayer*
 %{_datadir}/config.kcfg/*
 %{_datadir}/solid/actions/amarok*.desktop
 %{_datadir}/kservices5/amarok*
@@ -163,10 +162,12 @@ with OpenGL are a great way to enhance your music experience.
 %{_datadir}/icons/*/*/*/amarok.*
 %{_datadir}/amarok
 %{_datadir}/knotifications5/amarok.*
+%{_datadir}/knsrcfiles/amarok.knsrc
 %{_sysconfdir}/xdg/amarok*
+%doc %{_docdir}/HTML/en/amarok
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n amarok-master-3d3d9b9101793ca55ff964430cb89b67817876a7
 
 %build
 %cmake_kde5
