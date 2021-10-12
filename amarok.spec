@@ -1,6 +1,6 @@
 Summary:	A powerful media player for KDE
 Name:		amarok
-Version:	2.9.20210205
+Version:	2.9.20210911
 Release:	1
 Group:		Sound
 License:	GPLv2+
@@ -169,7 +169,7 @@ with OpenGL are a great way to enhance your music experience.
 %doc %{_docdir}/HTML/en/amarok
 
 %prep
-%autosetup -p1 -n amarok-master-3d3d9b9101793ca55ff964430cb89b67817876a7
+%autosetup -p1 -n amarok-master
 
 %build
 %cmake_kde5
