@@ -71,7 +71,7 @@ BuildRequires:	cmake(Phonon4Qt5)
 BuildRequires:	%{_lib}aio-devel
 BuildRequires:	pkgconfig(lzo2)
 BuildRequires:	pkgconfig(systemd)
-BuildRequires:	systemd-macros
+BuildRequires:	systemd-rpm-macros
 # If you want ipod support
 #BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	mariadb-static-devel
