@@ -34,6 +34,7 @@ BuildRequires:	cmake(KF5WindowSystem)
 BuildRequires:	cmake(KF5Kirigami2)
 BuildRequires:	cmake(KF5DocTools)
 BuildRequires:	pkgconfig(taglib)
+BuildRequires:  pkgconfig(taglib-extras)
 BuildRequires:	pkgconfig(opus)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xext)
@@ -77,6 +78,7 @@ BuildRequires:	systemd-rpm-macros
 BuildRequires:	mariadb-static-devel
 BuildRequires:	mariadb-server
 BuildRequires:	gtest-devel
+BuildRequires:  %{_lib}lastfm-qt5-devel
 Requires:	mariadb-common
 
 Obsoletes:	%{_lib}amarokqtjson1 < 3:2.7.0
@@ -180,4 +182,4 @@ with OpenGL are a great way to enhance your music experience.
 %install
 %ninja_install -C build
 
-%find_lang %{name}
+%find_lang %{name} --all-name
