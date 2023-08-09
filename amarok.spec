@@ -78,7 +78,7 @@ BuildRequires:	systemd-rpm-macros
 BuildRequires:	mariadb-static-devel
 BuildRequires:	mariadb-server
 BuildRequires:	gtest-devel
-BuildRequires:  %{_lib}lastfm-qt5-devel
+BuildRequires:  %{_lib}lastfm-devel
 Requires:	mariadb-common
 
 Obsoletes:	%{_lib}amarokqtjson1 < 3:2.7.0
