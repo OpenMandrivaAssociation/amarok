@@ -132,7 +132,7 @@ amaroK is compatible with XMMS visualization plugins. Allows you to use the
 great number of stunning visualizations available on the net. 3d visualizations
 with OpenGL are a great way to enhance your music experience.
 
-%files
+%files -f %{name}*.lang
 %{_bindir}/amarok
 %{_bindir}/amarokpkg
 %{_bindir}/amarokcollectionscanner
@@ -154,6 +154,7 @@ with OpenGL are a great way to enhance your music experience.
 %{_datadir}/kpackage/amarok
 %{_datadir}/kpackage/genericqml/org.kde.amarok*
 %{_datadir}/dbus-1/interfaces/org.kde.amarok*
+%{_datadir}/dbus-1/services/org.kde.amarok.service
 %{_datadir}/config.kcfg/*
 %{_datadir}/solid/actions/amarok*.desktop
 %{_datadir}/kservices5/amarok*
@@ -178,3 +179,5 @@ with OpenGL are a great way to enhance your music experience.
 
 %install
 %ninja_install -C build
+
+%find_lang %{name}*
