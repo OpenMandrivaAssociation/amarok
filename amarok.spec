@@ -5,7 +5,8 @@ Release:	1
 Group:		Sound
 License:	GPLv2+
 Url:		http://amarok.kde.org/
-Source0:	https://invent.kde.org/multimedia/amarok/-/archive/master/amarok-master.tar.bz2#/amarok-%{version}.tar.bz2
+Source0:	https://invent.kde.org/multimedia/amarok/-/archive/master/amarok-master.tar.bz2
+#/amarok-%{version}.tar.bz2
 Source1000:	amarok.rpmlintrc
 #Patch0:		amarok-2.6.0-lastfm1.patch
 BuildRequires:	cmake(ECM)
