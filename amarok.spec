@@ -171,7 +171,6 @@ with OpenGL are a great way to enhance your music experience.
 %{_datadir}/knotifications5/amarok.*
 %{_datadir}/knsrcfiles/amarok.knsrc
 %{_sysconfdir}/xdg/amarok*
-%doc %{_docdir}/HTML/en/amarok
 
 %prep
 %autosetup -p1 -n %{name}-%{version}
@@ -184,4 +183,4 @@ with OpenGL are a great way to enhance your music experience.
 %install
 %ninja_install -C build
 
-%find_lang %{name} --all-name --with-qt
+%find_lang %{name} --all-name --with-qt --with-html
