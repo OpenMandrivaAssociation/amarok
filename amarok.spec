@@ -147,7 +147,7 @@ with OpenGL are a great way to enhance your music experience.
 
 %files -f %{name}.lang
 %{_bindir}/amarok
-%{_bindir}/amarokpkg
+#{_bindir}/amarokpkg
 %{_bindir}/amarokcollectionscanner
 %{_bindir}/amarok_afttagger
 # No separate libpackages necessary, those are more like modules
@@ -160,26 +160,26 @@ with OpenGL are a great way to enhance your music experience.
 %{_libdir}/libamarokcore.so*
 %{_libdir}/libamaroklib.so*
 %{_libdir}/libamarokshared.so*
-%{_libdir}/libamarok_service_lastfm_config.so
-%{_libdir}/qt5/qml/org/kde/amarok
-%{_libdir}/qt5/plugins/amarok_*.so
-%{_libdir}/qt5/plugins/kcm_amarok_*.so
-%{_datadir}/kconf_update/*
-%{_datadir}/kpackage/amarok
-%{_datadir}/kpackage/genericqml/org.kde.amarok*
+#{_libdir}/libamarok_service_lastfm_config.so
+#{_libdir}/qt5/qml/org/kde/amarok
+#{_libdir}/qt5/plugins/amarok_*.so
+#{_libdir}/qt5/plugins/kcm_amarok_*.so
+#{_datadir}/kconf_update/*
+#{_datadir}/kpackage/amarok
+#{_datadir}/kpackage/genericqml/org.kde.amarok*
 %{_datadir}/dbus-1/interfaces/org.kde.amarok*
 %{_datadir}/dbus-1/services/org.kde.amarok.service
 %{_datadir}/config.kcfg/*
 %{_datadir}/solid/actions/amarok*.desktop
-%{_datadir}/kservices5/amarok*
-%{_datadir}/kservices5/ServiceMenus/*.desktop
-%{_datadir}/kservicetypes5/amarok*.desktop
+#{_datadir}/kservices5/amarok*
+#{_datadir}/kservices5/ServiceMenus/*.desktop
+#{_datadir}/kservicetypes5/amarok*.desktop
 %{_datadir}/metainfo/org.kde.amarok.*
 %{_datadir}/applications/org.kde.amarok*
 %{_datadir}/icons/*/*/*/amarok.*
 %{_datadir}/amarok
-%{_datadir}/knotifications5/amarok.*
-%{_datadir}/knsrcfiles/amarok.knsrc
+#{_datadir}/knotifications5/amarok.*
+#{_datadir}/knsrcfiles/amarok.knsrc
 %{_sysconfdir}/xdg/amarok*
 
 %prep
