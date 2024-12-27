@@ -92,6 +92,13 @@ BuildRequires:	gtest-devel
 #BuildRequires:  %{_lib}lastfm-devel
 Requires:	mariadb-common
 
+Requires: qt6-qtdeclarative
+# Keep this one
+Requires: phonon4qt6-gstreamer
+Requires: plasma6-kio-extras
+Requires: kf6-kirigami
+Requires: plasma6-audiocd-kio
+
 # Allow transcoding
 Recommends:	ffmpeg
 
@@ -139,6 +146,8 @@ with OpenGL are a great way to enhance your music experience.
 %{_libdir}/plugins/amarok_collection-*
 %{_libdir}/plugins/amarok_importer-*
 %{_libdir}/plugins/amarok_service*
+%{_libdir}/plugins/amarok_storage-mysqlestorage.so
+%{_libdir}/plugins/amarok_storage-mysqlserverstorage.so
 %{_libdir}/plugins/kcm_amarok*
 %{_libdir}/qml/org/kde/amarok/
 %{_datadir}/kio/servicemenus/amarok_append.desktop
