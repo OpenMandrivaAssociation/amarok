@@ -92,28 +92,8 @@ BuildRequires:	gtest-devel
 #BuildRequires:  %{_lib}lastfm-devel
 Requires:	mariadb-common
 
-Obsoletes:	%{_lib}amarokqtjson1 < 3:2.7.0
-%define	devname	%mklibname -d %{name}
-Obsoletes:	%{devname} < 3:%{version}
-Obsoletes:	%{name}-scripts < 3:%{version}
-%define libamaroklib %mklibname amaroklib 1
-Obsoletes:	%{libamaroklib} < 3:%{version}
-%define libamarokcore %mklibname amarokcore 1
-Obsoletes:	%{libamarokcore} < 3:%{version}
-%define libamarokpud %mklibname amarokpud 1
-Obsoletes:	%{libamarokpud} < 3:%{version}
-%define libamarokocsclient %mklibname amarokocsclient 4
-Obsoletes:	%{libamarokocsclient} < 3:%{version}
-%define libamarokshared %mklibname amarokshared 1
-Obsoletes:	%{libamarokshared} < 3:%{version}
-%define libamaroksqlcollection %mklibname amarok-sqlcollection 1
-Obsoletes:	%{libamaroksqlcollection} < 3:%{version}
-%define libamaroktranscoding %mklibname amarok-transcoding 1
-Obsoletes:	%{libamaroktranscoding} < 3:%{version}
-%rename		amarok-utils
-
 # Allow transcoding
-Suggests:	ffmpeg
+Recommends:	ffmpeg
 
 %description
 Feature Overview
@@ -147,12 +127,8 @@ with OpenGL are a great way to enhance your music experience.
 
 %files -f %{name}.lang
 %{_bindir}/amarok
-#{_bindir}/amarokpkg
 %{_bindir}/amarokcollectionscanner
 %{_bindir}/amarok_afttagger
-# No separate libpackages necessary, those are more like modules
-# than like libraries even if they're packaged in shared library
-# format
 %{_libdir}/libamarok-transcoding.so*
 %{_libdir}/libampache_account_login.so
 %{_libdir}/libamarokpud.so
@@ -160,26 +136,23 @@ with OpenGL are a great way to enhance your music experience.
 %{_libdir}/libamarokcore.so*
 %{_libdir}/libamaroklib.so*
 %{_libdir}/libamarokshared.so*
-#{_libdir}/libamarok_service_lastfm_config.so
-#{_libdir}/qt5/qml/org/kde/amarok
-#{_libdir}/qt5/plugins/amarok_*.so
-#{_libdir}/qt5/plugins/kcm_amarok_*.so
-#{_datadir}/kconf_update/*
-#{_datadir}/kpackage/amarok
-#{_datadir}/kpackage/genericqml/org.kde.amarok*
+%{_libdir}/plugins/amarok_collection-*
+%{_libdir}/plugins/amarok_importer-*
+%{_libdir}/plugins/amarok_service*
+%{_libdir}/plugins/kcm_amarok*
+%{_libdir}/qml/org/kde/amarok/
+%{_datadir}/kio/servicemenus/amarok_append.desktop
+%{_datadir}/knotifications6/amarok.notifyrc
+%{_datadir}/kpackage/amarok/
+%{_datadir}/kpackage/genericqml/org.kde.amarok.context/
 %{_datadir}/dbus-1/interfaces/org.kde.amarok*
 %{_datadir}/dbus-1/services/org.kde.amarok.service
 %{_datadir}/config.kcfg/*
 %{_datadir}/solid/actions/amarok*.desktop
-#{_datadir}/kservices5/amarok*
-#{_datadir}/kservices5/ServiceMenus/*.desktop
-#{_datadir}/kservicetypes5/amarok*.desktop
 %{_datadir}/metainfo/org.kde.amarok.*
 %{_datadir}/applications/org.kde.amarok*
 %{_datadir}/icons/*/*/*/amarok.*
 %{_datadir}/amarok
-#{_datadir}/knotifications5/amarok.*
-#{_datadir}/knsrcfiles/amarok.knsrc
 %{_sysconfdir}/xdg/amarok*
 
 %prep
