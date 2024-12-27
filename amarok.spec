@@ -186,11 +186,10 @@ with OpenGL are a great way to enhance your music experience.
 %autosetup -p1 -n %{name}-%{version}
 
 %build
-%cmake -DBUILD_WITH_QT6:BOOL=ON -DBUILD_TESTING=OFF -G Ninja
-
-%ninja_build -C build
+%cmake -DBUILD_WITH_QT6:BOOL=ON -DBUILD_TESTING=OFF
+%make_build
 
 %install
-%ninja_install -C build
+%make_install -C build
 
 %find_lang %{name} --all-name --with-qt --with-html
