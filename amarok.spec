@@ -186,7 +186,7 @@ with OpenGL are a great way to enhance your music experience.
 %autosetup -p1 -n %{name}-%{version}
 
 %build
-%cmake_kde5 -DBUILD_WITH_QT6:BOOL=ON -DBUILD_TESTING=OFF
+%cmake -DBUILD_WITH_QT6:BOOL=ON -DBUILD_TESTING=OFF
 
 %ninja_build
 
