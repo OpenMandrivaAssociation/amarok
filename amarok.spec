@@ -167,11 +167,12 @@ with OpenGL are a great way to enhance your music experience.
 %prep
 %autosetup -p1 -n %{name}-%{version}
 
+%cmake -DBUILD_WITH_QT6:BOOL=ON -DBUILD_TESTING=OFF -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON -G Ninja
+
 %build
-%cmake -DBUILD_WITH_QT6:BOOL=ON -DBUILD_TESTING=OFF
-%make_build
+%ninja_build -C build
 
 %install
-%make_install -C build
+%ninja_install -C build
 
 %find_lang %{name} --all-name --with-qt --with-html
