@@ -1,6 +1,6 @@
 Summary:	A powerful media player for KDE
 Name:		amarok
-Version:	3.1.81
+Version:	3.2.0
 Release:	1
 Group:		Sound
 License:	GPLv2+
@@ -35,7 +35,8 @@ BuildRequires:  cmake(KF6StatusNotifierItem)
 BuildRequires:  cmake(KF6Kirigami)
 BuildRequires:  cmake(KF6Wallet)
 BuildRequires:	pkgconfig(taglib)
-#BuildRequires:  pkgconfig(taglib-extras)
+# Optional now, can be dropped anytime
+BuildRequires:  pkgconfig(taglib-extras)
 BuildRequires:	pkgconfig(opus)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xext)
