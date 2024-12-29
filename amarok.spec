@@ -1,7 +1,7 @@
 Summary:	A powerful media player for KDE
 Name:		amarok
-Version:	3.1.1
-Release:	2
+Version:	3.1.81
+Release:	1
 Group:		Sound
 License:	GPLv2+
 Url:		https://amarok.kde.org/
@@ -9,33 +9,33 @@ Source0:  https://download.kde.org/stable/amarok/%{version}/amarok-%{version}.ta
 # git Source0:	https://invent.kde.org/multimedia/amarok/-/archive/master/amarok-master.tar.bz2
 Source1000:	amarok.rpmlintrc
 BuildRequires:	cmake(ECM)
-BuildRequires:	cmake(KF5Archive)
-BuildRequires:	cmake(KF5Attica)
-BuildRequires:	cmake(KF5Codecs)
-BuildRequires:	cmake(KF5CoreAddons)
-BuildRequires:	cmake(KF5Crash)
-BuildRequires:	cmake(KF5DBusAddons)
-BuildRequires:	cmake(KF5Declarative)
-BuildRequires:	cmake(KF5DNSSD)
-BuildRequires:	cmake(KF5GlobalAccel)
-BuildRequires:	cmake(KF5GuiAddons)
-BuildRequires:	cmake(KF5I18n)
-BuildRequires:	cmake(KF5IconThemes)
-BuildRequires:	cmake(KF5KCMUtils)
-BuildRequires:	cmake(KF5KIO)
-BuildRequires:	cmake(KF5NewStuff)
-BuildRequires:	cmake(KF5Notifications)
-BuildRequires:	cmake(KF5NotifyConfig)
-BuildRequires:	cmake(KF5Package)
-BuildRequires:	cmake(KF5Solid)
-BuildRequires:	cmake(KF5TextEditor)
-BuildRequires:	cmake(KF5ThreadWeaver)
-BuildRequires:	cmake(KF5WindowSystem)
-BuildRequires:	cmake(KF5Kirigami2)
-BuildRequires:	cmake(KF5DocTools)
-BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF6Archive)
+BuildRequires:  cmake(KF6Codecs)
+BuildRequires:  cmake(KF6Config)
+BuildRequires:  cmake(KF6ConfigWidgets)
+BuildRequires:  cmake(KF6CoreAddons)
+BuildRequires:  cmake(KF6Crash)
+BuildRequires:  cmake(KF6DBusAddons)
+BuildRequires:  cmake(KF6DNSSD)
+BuildRequires:  cmake(KF6DocTools)
+BuildRequires:  cmake(KF6GlobalAccel)
+BuildRequires:  cmake(KF6GuiAddons)
+BuildRequires:  cmake(KF6I18n)
+BuildRequires:  cmake(KF6IconThemes)
+BuildRequires:  cmake(KF6KCMUtils)
+BuildRequires:  cmake(KF6KIO)
+BuildRequires:  cmake(KF6Notifications)
+BuildRequires:  cmake(KF6Package)
+BuildRequires:  cmake(KF6Solid)
+BuildRequires:  cmake(KF6TextEditor)
+BuildRequires:  cmake(KF6TextWidgets)
+BuildRequires:  cmake(KF6ThreadWeaver)
+BuildRequires:  cmake(KF6ColorScheme)
+BuildRequires:  cmake(KF6StatusNotifierItem)
+BuildRequires:  cmake(KF6Kirigami)
+BuildRequires:  cmake(KF6Wallet)
 BuildRequires:	pkgconfig(taglib)
-BuildRequires:  pkgconfig(taglib-extras)
+#BuildRequires:  pkgconfig(taglib-extras)
 BuildRequires:	pkgconfig(opus)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xext)
@@ -59,17 +59,26 @@ BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(fftw3)
 BuildRequires:	pkgconfig(loudmouth-1.0)
 BuildRequires:	pkgconfig(liblz4)
-BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5Script)
-BuildRequires:	pkgconfig(Qt5QuickControls2)
-BuildRequires:	pkgconfig(Qt5WebEngine)
-BuildRequires:	pkgconfig(Qt5QuickWidgets)
-BuildRequires:	pkgconfig(Qt5ScriptTools)
-BuildRequires:	pkgconfig(Qt5Svg)
-BuildRequires:	pkgconfig(Qt5Test)
-BuildRequires:	pkgconfig(Qt5UiTools)
-BuildRequires:	cmake(KF5Parts)
-BuildRequires:	cmake(Phonon4Qt5)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Help)
+BuildRequires:  cmake(Qt6Linguist)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6QuickControls2)
+BuildRequires:  cmake(Qt6QuickWidgets)
+BuildRequires:  cmake(Qt6Qml)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6SvgWidgets)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6UiTools)
+BuildRequires:  cmake(Qt6WebEngineWidgets)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  cmake(Phonon4Qt6)
 BuildRequires:	%{_lib}aio-devel
 BuildRequires:	pkgconfig(lzo2)
 BuildRequires:	pkgconfig(systemd)
@@ -79,31 +88,19 @@ BuildRequires:	systemd-rpm-macros
 BuildRequires:	mariadb-static-devel
 BuildRequires:	mariadb-server
 BuildRequires:	gtest-devel
-BuildRequires:  %{_lib}lastfm-devel
+# Not yet ready for qt6
+#BuildRequires:  %{_lib}lastfm-devel
 Requires:	mariadb-common
 
-Obsoletes:	%{_lib}amarokqtjson1 < 3:2.7.0
-%define	devname	%mklibname -d %{name}
-Obsoletes:	%{devname} < 3:%{version}
-Obsoletes:	%{name}-scripts < 3:%{version}
-%define libamaroklib %mklibname amaroklib 1
-Obsoletes:	%{libamaroklib} < 3:%{version}
-%define libamarokcore %mklibname amarokcore 1
-Obsoletes:	%{libamarokcore} < 3:%{version}
-%define libamarokpud %mklibname amarokpud 1
-Obsoletes:	%{libamarokpud} < 3:%{version}
-%define libamarokocsclient %mklibname amarokocsclient 4
-Obsoletes:	%{libamarokocsclient} < 3:%{version}
-%define libamarokshared %mklibname amarokshared 1
-Obsoletes:	%{libamarokshared} < 3:%{version}
-%define libamaroksqlcollection %mklibname amarok-sqlcollection 1
-Obsoletes:	%{libamaroksqlcollection} < 3:%{version}
-%define libamaroktranscoding %mklibname amarok-transcoding 1
-Obsoletes:	%{libamaroktranscoding} < 3:%{version}
-%rename		amarok-utils
+Requires: qt6-qtdeclarative
+# Keep this one
+Requires: phonon4qt6-gstreamer
+Requires: plasma6-kio-extras
+Requires: kf6-kirigami
+Requires: plasma6-audiocd-kio
 
 # Allow transcoding
-Suggests:	ffmpeg
+Recommends:	ffmpeg
 
 %description
 Feature Overview
@@ -137,12 +134,8 @@ with OpenGL are a great way to enhance your music experience.
 
 %files -f %{name}.lang
 %{_bindir}/amarok
-%{_bindir}/amarokpkg
 %{_bindir}/amarokcollectionscanner
 %{_bindir}/amarok_afttagger
-# No separate libpackages necessary, those are more like modules
-# than like libraries even if they're packaged in shared library
-# format
 %{_libdir}/libamarok-transcoding.so*
 %{_libdir}/libampache_account_login.so
 %{_libdir}/libamarokpud.so
@@ -150,35 +143,34 @@ with OpenGL are a great way to enhance your music experience.
 %{_libdir}/libamarokcore.so*
 %{_libdir}/libamaroklib.so*
 %{_libdir}/libamarokshared.so*
-%{_libdir}/libamarok_service_lastfm_config.so
-%{_libdir}/qt5/qml/org/kde/amarok
-%{_libdir}/qt5/plugins/amarok_*.so
-%{_libdir}/qt5/plugins/kcm_amarok_*.so
-%{_datadir}/kconf_update/*
-%{_datadir}/kpackage/amarok
-%{_datadir}/kpackage/genericqml/org.kde.amarok*
+%{_libdir}/qt6/plugins/amarok_collection-*
+%{_libdir}/qt6/plugins/amarok_importer-*
+%{_libdir}/qt6/plugins/amarok_service*
+%{_libdir}/qt6/plugins/amarok_storage-mysqlestorage.so
+%{_libdir}/qt6/plugins/amarok_storage-mysqlserverstorage.so
+%{_libdir}/qt6/plugins/kcm_amarok*
+%{_libdir}/qt6/qml/org/kde/amarok/
+%{_datadir}/kio/servicemenus/amarok_append.desktop
+%{_datadir}/knotifications6/amarok.notifyrc
+%{_datadir}/kpackage/amarok/
+%{_datadir}/kpackage/genericqml/org.kde.amarok.context/
 %{_datadir}/dbus-1/interfaces/org.kde.amarok*
 %{_datadir}/dbus-1/services/org.kde.amarok.service
 %{_datadir}/config.kcfg/*
 %{_datadir}/solid/actions/amarok*.desktop
-%{_datadir}/kservices5/amarok*
-%{_datadir}/kservices5/ServiceMenus/*.desktop
-%{_datadir}/kservicetypes5/amarok*.desktop
 %{_datadir}/metainfo/org.kde.amarok.*
 %{_datadir}/applications/org.kde.amarok*
 %{_datadir}/icons/*/*/*/amarok.*
 %{_datadir}/amarok
-%{_datadir}/knotifications5/amarok.*
-%{_datadir}/knsrcfiles/amarok.knsrc
 %{_sysconfdir}/xdg/amarok*
 
 %prep
 %autosetup -p1 -n %{name}-%{version}
 
-%build
-%cmake_kde5
+%cmake -DBUILD_WITH_QT6:BOOL=ON -DBUILD_TESTING=OFF -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON -G Ninja
 
-%ninja_build
+%build
+%ninja_build -C build
 
 %install
 %ninja_install -C build
