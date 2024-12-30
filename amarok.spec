@@ -1,7 +1,7 @@
 Summary:	A powerful media player for KDE
 Name:		amarok
 Version:	3.2.0
-Release:	1
+Release:	2
 Group:		Sound
 License:	GPLv2+
 Url:		https://amarok.kde.org/
@@ -168,7 +168,7 @@ with OpenGL are a great way to enhance your music experience.
 %prep
 %autosetup -p1 -n %{name}-%{version}
 
-%cmake -DBUILD_WITH_QT6:BOOL=ON -DBUILD_TESTING=OFF -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON -G Ninja
+%cmake -DBUILD_WITH_QT6:BOOL=ON -DBUILD_TESTING=OFF -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON -DMYSQLCONFIG_EXECUTABLE:BOOL=OFF -G Ninja
 
 %build
 %ninja_build -C build
