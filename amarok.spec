@@ -1,7 +1,7 @@
 Summary:	A powerful media player for KDE
 Name:		amarok
 Version:	3.2.0
-Release:	1
+Release:	2
 Group:		Sound
 License:	GPLv2+
 Url:		https://amarok.kde.org/
@@ -91,6 +91,7 @@ BuildRequires:	mariadb-server
 BuildRequires:	gtest-devel
 # Not yet ready for qt6
 #BuildRequires:  %{_lib}lastfm-devel
+Requires: mariadb
 Requires:	mariadb-common
 
 Requires: qt6-qtdeclarative
