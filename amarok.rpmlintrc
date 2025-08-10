@@ -1,2 +1,13 @@
 # We're not actually a library package...
 addFilter("E: non-versioned-file-in-library-package")
+addFilter("E: executable-in-library-package")
+
+# Plugins, not "real" libraries
+addFilter("E: invalid-soname")
+addFilter("W: devel-file-in-non-devel-package")
+
+# Config file, even without the .conf extension
+addFilter("W: non-conffile-in-etc")
+
+# We cannot provide man pages if upstream does not already
+addFilter("W: no-manual-page-for-binary")
