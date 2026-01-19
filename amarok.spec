@@ -68,7 +68,8 @@ BuildRequires:	cmake(VulkanHeaders)
 BuildRequires:	gtest-devel
 BuildRequires:	%{_lib}aio-devel
 BuildRequires:	pkgconfig(libmygpo-qt6)
-BuildRequires:  cmake(lastfm6)
+# build error if lastfm6 is used
+#BuildRequires:  cmake(lastfm6)
 BuildRequires:	mariadb-static-devel
 BuildRequires:	pkgconfig(fftw3)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
