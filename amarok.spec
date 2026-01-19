@@ -160,6 +160,7 @@ with OpenGL are a great way to enhance your music experience.
 %{_libdir}/libamarokcore.so*
 %{_libdir}/libamaroklib.so*
 %{_libdir}/libamarokshared.so*
+%{_libdir}/libgpodder_service_config.so
 %{_libdir}/qt6/plugins/%{name}_collection-*
 %{_libdir}/qt6/plugins/%{name}_importer-*
 %{_libdir}/qt6/plugins/%{name}_service*
