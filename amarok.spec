@@ -15,6 +15,7 @@ BuildRequires:	qt6-qtbase-sql-mariadb
 BuildRequires:	qt6-qtbase-sql-odbc
 BuildRequires:	qt6-qtbase-sql-postgresql
 BuildRequires:	qt6-qtbase-theme-gtk3
+BuildRequires:	qml(Qt.labs.synchronizer)
 BuildRequires:	systemd-rpm-macros
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF6Archive)
@@ -52,6 +53,9 @@ BuildRequires:	cmake(Qt6Network)
 BuildRequires:	cmake(Qt6QuickControls2)
 BuildRequires:	cmake(Qt6QuickWidgets)
 BuildRequires:	cmake(Qt6Qml)
+BuildRequires:	cmake(Qt6QmlAssetDownloader)
+BuildRequires:	cmake(Qt6QmlCore)
+BuildRequires:	cmake(Qt6QmlNetwork)
 BuildRequires:	cmake(Qt6Sql)
 BuildRequires:	cmake(Qt6Svg)
 BuildRequires:	cmake(Qt6SvgWidgets)
@@ -63,8 +67,8 @@ BuildRequires:	cmake(Qt6Xml)
 BuildRequires:	cmake(VulkanHeaders)
 BuildRequires:	gtest-devel
 BuildRequires:	%{_lib}aio-devel
-# Not yet ready for qt6
-#BuildRequires:  %%{_lib}lastfm-devel
+BuildRequires:	pkgconfig(libmygpo-qt6)
+BuildRequires:  cmake(lastfm6)
 BuildRequires:	mariadb-static-devel
 BuildRequires:	pkgconfig(fftw3)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
@@ -74,6 +78,7 @@ BuildRequires:	pkgconfig(gobject-2.0)
 BuildRequires:	pkgconfig(gstreamer-1.0)
 BuildRequires:	pkgconfig(gstreamer-audio-1.0)
 BuildRequires:	pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:	pkgconfig(gstreamer-plugins-bad-1.0)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(libavcodec)
 BuildRequires:	pkgconfig(libavdevice)
@@ -108,6 +113,9 @@ Requires:	phonon4qt6-gstreamer
 Requires:	plasma6-audiocd-kio
 Requires:	plasma6-kio-extras
 Requires:	qt6-qtdeclarative
+
+Requires: 	gstreamer1.0-plugins-base
+Requires:	gstreamer1.0-plugins-bad
 # Allow transcoding
 Recommends:	ffmpeg
 
@@ -161,7 +169,6 @@ with OpenGL are a great way to enhance your music experience.
 %{_datadir}/kio/servicemenus/%{name}_append.desktop
 %{_datadir}/knotifications6/%{name}.notifyrc
 %{_datadir}/kpackage/%{name}/
-%{_datadir}/kpackage/genericqml/org.kde.%{name}.context/
 %{_datadir}/dbus-1/interfaces/org.kde.%{name}*
 %{_datadir}/dbus-1/services/org.kde.%{name}.service
 %{_datadir}/config.kcfg/*
