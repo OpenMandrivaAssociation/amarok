@@ -1,6 +1,6 @@
 Summary:	A powerful media player for KDE
 Name:		amarok
-Version:	3.3.2
+Version:	3.3.3
 Release:	1
 Group:	Sound
 License:	GPLv2+
@@ -53,7 +53,6 @@ BuildRequires:	cmake(Qt6Network)
 BuildRequires:	cmake(Qt6QuickControls2)
 BuildRequires:	cmake(Qt6QuickWidgets)
 BuildRequires:	cmake(Qt6Qml)
-BuildRequires:	cmake(Qt6QmlAssetDownloader)
 BuildRequires:	cmake(Qt6QmlCore)
 BuildRequires:	cmake(Qt6QmlNetwork)
 BuildRequires:	cmake(Qt6Sql)
